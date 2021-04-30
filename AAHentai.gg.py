@@ -22,7 +22,7 @@ from discord.ext.commands import has_permissions, MissingPermissions
 from enum import Enum
 from discord.utils import get
 
-code = '#token'
+code = 'ODMyOTIyMjczNTk3MjI3MDE5.YHq1UA.YYqeYtWa94QJyZcmRrHYRuBKF2s'
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
 status = cycle(['hentaihaven.org',
@@ -373,7 +373,7 @@ async def rules(ctx):
 
 @client.command()
 async def invite(ctx):
-    await ctx.send("We extra setted up an #invite channel. But i got you this time \nhttps://discord.gg/TercRWU2Kj")
+    await ctx.send("We extra setted up an #invite channel.\nhttps://discord.gg/TercRWU2Kj")
 
 
 # Fun Terraria Fishing
