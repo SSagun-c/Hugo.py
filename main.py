@@ -246,7 +246,7 @@ async def nsfwneko(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/nsfwneko')
         nsfwnekojson = await request.json()
     embed = discord.Embed()
-    embed.set_image(url=nsfwjson['url'])
+    embed.set_image(url=nsfwnekojson['url'])
     await ctx.send(embed=embed)
 
 
