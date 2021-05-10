@@ -205,12 +205,12 @@ async def hentai(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
-async def waifu(ctx):
+async def foxgirl(ctx):
     async with aiohttp.ClientSession() as session:
-        request = await session.get('https://nekos.life/api/v2/img/waifu')
-        waifujson = await request.json()
+        request = await session.get('https://nekos.life/api/v2/img/fox_girl')
+        foxgirljson = await request.json()
     embed = discord.Embed(title="--------------------")
-    embed.set_image(url=waifujson['url'])
+    embed.set_image(url=foxgirljson['url'])
     await ctx.send(embed=embed)
 
 
