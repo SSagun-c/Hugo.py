@@ -198,7 +198,7 @@ async def neko(ctx):
 @client.command()
 async def hentai(ctx):
     async with aiohttp.ClientSession() as session:
-        request = await session.get('https://nekos.life/api/v2/img/hentai')
+        request = await session.get('https://api.computerfreaker.cf/v1/hentai')
         hentaijson = await request.json()
     embed = discord.Embed()
     embed.set_image(url=hentaijson['url'])
@@ -222,6 +222,16 @@ async def meme(ctx):
     embed.set_image(url=memejson['url'])
     await ctx.send(embed=embed)
 
+@client.command()
+async def anime(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://api.computerfreaker.cf/v1/anime')
+        animejson = await request.json()
+    embed = discord.Embed()
+    embed.set_image(url=animejson['url'])
+    await ctx.send(embed=embed)
+
+
 # help
 
 @client.command()
@@ -229,7 +239,7 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", description="**Command Prefix:**\n'.'", color=0xFFFF00)
     embed.set_author(name="SSagun.py#1050", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url="https://i.postimg.cc/7P7qFDXJ/wp5598365.jpg")
-    embed.add_field(name="Fun Commands", value="ping, 8ball, canime, meme, sauce, dmeme, animeme, pussy, hentai, hmeme, ahegao", inline=False)
+    embed.add_field(name="Fun Commands", value="ping, 8ball, neko, foxgirl, anime, hentai, sauce, pussy, meme", inline=False)
     embed.add_field(name="Moderator Commands", value="clear, kick, ban, unban", inline=True)
     embed.add_field(name="For the Community", value="invite", inline=True)
     embed.set_footer(text="I hope this helped you! If not message me on discord instead! SSagun.py#6969")
