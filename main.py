@@ -191,7 +191,7 @@ async def neko(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://nekos.life/api/v2/img/neko')
         nekojson = await request.json()
-    embed = discord.Embed(title="nyaa~ ^~^")
+    embed = discord.Embed(title='----------------')
     embed.set_image(url=nekojson['url'])
     await ctx.send(embed=embed)
 
@@ -203,6 +203,16 @@ async def hentai(ctx):
     embed = discord.Embed(title="--------------------")
     embed.set_image(url=hentaijson['url'])
     await ctx.send(embed=embed)
+
+@client.command()
+async def waifu(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://nekos.life/api/v2/img/waifu')
+        waifujson = await request.json()
+    embed = discord.Embed(title="--------------------")
+    embed.set_image(url=waifujson['url'])
+    await ctx.send(embed=embed)
+
 
 # help
 
