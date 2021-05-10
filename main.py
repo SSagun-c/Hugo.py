@@ -213,6 +213,16 @@ async def foxgirl(ctx):
     embed.set_image(url=foxgirljson['url'])
     await ctx.send(embed=embed)
 
+@client.command()
+async def meme(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('http://meme-api.herokuapp.com/gimme')
+        memejson = await request.json()
+        title = ['meem',
+                'funny haha i laughed']
+    embed = discord.Embed(title=random.choice(title))
+    embed.set_image(url=memejson['url'])
+    await ctx.send(embed=embed)
 
 # help
 
