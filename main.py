@@ -129,15 +129,6 @@ async def _8ball(ctx, *, question):
     await ctx.send(f'{random.choice(responses)}')
 
 @client.command()
-async def hentai(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/Hentai/'))
-    channel = client.get_channel(832561561469452308)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/Hentai/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #hentai")
-
-@client.command()
 async def pussy(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://some-random-api.ml/img/cat')
