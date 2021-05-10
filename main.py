@@ -2,15 +2,12 @@ import discord
 import json
 import random
 import os
-import youtube_dl
 import aiohttp
 import asyncio
 import datetime as dt
 import typing as t
 import re
-from pymongo import MongoClient
 from PIL import Image
-from NHentai import NHentai
 from io import BytesIO
 from discord import Embed
 from discord.ext import commands
@@ -19,10 +16,9 @@ from itertools import cycle
 from discord import Member
 from discord.ext.commands import Bot
 from discord.ext.commands import has_permissions, MissingPermissions
-from enum import Enum
 from discord.utils import get
 
-token = os.getenv("DISCORD_BOT_TOKEN")
+token = os.getenv("DISCORD_TOKEN")
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
 status = cycle(['hentaihaven.org',
@@ -384,4 +380,4 @@ async def fish(ctx):
 
 
 
-client.run(token)
+client.run(os.environ['DISCORD_TOKEN'])
