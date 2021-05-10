@@ -191,7 +191,7 @@ async def neko(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://nekos.life/api/v2/img/neko')
         nekojson = await request.json()
-    embed = discord.Embed(title='----------------')
+    embed = discord.Embed()
     embed.set_image(url=nekojson['url'])
     await ctx.send(embed=embed)
 
@@ -200,7 +200,7 @@ async def hentai(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://nekos.life/api/v2/img/hentai')
         hentaijson = await request.json()
-    embed = discord.Embed(title="--------------------")
+    embed = discord.Embed()
     embed.set_image(url=hentaijson['url'])
     await ctx.send(embed=embed)
 
@@ -209,7 +209,7 @@ async def foxgirl(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://nekos.life/api/v2/img/fox_girl')
         foxgirljson = await request.json()
-    embed = discord.Embed(title="--------------------")
+    embed = discord.Embed()
     embed.set_image(url=foxgirljson['url'])
     await ctx.send(embed=embed)
 
