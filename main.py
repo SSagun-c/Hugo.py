@@ -218,9 +218,7 @@ async def meme(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('http://meme-api.herokuapp.com/gimme')
         memejson = await request.json()
-        title = ['meem',
-                'funny haha i laughed']
-    embed = discord.Embed(title=random.choice(title))
+    embed = discord.Embed()
     embed.set_image(url=memejson['url'])
     await ctx.send(embed=embed)
 
