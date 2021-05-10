@@ -196,72 +196,13 @@ async def pussy(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
-async def canime(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/canime/'))
-    channel = client.get_channel(833374753100005467)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/canime/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #anime")
-
-@client.command()
-async def meme(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/reddit_sub_dankmemes/'))
-    channel = client.get_channel(833383861462499329)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/reddit_sub_dankmemes/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #memes.")
-
-@client.command()
-async def animeme(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/animemes/'))
-    channel = client.get_channel(833465071501180958)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/animemes/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #animemes.")
-
-@client.command()
-async def sauce(ctx):
-    embed = discord.Embed(title="I got you", description=(random.randint(1, 355719)), color = (0xF85252))
-    await ctx.send(embed=embed)
-
-@client.command()
-async def dmeme(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/darkmemes/'))
-    channel = client.get_channel(833628139682136075)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/darkmemes/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #dark-memes.")
-
-@client.command()
-async def hmeme(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/historymemes/'))
-    channel = client.get_channel(834842379159994419)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/historymemes/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #history-memes.")
-
-@client.command()
-async def ahegao(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/ahegao/'))
-    channel = client.get_channel(835058471564345344)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/ahegao/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #ahegao.")
-
-@client.command()
 async def neko(ctx):
-    path = random.choice(os.listdir('D:/HentaiForBot/neko/'))
-    channel = client.get_channel(835619866445742080)
-    if channel == ctx.channel:
-        await channel.send(file=discord.File('D:/HentaiForBot/neko/'+path))
-    else:
-        await ctx.send("Sorry! You cant use this command here. Please go to #neko.")
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://nekos.life/api/v2/img/neko')
+        nekojson = await request.json()
+    embed = discord.Embed(title="nyaa~ ^~^")
+    embed.set_image(url=nekojson['url'])
+    await ctx.send(embed=embed)
 
 
 # help
