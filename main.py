@@ -204,6 +204,14 @@ async def neko(ctx):
     embed.set_image(url=nekojson['url'])
     await ctx.send(embed=embed)
 
+@client.command()
+async def hentai(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://nekos.life/api/v2/img/hentai')
+        hentaijson = await request.json()
+    embed = discord.Embed(title="--------------------")
+    embed.set_image(url=hentaijson['url'])
+    await ctx.send(embed=embed)
 
 # help
 
