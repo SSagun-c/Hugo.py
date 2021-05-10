@@ -189,7 +189,7 @@ async def pussy(ctx):
 @client.command()
 async def neko(ctx):
     async with aiohttp.ClientSession() as session:
-        request = await session.get('https://nekos.life/api/v2/img/neko')
+        request = await session.get('https://api.computerfreaker.cf/v1/hentai')
         nekojson = await request.json()
     embed = discord.Embed()
     embed.set_image(url=nekojson['url'])
@@ -229,6 +229,24 @@ async def anime(ctx):
         animejson = await request.json()
     embed = discord.Embed()
     embed.set_image(url=animejson['url'])
+    await ctx.send(embed=embed)
+
+@client.command()
+async def trap(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://api.computerfreaker.cf/v1/trap')
+        trapjson = await request.json()
+    embed = discord.Embed()
+    embed.set_image(url=trapjson['url'])
+    await ctx.send(embed=embed)
+
+@client.command()
+async def nsfwneko(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://api.computerfreaker.cf/v1/nsfwneko')
+        nsfwnekojson = await request.json()
+    embed = discord.Embed()
+    embed.set_image(url=nsfwjson['url'])
     await ctx.send(embed=embed)
 
 
