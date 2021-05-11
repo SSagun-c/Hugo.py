@@ -7,17 +7,18 @@ import asyncio
 import datetime as dt
 import typing as t
 import re
+import discord.errors
 from PIL import Image
 from io import BytesIO
-from discord import Embed
+from discord import Embed, Member
 from discord.abc import GuildChannel
 from discord.colour import Color
 from discord.ext import commands
 from discord.ext import tasks
 from itertools import cycle
 from discord import Member
-from discord.ext.commands import Bot
-from discord.ext.commands import has_permissions, MissingPermissions
+from discord.ext.commands import Bot, BucketType, cooldown
+from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown
 from discord.utils import get
 
 token = os.getenv("DISCORD_TOKEN")
@@ -144,6 +145,7 @@ async def _8ball(ctx, *, question):
     await ctx.send(f'{random.choice(responses)}')
 
 @client.command()
+@cooldown(1, 8)
 async def pussy(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://some-random-api.ml/img/cat')
@@ -202,6 +204,7 @@ async def pussy(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def neko(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/hentai')
@@ -211,6 +214,7 @@ async def neko(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def hentai(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/hentai')
@@ -220,6 +224,7 @@ async def hentai(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def foxgirl(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://nekos.life/api/v2/img/fox_girl')
@@ -229,6 +234,7 @@ async def foxgirl(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def meme(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('http://meme-api.herokuapp.com/gimme')
@@ -238,6 +244,7 @@ async def meme(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def anime(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/anime')
@@ -247,6 +254,7 @@ async def anime(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def trap(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/trap')
@@ -256,6 +264,7 @@ async def trap(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@cooldown(1, 8)
 async def nsfwneko(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/nsfwneko')
@@ -271,11 +280,11 @@ async def nsfwneko(ctx):
 async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.add_field(name="**General Commands**", value="ping   8ball   pussy", inline=True)
+    embed.add_field(name="**General Commands**", value="ping   8ball   pussy   serverinfo", inline=True)
     embed.add_field(name="**Meme Command**", value="meme", inline=False)
     embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko", inline=True)
     embed.add_field(name="**NSFW Commands**", value="hentai   trap   nsfwneko", inline=False)
-    embed.add_field(name="**Commands for Moderators**", value="clear   kick   ban   unban")
+    embed.add_field(name="**Commands for Moderators**", value="prefix   changeprefix   clear   kick   ban   unban")
     await ctx.send(embed=embed)
 
 
@@ -369,5 +378,13 @@ async def serverinfo(ctx):
     embed.add_field(name="Total Members", value=memberCount, inline=True)
 
     await ctx.send(embed=embed)
+
+
+# error
+
+@commands.errors
+async def on_command_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This command is on a Cooldown! Try again in 8 seconds.")
 
 client.run(os.environ['DISCORD_TOKEN'])
