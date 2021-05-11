@@ -124,7 +124,7 @@ async def prefix(ctx):
 
     pre = prefixes[str(ctx.guild.id)]
 
-    await ctx.send(f"my current prefix for this server is {pre}")
+    await ctx.send(f"My current prefix for this server is '{pre}'")
 
 
 # Fun commands
@@ -372,7 +372,7 @@ async def setprefix(ctx, prefix):
     with open('prefixes.json', 'w') as f:
         json.dump(prefixes, f)
     
-    await ctx.send(f"The prefix was successfully changed to {prefix}")
+    await ctx.send(f"The prefix was successfully changed to '{prefix}'")
 
 
 # For Members
