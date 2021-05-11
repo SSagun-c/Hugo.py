@@ -203,6 +203,11 @@ async def pussy(ctx):
     embed.set_image(url=pussyjson['link'])
     await ctx.send(embed=embed)
 
+@pussy.error
+async def pussy_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+
 @client.command()
 @cooldown(1, 8)
 async def neko(ctx):
@@ -212,6 +217,11 @@ async def neko(ctx):
     embed = discord.Embed()
     embed.set_image(url=nekojson['url'])
     await ctx.send(embed=embed)
+
+@neko.error
+async def neko_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -223,6 +233,11 @@ async def hentai(ctx):
     embed.set_image(url=hentaijson['url'])
     await ctx.send(embed=embed)
 
+@hentai.error
+async def hentai_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+
 @client.command()
 @cooldown(1, 8)
 async def foxgirl(ctx):
@@ -232,6 +247,11 @@ async def foxgirl(ctx):
     embed = discord.Embed()
     embed.set_image(url=foxgirljson['url'])
     await ctx.send(embed=embed)
+
+@foxgirl.error
+async def foxgirl_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -243,6 +263,11 @@ async def meme(ctx):
     embed.set_image(url=memejson['url'])
     await ctx.send(embed=embed)
 
+@meme.error
+async def meme_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+
 @client.command()
 @cooldown(1, 8)
 async def anime(ctx):
@@ -252,6 +277,11 @@ async def anime(ctx):
     embed = discord.Embed()
     embed.set_image(url=animejson['url'])
     await ctx.send(embed=embed)
+
+@anime.error
+async def anime_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -263,6 +293,11 @@ async def trap(ctx):
     embed.set_image(url=trapjson['url'])
     await ctx.send(embed=embed)
 
+@trap.error
+async def trap_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+
 @client.command()
 @cooldown(1, 8)
 async def nsfwneko(ctx):
@@ -273,6 +308,10 @@ async def nsfwneko(ctx):
     embed.set_image(url=nsfwnekojson['url'])
     await ctx.send(embed=embed)
 
+@nsfwneko.error
+async def nsfwneko_error(ctx, error):
+    if isinstance(CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 # help
 
@@ -379,12 +418,5 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-
-# error
-
-@CommandError
-async def on_command_error(ctx, error):
-    if isinstance(CommandOnCooldown):
-        await ctx.send("This command is on a Cooldown! Try again in 8 seconds.")
 
 client.run(os.environ['DISCORD_TOKEN'])
