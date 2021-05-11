@@ -10,6 +10,7 @@ import re
 from PIL import Image
 from io import BytesIO
 from discord import Embed
+from discord.abc import GuildChannel
 from discord.ext import commands
 from discord.ext import tasks
 from itertools import cycle
@@ -19,7 +20,25 @@ from discord.ext.commands import has_permissions, MissingPermissions
 from discord.utils import get
 
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix = '.')
+
+def get_prefix(client, message):
+    with open('prefixes.json', 'r') as f:
+        prefixes =json.load(f)
+    return prefixes[str(message.guild.id)]
+
+client = commands.Bot(command_prefix = get_prefix)
+
+@client.event
+async def on_guild_join(guild):
+    with open('prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes[str(guild.id)] = '.'
+
+    with open('prefixes.json', 'w') as f:
+        json.dump(prefixes, f)
+
+
 client.remove_command('help')
 status = cycle(['hentaihaven.org',
          'hanime.tv', 
@@ -96,6 +115,24 @@ async def on_message(message):
         await message.delete()
         await message.channel.send("Please do not advertise here, go to #self-promotion instead!")
     await client.process_commands(message)
+
+@client.event()
+async def on_message(msg):
+    if msg.mention[0] == client.user:
+
+        try:
+
+            with open('prefixes.json', 'r') as f:
+                prefixes = json.load(f)
+
+            pre = prefixes[str(msg.guild.id)]
+
+            await msg.channel.send(f"my current prefix for this server is {pre}")
+
+        except:
+            pass
+     
+    await client.process_commands(msg)
 
 
 # Fun commands
@@ -331,6 +368,20 @@ async def unban_error(ctx, error):
     else:
         await ctx.send("Please send the users name with his prefix '#'\nExample: .unban SSagun#1050")
 
+@client.command()
+@commands.has_permissions(administrator=True)
+async def setprefix(ctx, prefix):
+
+    with open('prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes[str(ctx.guild.id)] = prefix
+
+    with open('prefixes.json', 'w') as f:
+        json.dump(prefixes, f)
+    
+    await ctx.send(f"The prefix was successfully changed to {prefix}")
+
 
 # For Members
 
@@ -339,11 +390,8 @@ async def invite(ctx):
     await ctx.send("We extra setted up an #invite channel.\nhttps://discord.gg/TercRWU2Kj")
 
 
-# Fun Terraria Fishing
+# prefix
 
-@client.command()
-async def fish(ctx):
-    await ctx.send("not out yet")
 
 
 
