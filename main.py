@@ -7,7 +7,6 @@ import asyncio
 import datetime as dt
 import typing as t
 import re
-import discord.errors
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -19,6 +18,7 @@ from itertools import cycle
 from discord import Member
 from discord.ext.commands import Bot, BucketType, cooldown
 from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown
+from discord.ext.commands.errors import CommandError
 from discord.utils import get
 
 token = os.getenv("DISCORD_TOKEN")
@@ -382,7 +382,7 @@ async def serverinfo(ctx):
 
 # error
 
-@commands.errors
+@CommandError
 async def on_command_error(ctx, error):
     if isinstance(CommandOnCooldown):
         await ctx.send("This command is on a Cooldown! Try again in 8 seconds.")
