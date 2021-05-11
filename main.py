@@ -116,23 +116,15 @@ async def on_message(message):
         await message.channel.send("Please do not advertise here, go to #self-promotion instead!")
     await client.process_commands(message)
 
-@client.event
-async def on_message(msg):
-    if msg.mention[0] == client.user:
+@client.command()
+async def prefix(ctx):
+    
+    with open('prefixes.json', 'r') as f:
+        prefixes = json.load(f)
 
-        try:
+    pre = prefixes[str(ctx.guild.id)]
 
-            with open('prefixes.json', 'r') as f:
-                prefixes = json.load(f)
-
-            pre = prefixes[str(msg.guild.id)]
-
-            await msg.channel.send(f"my current prefix for this server is {pre}")
-
-        except:
-            pass
-     
-    await client.process_commands(msg)
+    await ctx.send(f"my current prefix for this server is {pre}")
 
 
 # Fun commands
