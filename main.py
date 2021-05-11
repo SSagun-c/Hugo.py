@@ -11,6 +11,7 @@ from PIL import Image
 from io import BytesIO
 from discord import Embed
 from discord.abc import GuildChannel
+from discord.colour import Color
 from discord.ext import commands
 from discord.ext import tasks
 from itertools import cycle
@@ -283,8 +284,8 @@ async def nsfwneko(ctx):
 
 @client.command()
 async def help(ctx):
-    embed = discord.Embed(title="Commands", description="**Command Prefix:**\n'.'", color=0xFFFF00)
-    embed.set_author(name="SSagun.py#1050", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
+    embed = discord.Embed(title="Commands", color=0xFFFF00)
+    embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.add_field(name="**General Commands**", value="ping   8ball   pussy", inline=True)
     embed.add_field(name="**Meme Command**", value="meme", inline=False)
     embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko", inline=True)
@@ -378,13 +379,24 @@ async def setprefix(ctx, prefix):
 # For Members
 
 @client.command()
-async def invite(ctx):
-    await ctx.send("We extra setted up an #invite channel.\nhttps://discord.gg/TercRWU2Kj")
+async def serverinfo(ctx):
+    name = ctx.guild.name
+    description = str(ctx.guild.description)
 
+    owner = str(ctx.guild.owner)
+    id = str(ctx.guild.id)
+    region = str(ctx.guild.region)  
+    memberCount = str(ctx.guild.member_count)
 
-# prefix
+    icon = str(ctx.guild.icon_url)
 
+    embed = discord.Embed(title=name + " Server Information", description=description, color=0xFFFF00)
+    embed.set_thumbnail(url=icon)
+    embed.add_field(name="Owner", value=owner, inline=True)
+    embed.add_field(name="Server ID", value=id, inline=True)
+    embed.add_field(name="Region", value=region, inline=True)
+    embed.add_field(name="Total Members", value=memberCount, inline=True)
 
-
+    await ctx.send(embed=embed)
 
 client.run(os.environ['DISCORD_TOKEN'])
