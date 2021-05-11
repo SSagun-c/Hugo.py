@@ -206,13 +206,13 @@ async def pussy(ctx):
 @pussy.error
 async def pussy_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
 async def neko(ctx):
     async with aiohttp.ClientSession() as session:
-        request = await session.get('https://api.computerfreaker.cf/v1/hentai')
+        request = await session.get('https://api.computerfreaker.cf/v1/neko')
         nekojson = await request.json()
     embed = discord.Embed()
     embed.set_image(url=nekojson['url'])
@@ -221,7 +221,7 @@ async def neko(ctx):
 @neko.error
 async def neko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -236,7 +236,7 @@ async def hentai(ctx):
 @hentai.error
 async def hentai_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -251,7 +251,7 @@ async def foxgirl(ctx):
 @foxgirl.error
 async def foxgirl_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -266,7 +266,7 @@ async def meme(ctx):
 @meme.error
 async def meme_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -281,7 +281,7 @@ async def anime(ctx):
 @anime.error
 async def anime_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -296,7 +296,7 @@ async def trap(ctx):
 @trap.error
 async def trap_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 @client.command()
 @cooldown(1, 8)
@@ -311,7 +311,7 @@ async def nsfwneko(ctx):
 @nsfwneko.error
 async def nsfwneko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
 # help
 
