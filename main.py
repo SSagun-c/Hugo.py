@@ -256,13 +256,12 @@ async def nsfwneko(ctx):
 async def help(ctx):
     embed = discord.Embed(title="Commands", description="**Command Prefix:**\n'.'", color=0xFFFF00)
     embed.set_author(name="SSagun.py#1050", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.set_thumbnail(url="https://i.postimg.cc/7P7qFDXJ/wp5598365.jpg")
-    embed.add_field(name="Fun Commands", value="ping, 8ball, neko, foxgirl, anime, hentai, sauce, pussy, meme", inline=False)
-    embed.add_field(name="Moderator Commands", value="clear, kick, ban, unban", inline=True)
-    embed.add_field(name="For the Community", value="invite", inline=True)
-    embed.set_footer(text="I hope this helped you! If not message me on discord instead! SSagun.py#6969")
+    embed.add_field(name="**General Commands**", value="ping   8ball   pussy", inline=True)
+    embed.add_field(name="**Meme Command**", value="meme", inline=False)
+    embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko", inline=True)
+    embed.add_field(name="**NSFW Commands**", value="hentai   trap   nsfwneko", inline=False)
+    embed.add_field(name="**Commands for Moderators**", value="clear   kick   ban   unban")
     await ctx.send(embed=embed)
-
 
 
 # Moderator commands
@@ -331,24 +330,6 @@ async def unban_error(ctx, error):
         await ctx.send(text)
     else:
         await ctx.send("Please send the users name with his prefix '#'\nExample: .unban SSagun#1050")
-
-
-# Rules
-
-@client.command()
-async def rules(ctx):
-    channel = client.get_channel(832605353908764753)
-    embed = discord.Embed(title="Our Server rules.", description="Please Respect them!", color=0x0000FF)
-    embed.set_author(name="SSagun.py#1050", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.set_thumbnail(url="https://i.postimg.cc/4nCgVH5G/cute-anime-girl.jpg")
-    embed.add_field(name="Important Rules", value="Be respectful\nAct civil in Voice Channels\nRespect others Privacy\nDon't Bully\nRespect others opinions", inline=True)
-    embed.add_field(name="Account Rules", value="**You dont have to change your whole account for this Just change it on the Server**\nNo blank nicknames.\nNo offensive Nicknames\nNo Nicknames with unreadable Unicode\nNo offensive Profile Pictures", inline=False)
-    embed.add_field(name="Also look on these", value="Dont Spam\nMentioning @everyone or any Moderator needs an acceptable Reason")
-    embed.set_footer(text="Thanks for respecting our Rules, we hope you have a great time here!")
-    if channel == ctx.channel:
-        await ctx.send(embed=embed)
-    else:
-        await ctx.send("Go to #rules please!")
 
 
 # For Members
