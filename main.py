@@ -205,7 +205,7 @@ async def pussy(ctx):
 
 @pussy.error
 async def pussy_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -220,7 +220,7 @@ async def neko(ctx):
 
 @neko.error
 async def neko_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -235,7 +235,7 @@ async def hentai(ctx):
 
 @hentai.error
 async def hentai_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -250,7 +250,7 @@ async def foxgirl(ctx):
 
 @foxgirl.error
 async def foxgirl_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -265,7 +265,7 @@ async def meme(ctx):
 
 @meme.error
 async def meme_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -280,7 +280,7 @@ async def anime(ctx):
 
 @anime.error
 async def anime_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -295,7 +295,7 @@ async def trap(ctx):
 
 @trap.error
 async def trap_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 @client.command()
@@ -310,7 +310,7 @@ async def nsfwneko(ctx):
 
 @nsfwneko.error
 async def nsfwneko_error(ctx, error):
-    if isinstance(CommandOnCooldown):
+    if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in 8 seconds.")
 
 # help
