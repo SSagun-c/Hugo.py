@@ -116,7 +116,7 @@ async def on_message(message):
         await message.channel.send("Please do not advertise here, go to #self-promotion instead!")
     await client.process_commands(message)
 
-@client.event()
+@client.event
 async def on_message(msg):
     if msg.mention[0] == client.user:
 
