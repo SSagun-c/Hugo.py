@@ -22,22 +22,7 @@ from discord.utils import get
 
 token = os.getenv("DISCORD_TOKEN")
 
-def get_prefix(client, message):
-    with open('prefixes.json', 'r') as f:
-        prefixes =json.load(f)
-    return prefixes[str(message.guild.id)]
-
-client = commands.Bot(command_prefix = get_prefix)
-
-@client.event
-async def on_guild_join(guild):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
-    prefixes[str(guild.id)] = '.'
-
-    with open('prefixes.json', 'w') as f:
-        json.dump(prefixes, f)
+client = commands.Bot(command_prefix='.')
 
 
 client.remove_command('help')
@@ -360,20 +345,6 @@ async def unban_error(ctx, error):
         await ctx.send(text)
     else:
         await ctx.send("Please send the users name with his prefix '#'\nExample: .unban SSagun#1050")
-
-@client.command()
-@commands.has_permissions(administrator=True)
-async def setprefix(ctx, prefix):
-
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
-    prefixes[str(ctx.guild.id)] = prefix
-
-    with open('prefixes.json', 'w') as f:
-        json.dump(prefixes, f)
-    
-    await ctx.send(f"The prefix was successfully changed to '{prefix}'")
 
 
 # For Members
