@@ -315,6 +315,14 @@ async def nsfwneko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
+
+@client.command()
+async def roll(ctx, amount : int):
+    rolling = random.randint(0, (amount))
+    await ctx.send(f"You rolled {random.choice(rolling)}!")
+
+
+
 # help
 
 @client.command()
