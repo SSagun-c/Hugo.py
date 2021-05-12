@@ -317,8 +317,8 @@ async def nsfwneko_error(ctx, error):
 
 
 @client.command()
-async def roll(ctx, amount : int):
-    await ctx.send(f"You rolled {random.randint(1, int)}!")
+async def roll(ctx):
+    await ctx.send(f"You rolled {random.randint(1, 10)}!")
 
 
 
