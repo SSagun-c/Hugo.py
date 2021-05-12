@@ -195,7 +195,7 @@ async def foxgirl(ctx):
 @foxgirl.error
 async def foxgirl_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send_message("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
