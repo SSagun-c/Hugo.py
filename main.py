@@ -109,9 +109,9 @@ async def prefix(ctx):
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
 
-    pre = prefixes[str(ctx.guild.id)]
+    pref = prefixes[str(ctx.guild.id)]
 
-    await ctx.send(f"My current prefix for this server is '{pre}'")
+    await ctx.send(f"My current prefix for this server is '{pref}'")
 
 
 # Fun commands
