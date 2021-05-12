@@ -261,7 +261,7 @@ async def meme(ctx):
         request = await session.get('http://meme-api.herokuapp.com/gimme')
         memejson = await request.json()
     embed = discord.Embed(title=memejson['title'], color=0xFF8800)
-    embed.set_author(name=memejson['author'], url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+    embed.set_author(name=memejson['author'], icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
     embed.set_image(url=memejson['url'])
     await ctx.send(embed=embed)
 
