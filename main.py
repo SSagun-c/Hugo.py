@@ -281,7 +281,7 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.add_field(name="**General Commands**", value="ping   8ball   pussy   serverinfo   roll   suggest", inline=True)
-    embed.add_field(name="**Meme Command**", value="meme", inline=True)
+    embed.add_field(name="**Meme Command**", value="meme", inline=False)
     embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko   blush", inline=True)
     embed.add_field(name="**NSFW Commands**", value="hentai   trap   nsfwneko", inline=True)
     embed.add_field(name="**Commands for Moderators**", value="clear   kick   ban   unban")
