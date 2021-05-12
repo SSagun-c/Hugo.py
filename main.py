@@ -28,9 +28,6 @@ client = commands.Bot(command_prefix='.')
 
 
 client.remove_command('help')
-status = cycle(['with balloons',
-                '.help',
-                'with stones underwater'])
 # Event
 
 @client.event
@@ -40,7 +37,7 @@ async def on_ready():
 
 @tasks.loop(seconds=120)
 async def change_status():
-    await client.change_presence(activity=discord.Game(next(status)))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers!"))
 
 @client.event
 @commands.has_permissions(administrator=False)
