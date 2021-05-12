@@ -147,7 +147,7 @@ async def pussy(ctx):
 @pussy.error
 async def pussy_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
@@ -162,7 +162,7 @@ async def neko(ctx):
 @neko.error
 async def neko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
@@ -178,9 +178,9 @@ async def hentai(ctx):
 @hentai.error
 async def hentai_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
-        await ctx.send("NSFW Channel is required to run this command")
+        await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
@@ -211,7 +211,7 @@ async def meme(ctx):
 @meme.error
 async def meme_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
@@ -226,7 +226,7 @@ async def anime(ctx):
 @anime.error
 async def anime_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
@@ -242,9 +242,9 @@ async def trap(ctx):
 @trap.error
 async def trap_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
-        await ctx.send("NSFW Channel is required to run this command")
+        await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 @client.command()
 @commands.is_nsfw()
@@ -260,9 +260,9 @@ async def nsfwneko(ctx):
 @nsfwneko.error
 async def nsfwneko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
-        await ctx.send("NSFW Channel is required to run this command")
+        await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 @client.command()
 async def roll(ctx):
