@@ -315,12 +315,19 @@ async def nsfwneko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
 
-
 @client.command()
 async def roll(ctx):
     await ctx.send(f"You rolled {random.randint(1, 10)}!")
 
-
+@client.command()
+@cooldown(1, 5)
+async def blush(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://api.waifu.pics/sfw/blush')
+        blushjson = await request.json()
+    embed = discord.Embed(title=f'{ctx.message.author.mention} blushes >///<')
+    embed.set_image(url=blushjson['url'])
+    await ctx.send(embed=embed)
 
 # help
 
