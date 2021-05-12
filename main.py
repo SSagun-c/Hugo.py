@@ -28,60 +28,9 @@ client = commands.Bot(command_prefix='.')
 
 
 client.remove_command('help')
-status = cycle(['hentaihaven.org',
-         'hanime.tv', 
-         'nhentai.xxx', 
-         'hentai.xxx', 
-         'simply-hentai.com', 
-         'hd.freehentaistream.com', 
-         'luscious.net', 
-         'hentaidude.com', 
-         'hentai-foundry.com', 
-         'rule34.xxx',
-         'e-hentai.org',
-         'naughtymachinima.com',
-         'lolhentai.net',
-         'hentaipulse.com',
-         'cartoonporn.xxx',
-         'hentaiplay.net',
-         'fakku.net',
-         'hypnohub.net',
-         'hentaifreak.org',
-         'pururin.io',
-         'hentai.cafe',
-         'cartoonpornvideos.com',
-         'mult34.com',
-         'hentaigasm.com',
-         'porcore.com',
-         'tube.hentaistream.com',
-         'ohentai.org',
-         'hentaifox.com',
-         'xanimeporn.com',
-         'hentaihere.com',
-         'zzcartoon.com',
-         'hentaifromhell.org',
-         'fapservice.com',
-         'sankakucomplex.com',
-         'studiofow.com',
-         'muchohentai.com',
-         'tsumino.com',
-         'miohentai.com',
-         'underhentai.net',
-         'kisshentai.net',
-         'whentai.com',
-         'animeidhentai.com',
-         'hentailove.tv',
-         'giantessbooru.com',
-         'xbooru.com',
-         'hentaicloud.com',
-         'rule34.paheal.net',
-         'hentaimama.com',
-         'danbooru.donmai.us',
-         'asmhentai.com',
-         'hentai.animestigma.com',
-         'myhentai.tv',
-         'exhentai.org',
-         'e621.net'])
+status = cycle(['with balloons',
+                '.help',
+                'with stones underwater'])
 # Event
 
 @client.event
@@ -101,18 +50,9 @@ async def on_message(message):
         'instagram',
         'facebook',] is message.content.lower():
         await message.delete()
-        await message.channel.send("Please do not advertise here, go to #self-promotion instead!")
+        await message.send("Please do not advertise here")
     await client.process_commands(message)
 
-@client.command()
-async def prefix(ctx):
-    
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
-    pref = prefixes[str(ctx.guild.id)]
-
-    await ctx.send(f"My current prefix for this server is '{pref}'")
 
 
 # Fun commands
@@ -335,12 +275,12 @@ async def blush(ctx):
 @client.command()
 async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
-    embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/sagun.mp3/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
+    embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.add_field(name="**General Commands**", value="ping   8ball   pussy   serverinfo", inline=True)
-    embed.add_field(name="**Meme Command**", value="meme", inline=False)
-    embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko", inline=True)
-    embed.add_field(name="**NSFW Commands**", value="hentai   trap   nsfwneko", inline=False)
-    embed.add_field(name="**Commands for Moderators**", value="prefix   changeprefix   clear   kick   ban   unban")
+    embed.add_field(name="**Meme Command**", value="meme", inline=True)
+    embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko   blush", inline=True)
+    embed.add_field(name="**NSFW Commands**", value="hentai   trap   nsfwneko", inline=True)
+    embed.add_field(name="**Commands for Moderators**", value="clear   kick   ban   unban")
     await ctx.send(embed=embed)
 
 
@@ -377,9 +317,8 @@ async def kick_error(ctx, error):
 @client.command()
 @commands.has_permissions(administrator=True)
 async def ban(ctx, member : discord.Member, *, reason=None):
-    emoji = get(ctx.message.server.emojis, name='WumpusBan')
     await member.ban(reason=reason, delete_message_days=1)
-    await ctx.send(f'Banned! {emoji}')
+    await ctx.send(f'Banned!')
 
 @ban.error
 async def ban_error(ctx, error):
