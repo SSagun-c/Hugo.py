@@ -18,7 +18,7 @@ from discord.ext import tasks
 from itertools import cycle
 from discord import Member
 from discord.ext.commands import Bot, BucketType, cooldown
-from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown
+from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown, NSFWChannelRequired
 from discord.ext.commands.errors import CommandError
 from discord.utils import get
 
@@ -38,7 +38,7 @@ async def on_ready():
     change_status.start()
     print("Bot is online and ready to use!")
 
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=120)
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
@@ -166,6 +166,7 @@ async def neko_error(ctx, error):
 
 @client.command()
 @cooldown(1, 8)
+@commands.is_nsfw(True)
 async def hentai(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/hentai')
@@ -178,6 +179,8 @@ async def hentai(ctx):
 async def hentai_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+    elif isinstance(error, NSFWChannelRequired):
+        await ctx.send("NSFW Channel is required to run this command")
 
 @client.command()
 @cooldown(1, 8)
@@ -227,6 +230,7 @@ async def anime_error(ctx, error):
 
 @client.command()
 @cooldown(1, 8)
+@commands.is_nsfw(True)
 async def trap(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/trap')
@@ -239,8 +243,11 @@ async def trap(ctx):
 async def trap_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+    elif isinstance(error, NSFWChannelRequired):
+        await ctx.send("NSFW Channel is required to run this command")
 
 @client.command()
+@commands.is_nsfw(True)
 @cooldown(1, 8)
 async def nsfwneko(ctx):
     async with aiohttp.ClientSession() as session:
@@ -254,6 +261,8 @@ async def nsfwneko(ctx):
 async def nsfwneko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.")
+    elif isinstance(error, NSFWChannelRequired):
+        await ctx.send("NSFW Channel is required to run this command")
 
 @client.command()
 async def roll(ctx):
