@@ -166,7 +166,7 @@ async def neko_error(ctx, error):
 
 @client.command()
 @cooldown(1, 8)
-@commands.is_nsfw(True)
+@commands.is_nsfw()
 async def hentai(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/hentai')
@@ -230,7 +230,7 @@ async def anime_error(ctx, error):
 
 @client.command()
 @cooldown(1, 8)
-@commands.is_nsfw(True)
+@commands.is_nsfw()
 async def trap(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/trap')
@@ -247,7 +247,7 @@ async def trap_error(ctx, error):
         await ctx.send("NSFW Channel is required to run this command")
 
 @client.command()
-@commands.is_nsfw(True)
+@commands.is_nsfw()
 @cooldown(1, 8)
 async def nsfwneko(ctx):
     async with aiohttp.ClientSession() as session:
