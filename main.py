@@ -10,6 +10,7 @@ import re
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
+from discord import colour
 from discord.abc import GuildChannel
 from discord.colour import Color
 from discord.ext import commands
@@ -259,7 +260,7 @@ async def meme(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('http://meme-api.herokuapp.com/gimme')
         memejson = await request.json()
-    embed = discord.Embed(title=memejson['title'])
+    embed = discord.Embed(title=memejson['title'], url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png', color=0xFF8800)
     embed.set_author(name=memejson['author'])
     embed.set_image(url=memejson['url'])
     await ctx.send(embed=embed)
