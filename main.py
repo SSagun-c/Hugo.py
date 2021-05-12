@@ -325,7 +325,8 @@ async def blush(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.waifu.pics/sfw/blush')
         blushjson = await request.json()
-    embed = discord.Embed(title=f'{ctx.message.author.mention} blushes >///<')
+    await ctx.send(f'{ctx.message.author} blushes')
+    embed = discord.Embed()
     embed.set_image(url=blushjson['url'])
     await ctx.send(embed=embed)
 
