@@ -345,7 +345,7 @@ async def clear_error(ctx, error):
         text = "Sorry you are missing permission to do that! Message an Admin instead."
         await ctx.send(text)
     else:
-        await ctx.send(f'Please specifiy an amount of messages to delete.')
+        await ctx.send(f'Please specifiy an amount of messages to delete.', delete_after=5)
 
 
 @client.command()
