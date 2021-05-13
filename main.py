@@ -298,10 +298,19 @@ async def help(ctx):
 async def dhelp(ctx):
     embed = discord.Embed(title="Detailed Information", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.add_field(name="General Command Infomration", value="**What does 'Ping' do?**\nThe Ping command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does '8ball'do?**\nType '.8ball' and a random question, the Bot now will give you a random logical answer to your question.\n**What does 'pussy' do and is it NSFW?**\nThe 'pussy' command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does 'serverinfo' do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does 'roll' do?**\nThe 'roll' command gives you a random number between 1 and 100.\n**What is 'sugges'?**\n The 'suggest' command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!")
-    embed.add_field(name="Meme Command Information", value="**What does the 'meme' command do?**\nThe 'meme' command fetches a random Image from the official Meme Subreddit with the official Title and official author.")
-    embed.add_field(name="Anime Related Command Information", value="**What does 'anime' do?**\nThe 'anime' command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does the 'foxgirl' command do?**\nThe 'foxgirl' command fetches a random Image related to Foxgirl's (similar to neko's).\n**What does 'neko' do?**\nThe command 'neko' fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does 'blush' do?**\nThe command 'blush' is something you would more use for Roleplay, it gives you a random Anime character that blushes and says: '[Username] blushes'")
-    embed.add_field(name="Moderator Command Information", value="**What is 'clear' for?**\nThis command is only for users who have Administrator Permissions! 'clear' deletes your selected amount of messages to deleted in one channel.\n**What does 'ban' do?**\nI think this command is self explanatory but 'ban' bans the user you mentioned from the Server.\n**What does 'unban' do?**\nThis command requires you to write the users name you banned once with his Discriminator. As an Example: '.unban SSagun.py#6969'")
+    embed.set_thumbnail(url='https://i.postimg.cc/ZKj48bsN/2436-169-1-g.jpg')
+    embed.add_field(name="General Command Infomration", value="**What does 'Ping' do?**\nThe Ping command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does '8ball'do?**\nType '.8ball' and a random question, the Bot now will give you a random logical answer to your question.\n**What does 'pussy' do and is it NSFW?**\nThe 'pussy' command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does 'serverinfo' do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does 'roll' do?**\nThe 'roll' command gives you a random number between 1 and 100.\n**What is 'suggest'?**\n The 'suggest' command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!", inline=False)
+    embed.add_field(name="Meme Command Information", value="**What does the 'meme' command do?**\nThe 'meme' command fetches a random Image from the official Meme Subreddit with the official Title and official author.", inline=False)
+    embed.add_field(name="Anime Related Command Information", value="**What does 'anime' do?**\nThe 'anime' command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does the 'foxgirl' command do?**\nThe 'foxgirl' command fetches a random Image related to Foxgirl's (similar to neko's).\n**What does 'neko' do?**\nThe command 'neko' fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does 'blush' do?**\nThe command 'blush' is something you would more use for Roleplay, it gives you a random Anime character that blushes and says: '[Username] blushes'", inline=False)
+    embed.add_field(name="Moderator Command Information", value="**What is 'clear' for?**\nThis command is only for users who have Administrator Permissions! 'clear' deletes your selected amount of messages to deleted in one channel.\n**What does 'ban' do?**\nI think this command is self explanatory but 'ban' bans the user you mentioned from the Server.\n**What does 'unban' do?**\nThis command requires you to write the users name you banned once with his Discriminator. As an Example: '.unban SSagun.py#6969'", inline=False)
+    await ctx.send(embed=embed)
+
+@client.command()
+async def nsfwhelp(ctx):
+    embed = discord.Embed(title="NSFW Command Information", color=0x9ACD32)
+    embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
+    embed.set_thumbnail(url='https://i.postimg.cc/RhHXLLBF/unnamed.jpg')
+    embed.add_field(name="NSFW Commands", value="**KEEP IN MIND**\nThe channel has to be NSFW for the commands to work!\n**What does hentai do?**\n'hentai' sends you a random Hentai Image from a Library that contains 33.677 Images\n**What does 'trap' do?**\nLike Traps? 'trap' sends you a random Trap related Image from a Library that contains 25.358 Trap Images\n**What does 'nsfwneko' do?**\nThe 'nsfwneko' command sends you a random lewded neko Image from a Library that contains 22.017 Lewded Neko Images.", inline=True)
     await ctx.send(embed=embed)
     
 
@@ -333,7 +342,7 @@ async def kick_error(ctx, error):
         text = "Sorry you are missing permission to do that! Message an Admin instead."
         await ctx.send(text)
     else:
-        await ctx.send("Please mention the Member you want to kick and **DON'T** kick the person without any reasons! The Owner can see the audit log!")
+        await ctx.send("Please mention the Member you want to kick.")
 
 @client.command()
 @commands.has_permissions(administrator=True)
@@ -345,6 +354,8 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 async def ban_error(ctx, error):
     if isinstance(error, MissingPermissions):
         await ctx.send('Sorry you are missing permission to do that! Message an Admin instead.')
+    else:
+        await ctx.send('Please mention the member you want to kick.')
 
 
 @client.command()
@@ -367,7 +378,7 @@ async def unban_error(ctx, error):
         text = "You cant just unban someone! Tell the person to send an unban application instead."
         await ctx.send(text)
     else:
-        await ctx.send("Please send the users name with his prefix '#'\nExample: .unban SSagun#1050")
+        await ctx.send("Please send the users name with his Discriminator '#'\nExample: .unban SSagun#1050")
 
 
 # For Members
