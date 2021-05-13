@@ -277,6 +277,24 @@ async def blush(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
+@commands.is_nsfw()
+@cooldown(1, 8)
+async def yuri(ctx):
+    async with aiohttp.ClientSession() as session:
+        request = await session.get('https://api.computerfreaker.cf/v1/yuri')
+        yurijson = await request.json()
+    embed = discord.Embed()
+    embed.set_image(url=yurijson['url'])
+    await ctx.send(embed=embed)
+
+@yuri.error
+async def yuri_error(ctx, error):
+    if isinstance(error, CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
+    elif isinstance(error, NSFWChannelRequired):
+        await ctx.send("NSFW Channel is required to run this command", delete_after=5)
+
+@client.command()
 async def suggest(ctx):
     await ctx.send('Have any suggestion for the bot? Join the Help Server! https://discord.gg/6JkmzhDsps')
 
@@ -310,7 +328,7 @@ async def nsfwhelp(ctx):
     embed = discord.Embed(title="NSFW Command Information", color=0x9ACD32)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url='https://i.postimg.cc/RhHXLLBF/unnamed.jpg')
-    embed.add_field(name="NSFW Commands", value="**KEEP IN MIND**\nThe channel has to be NSFW for the commands to work!\n**What does hentai do?**\n'hentai' sends you a random Hentai Image from a Library that contains 33.677 Images\n**What does 'trap' do?**\nLike Traps? 'trap' sends you a random Trap related Image from a Library that contains 25.358 Trap Images\n**What does 'nsfwneko' do?**\nThe 'nsfwneko' command sends you a random lewded neko Image from a Library that contains 22.017 Lewded Neko Images.", inline=True)
+    embed.add_field(name="NSFW Commands", value="**KEEP IN MIND**\nThe channel has to be NSFW for the commands to work!\n**What does hentai do?**\n'hentai' sends you a random Hentai Image from a Library that contains 33.677 Images\n**What does 'trap' do?**\nLike Traps? 'trap' sends you a random Trap related Image from a Library that contains 25.358 Trap Images\n**What does 'nsfwneko' do?**\nThe 'nsfwneko' command sends you a random lewded neko Image from a Library that contains 22.017 Lewded Neko Images.\n**What is 'yuri'?**\nThe command 'yuri' sends a random Image from a Library that contains 26.867 Images. Yuri means Lesbian.", inline=True)
     await ctx.send(embed=embed)
     
 
