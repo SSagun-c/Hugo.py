@@ -263,7 +263,7 @@ async def nsfwneko_error(ctx, error):
 
 @client.command()
 async def roll(ctx):
-    await ctx.send(f"You rolled {random.randint(1, 10)}!")
+    await ctx.send(f"You rolled {random.randint(1, 100)}!")
 
 @client.command()
 @cooldown(1, 5)
@@ -278,7 +278,7 @@ async def blush(ctx):
 
 @client.command()
 async def suggest(ctx):
-    await ctx.send('Have any suggestion for the bot? Message me! SSagun.py#6969')
+    await ctx.send('Have any suggestion for the bot? Join the Help Server! https://discord.gg/6JkmzhDsps')
 
 # help
 
@@ -291,8 +291,19 @@ async def help(ctx):
     embed.add_field(name="**Anime Related Commands**", value="anime   foxgirl   neko   blush", inline=True)
     embed.add_field(name="**NSFW Commands**", value="hentai   trap   nsfwneko", inline=True)
     embed.add_field(name="**Commands for Moderators**", value="clear   kick   ban   unban")
+    embed.set_footer(text='Need more information? Try .dhelp for detailed Information and .nsfwhelp for detailed Information about the NSFW commands!' )
     await ctx.send(embed=embed)
 
+@client.command()
+async def dhelp(ctx):
+    embed = discord.Embed(title="Detailed Information", color=0xFFFF00)
+    embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
+    embed.add_field(name="General Command Infomration", value="**What does 'Ping' do?**\nThe Ping command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does '8ball'do?**\nType '.8ball' and a random question, the Bot now will give you a random logical answer to your question.\n**What does 'pussy' do and is it NSFW?**\nThe 'pussy' command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does 'serverinfo' do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does 'roll' do?**\nThe 'roll' command gives you a random number between 1 and 100.\n**What is 'sugges'?**\n The 'suggest' command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!")
+    embed.add_field(name="Meme Command Information", value="**What does the 'meme' command do?**\nThe 'meme' command fetches a random Image from the official Meme Subreddit with the official Title and official author.")
+    embed.add_field(name="Anime Related Command Information", value="**What does 'anime' do?**\nThe 'anime' command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does the 'foxgirl' command do?**\nThe 'foxgirl' command fetches a random Image related to Foxgirl's (similar to neko's).\n**What does 'neko' do?**\nThe command 'neko' fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does 'blush' do?**\nThe command 'blush' is something you would more use for Roleplay, it gives you a random Anime character that blushes and says: '[Username] blushes'")
+    embed.add_field(name="Moderator Command Information", value="**What is 'clear' for?**\nThis command is only for users who have Administrator Permissions! 'clear' deletes your selected amount of messages to deleted in one channel.\n**What does 'ban' do?**\nI think this command is self explanatory but 'ban' bans the user you mentioned from the Server.\n**What does 'unban' do?**\nThis command requires you to write the users name you banned once with his Discriminator. As an Example: '.unban SSagun.py#6969'")
+    await ctx.send(embed=embed)
+    
 
 # Moderator commands
 
@@ -334,8 +345,6 @@ async def ban(ctx, member : discord.Member, *, reason=None):
 async def ban_error(ctx, error):
     if isinstance(error, MissingPermissions):
         await ctx.send('Sorry you are missing permission to do that! Message an Admin instead.')
-    else:
-        await ctx.send("Please mention the Member you want to kick and **DON'T** kick the person without any reasons! The Owner can see the audit log!")
 
 
 @client.command()
