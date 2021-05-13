@@ -304,7 +304,8 @@ async def suggest(ctx):
 async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `roll`\n■ `suggest`", inline=False)
+    embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
+    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`", inline=False)
     embed.add_field(name="**Meme Command**", value="■ `.meme`", inline=False)
     embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.foxgirl`\n■ `.neko`\n■ `.blush`", inline=True)
     embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `nsfwneko`", inline=True)
@@ -316,7 +317,6 @@ async def help(ctx):
 async def dhelp(ctx):
     embed = discord.Embed(title="Detailed Information", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.set_thumbnail(url='https://i.postimg.cc/ZKj48bsN/2436-169-1-g.jpg')
     embed.add_field(name="General Command Infomration", value="**What does `.ping` do?**\nThe `.ping` command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does `.8ball` do?**\nType `.8ball` and a random question, the Bot now will give you a random logical answer to your question.\n**What does `.pussy` do and is it NSFW?**\nThe `.pussy` command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does `.serverinfo` do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does `.roll` do?**\nThe `.roll` command gives you a random number between 1 and 100.\n**What is `.suggest`?**\n The `.suggest` command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!", inline=False)
     embed.add_field(name="Meme Command Information", value="**What does the `.meme` command do?**\nThe `.meme` command fetches a random Image from the official Meme Subreddit with the official Title and official author.", inline=False)
     embed.add_field(name="Anime Related Command Information", value="**What does `.anime` do?**\nThe `.anime` command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does the `.foxgirl` command do?**\nThe `.foxgirl` command fetches a random Image related to Foxgirl's (similar to neko's).\n**What does `.neko` do?**\nThe command `.neko` fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does `.blush` do?**\nThe command `.blush` is something more likely used for Roleplay, it gives you a random Anime character that blushes and says: `[Username] blushes`", inline=False)
