@@ -308,7 +308,7 @@ async def help(ctx):
     embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`", inline=True)
     embed.add_field(name="**Meme Command**", value="■ `.meme`", inline=True)
     embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.foxgirl`\n■ `.neko`\n■ `.blush`", inline=True)
-    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `nsfwneko`", inline=True)
+    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`", inline=True)
     embed.add_field(name="**Commands for Moderators**", value="■ `.clear`\n■ `.kick`\n■ `.ban`\n■ `.unban`")
     embed.set_footer(text='Need more information? Try .dhelp for detailed Information and .nsfwhelp for detailed Information about the NSFW commands!' )
     await ctx.send(embed=embed)
