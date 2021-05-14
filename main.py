@@ -351,7 +351,7 @@ async def clear_error(ctx, error):
 @client.command()
 @commands.has_permissions(administrator=True)
 async def kick(ctx, member : discord.Member, *, reason=None):
-    await Member.kick(reason=reason)
+    await member.kick(reason=reason)
     await ctx.send(f'Kicked!')
 
 @kick.error
@@ -373,7 +373,7 @@ async def ban_error(ctx, error):
     if isinstance(error, MissingPermissions):
         await ctx.send('Sorry you are missing permission to do that! Message an Admin instead.')
     else:
-        await ctx.send('Please mention the member you want to kick.')
+        await ctx.send('Please mention the member you want to ban.')
 
 
 @client.command()
