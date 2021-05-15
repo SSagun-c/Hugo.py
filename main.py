@@ -263,7 +263,12 @@ async def nsfwneko_error(ctx, error):
 
 @client.command()
 async def roll(ctx):
-    await ctx.send(f"You rolled {random.randint(1, 100)}!")
+    number = random.randint(1, 100)
+    if number == 69:
+        await ctx.send("You rolled 69 nice.")
+    else:
+        await ctx.send(f"You rolled {number}")
+        
 
 @client.command()
 @cooldown(1, 5)
