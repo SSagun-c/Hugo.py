@@ -307,6 +307,8 @@ async def kill(ctx, member : discord.Member):
         await ctx.send(kills)
 
 
+
+
 # help
 
 @client.command()
@@ -314,10 +316,10 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
-    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`", inline=True)
+    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`\n■ `kill`", inline=True)
     embed.add_field(name="**Meme Command**", value="■ `.meme`", inline=True)
     embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.foxgirl`\n■ `.neko`\n■ `.blush`", inline=True)
-    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`", inline=True)
+    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `animeweb`", inline=True)
     embed.add_field(name="**Commands for Moderators**", value="■ `.clear`\n■ `.kick`\n■ `.ban`\n■ `.unban`")
     embed.set_footer(text='Need more information? Try .dhelp for detailed Information and .nsfwhelp for detailed Information about the NSFW commands!' )
     await ctx.send(embed=embed)
@@ -326,9 +328,9 @@ async def help(ctx):
 async def dhelp(ctx):
     embed = discord.Embed(title="Detailed Information", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.add_field(name="General Command Infomration", value="**What does `.ping` do?**\nThe `.ping` command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does `.8ball` do?**\nType `.8ball` and a random question, the Bot now will give you a random logical answer to your question.\n**What does `.pussy` do and is it NSFW?**\nThe `.pussy` command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does `.serverinfo` do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does `.roll` do?**\nThe `.roll` command gives you a random number between 1 and 100.\n**What is `.suggest`?**\n The `.suggest` command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!", inline=False)
+    embed.add_field(name="General Command Infomration", value="**What does `.ping` do?**\nThe `.ping` command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does `.8ball` do?**\nType `.8ball` and a random question, the Bot now will give you a random logical answer to your question.\n**What does `.pussy` do and is it NSFW?**\nThe `.pussy` command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does `.serverinfo` do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does `.roll` do?**\nThe `.roll` command gives you a random number between 1 and 100.\n**What is `.suggest`?**\n The `.suggest` command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!\n**What does `.kill` do?**\n`.kill` lets you kill people in different funny ways! **this is NOT nsfw and DOES NOT promote suicide!!!**", inline=False)
     embed.add_field(name="Meme Command Information", value="**What does the `.meme` command do?**\nThe `.meme` command fetches a random Image from the official Meme Subreddit with the official Title and official author.", inline=False)
-    embed.add_field(name="Anime Related Command Information", value="**What does `.anime` do?**\nThe `.anime` command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does the `.foxgirl` command do?**\nThe `.foxgirl` command fetches a random Image related to Foxgirl's (similar to neko's).\n**What does `.neko` do?**\nThe command `.neko` fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does `.blush` do?**\nThe command `.blush` is something more likely used for Roleplay, it gives you a random Anime character that blushes and says: `[Username] blushes`", inline=False)
+    embed.add_field(name="Anime Related Command Information", value="**What does `.anime` do?**\nThe `.anime` command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does the `.foxgirl` command do?**\nThe `.foxgirl` command fetches a random Image related to Foxgirl's (similar to neko's).\n**What does `.neko` do?**\nThe command `.neko` fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does `.blush` do?**\nThe command `.blush` is something more likely used for Roleplay, it gives you a random Anime character that blushes and says: `[Username] blushes`\n**What does `.animeweb` do?**\nThe command `.animeweb` sends you a random website where you can watch anime on!", inline=False)
     embed.add_field(name="Moderator Command Information", value="**All the now listed commands are only for Administrators!**\n**What is `.clear` for?**\n`.clear` deletes your selected amount of messages to deleted in one channel.\n**What does `.ban` do?**\nI think this command is self explanatory but `.ban` bans the user you mentioned from the Server.\n**What does `.unban` do?**\nThis command requires you to write the users name you banned once with his Discriminator. As an Example: `.unban SSagun.py#6969`", inline=False)
     await ctx.send(embed=embed)
 
@@ -431,5 +433,26 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
+@client.command()
+async def animeweb(ctx):
+    websites = random.choice['https://animeheaven.site',
+                'https://www1.gogoanime.ai',
+                'https://9anime.to/?13',
+                'https://www.crunchyroll.com/de',
+                'https://kissanime.com.ru',
+                'https://www.animefreak.tv/search',
+                'Thats a looong link: https://animedao.to/?__cf_chl_jschl_tk__=269246f7f0d00364560b64dbad4fd7c9ebf44ddf-1621269746-0-AejSw5U5CDHPBuyxKxjNli4wtTI2JZSjfvENeIiXd9_Fb-UJ-P6imCfXdVK_-pdDJUs3Ar5kA6IeeAb8gZmc4ajDplgiUHTjkaBKtd19eggYt2iGTXj1xJ7eoGJV-fp7ZZB6lluTRaS9clFnvyTJJkY13_FWLVWDXdvZqQ5a_z0MKYetMLHWuQMT7fqzVV6tJGBf09LMAB6zee7qlUBZfPBXhGZxI02rF4Taz5eKcW0_JNvyka-dG5h5T5o_flee1_Mb30j14iYIoGyCsEZaV0yKArhSxLwoDlM1UsnHNLGzWpm0uyl8ufagFAxJ_mZ8-KE4maNukhkU8yUDTrrBLwJOwLzr7IkkLjWejegd7GghVDhywFTNgAA-TysJX9SN3vQFkogRiqUM2BchyCRUHW4',
+                'https://chia-anime.su',
+                'https://www.funimation.com',
+                'https://www.animelab.com',
+                'https://www.viz.com',
+                'https://www.anime-planet.com',
+                'https://www.vrv.co/',
+                'Not avaiable in EU = https://gdpr.tubi.tv',
+                'https://gdpr.tubi.tv',
+                'https://myanimelist.net',
+                'https://www.asiancrush.com',
+                'https://www.hidive.com',]
+    await ctx.send(websites)
 
 client.run(os.environ['DISCORD_TOKEN'])
