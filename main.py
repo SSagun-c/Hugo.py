@@ -301,10 +301,10 @@ async def kill(ctx, member : discord.Member):
     await ctx.send(kills)
 
 @client.event
-async def on_message(ctx, message):
+async def on_message(message):
     if ('pls kill @Hugo.py') in message.content():
         sleep(3)
-        await ctx.send("No Dank Memer I am immortal.")
+        await message.send("No Dank Memer I am immortal.")
 
 
 # help
