@@ -302,7 +302,7 @@ async def kill(ctx, member : discord.Member):
                         f"{member.display_name}'s brain tried to flip but it didnt worked...", 
                         f''])
     if ctx.message.author == member:
-        await ctx.send("I am sorry but you cant kill yourself. Tag  someone else")
+        await ctx.send(f"You cant kill yourself {ctx.message.author.display_name}. Tag someone else to kill")
     else:
         await ctx.send(kills)
 
