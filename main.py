@@ -300,7 +300,7 @@ async def kill(ctx, member : discord.Member):
                         f''])
     await ctx.send(kills)
 
-@client.event()
+@client.event
 async def on_message(ctx, message):
     if ('pls kill @Hugo.py') in message.content():
         sleep(3)
