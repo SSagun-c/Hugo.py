@@ -435,7 +435,7 @@ async def serverinfo(ctx):
 
 @client.command()
 async def animeweb(ctx):
-    websites = random.choice['https://animeheaven.site',
+    websites = ['https://animeheaven.site',
                 'https://www1.gogoanime.ai',
                 'https://9anime.to/?13',
                 'https://www.crunchyroll.com/de',
@@ -453,6 +453,6 @@ async def animeweb(ctx):
                 'https://myanimelist.net',
                 'https://www.asiancrush.com',
                 'https://www.hidive.com',]
-    await ctx.send(websites)
+    await ctx.send(random.choice(websites))
 
 client.run(os.environ['DISCORD_TOKEN'])
