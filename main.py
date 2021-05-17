@@ -294,9 +294,10 @@ async def suggest(ctx):
 
 @client.command()
 async def kill(ctx, member : discord.Member):
-    kills = random.choice([f'{member} got killed by {ctx.message.author} with a banana',
-                        f'{member} choked on air',
-                        f'{member} got stabbed by a monkey',
+    kills = random.choice([f'{member.display_name} got killed by {ctx.message.author} with a banana',
+                        f'{member.display_name} choked on air',
+                        f'{member.display_name} got stabbed by a monkey',
+                        f'{member.display_name} got killed by a creeper explosion. Haha noob',
                         f''])
     await ctx.send(kills)
 
