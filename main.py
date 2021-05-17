@@ -1,3 +1,4 @@
+from asyncio.tasks import sleep
 import discord
 import json
 import random
@@ -38,18 +39,6 @@ async def on_ready():
 @tasks.loop(seconds=120)
 async def change_status():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers! .help"))
-
-@client.event
-@commands.has_permissions(administrator=False)
-async def on_message(message):
-    if ['youtube.com',
-        'twitch.tv',
-        'instagram',
-        'facebook',] is message.content.lower():
-        await message.delete()
-        await message.send("Please do not advertise here")
-    await client.process_commands(message)
-
 
 
 # Fun commands
@@ -305,8 +294,18 @@ async def suggest(ctx):
 
 @client.command()
 async def kill(ctx, member : discord.Member):
-    kills = random.choice([f'{member.mention} got killed by {ctx.message.author} with a banana'])
+    kills = random.choice([f'{member} got killed by {ctx.message.author} with a banana',
+                        f'{member} choked on air',
+                        f'{member} got stabbed by a monkey',
+                        f''])
     await ctx.send(kills)
+
+@client.event()
+async def on_message(ctx, message):
+    if ('pls kill @Hugo.py') in message.content():
+        sleep(3)
+        await ctx.send("No Dank Memer I am immortal.")
+
 
 # help
 
