@@ -303,6 +303,11 @@ async def yuri_error(ctx, error):
 async def suggest(ctx):
     await ctx.send('Have any suggestion for the bot? Join the Help Server! https://discord.gg/6JkmzhDsps')
 
+@client.command()
+async def kill(ctx, member : discord.Member):
+    kills = random.choice([f'{member.mention} got killed by {ctx.message.author} with a banana'])
+    await ctx.send(kills)
+
 # help
 
 @client.command()
