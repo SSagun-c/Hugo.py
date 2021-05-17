@@ -298,8 +298,13 @@ async def kill(ctx, member : discord.Member):
                         f'{member.display_name} choked on air',
                         f'{member.display_name} got stabbed by a monkey',
                         f'{member.display_name} got killed by a creeper explosion. Haha noob',
+                        f'{member.display_name} wanted to eat grass and accidentially ate a bee. Death by bee', 
+                        f"{member.display_name}'s brain tried to flip but it didnt worked...", 
                         f''])
-    await ctx.send(kills)
+    if ctx.message.author == member:
+        await ctx.send("I am sorry but you cant kill yourself. Tag  someone else")
+    else:
+        await ctx.send(kills)
 
 
 # help
