@@ -464,8 +464,8 @@ REDDIT_APP_SECRET = os.getenv("RAS")
 USERNAME = os.getenv("user")
 PASSWORD = os.getenv("pass")
 
-reddit = praw.Reddit(app_id = os.environ['RAI'],
-                    app_secret = os.environ['RAS'],
+reddit = praw.Reddit(client_id = os.environ['RAI'],
+                    client_secret = os.environ['RAS'],
                     username = os.environ['user'],
                     password = os.environ['pass'],
                     user_agent = 'SSagunPraw')
