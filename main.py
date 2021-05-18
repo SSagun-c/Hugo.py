@@ -458,19 +458,19 @@ reddit = praw.Reddit(client_id = os.environ['RAI'],
 
 @client.command(name="reddit")
 async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
-    if subred.over_18 == True:
-        await ctx.send("Sorry but this Subreddit is marked as NSFW!")
-    else:
-        subreddit = reddit.subreddit(subred)
-        all_subs = []
+    subreddit = reddit.subreddit(subred)
+    all_subs = []
 
-        top = subreddit.top(limit = 50)
+    top = subreddit.top(limit = 50)
 
-        for submission in top:
-            all_subs.append(submission)
-        
-        random_sub = random.choice(all_subs)
+    for submission in top:
+        all_subs.append(submission)
+    
+    random_sub = random.choice(all_subs)
 
+    if submission.over_18 == True:
+        await ctx.send("Sorry  but this subreddit is marked as NSFW!")
+    else: 
         sr_name = random_sub.subreddit
         author = random_sub.author
         name = random_sub.title
