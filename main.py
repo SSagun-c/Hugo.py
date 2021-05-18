@@ -23,6 +23,7 @@ from discord.ext.commands import Bot, BucketType, cooldown
 from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown, NSFWChannelRequired
 from discord.ext.commands.errors import CommandError
 from discord.utils import get
+from praw.models.listing.mixins import subreddit
 from praw.reddit import Subreddit
 
 token = os.getenv("DISCORD_TOKEN")
@@ -472,10 +473,10 @@ reddit = praw.Reddit(client_id = os.environ['RAI'],
 
 @client.command()
 async def reddit(ctx, subred = "meme"):  # default subreddit is meme
-    s1 = reddit.subreddit(subred)
+    subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = Subreddit.top(limit = 50)
+    top = subreddit.top(limit = 50)
 
     for submission in top:
         all_subs.append(submission)
