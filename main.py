@@ -187,21 +187,6 @@ async def foxgirl_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
-@client.command()
-@cooldown(1, 8)
-async def meme(ctx):
-    async with aiohttp.ClientSession() as session:
-        request = await session.get('http://meme-api.herokuapp.com/gimme')
-        memejson = await request.json()
-    embed = discord.Embed(title=memejson['title'], color=0xFF8800)
-    embed.set_author(name=memejson['author'], icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
-    embed.set_image(url=memejson['url'])
-    await ctx.send(embed=embed)
-
-@meme.error
-async def meme_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
 @cooldown(1, 8)
