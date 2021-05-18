@@ -2,3 +2,4 @@ discord
 aiohttp
 Pillow
 pymongo
+praw

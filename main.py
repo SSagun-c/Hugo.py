@@ -8,6 +8,7 @@ import asyncio
 import datetime as dt
 import typing as t
 import re
+import praw
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -22,10 +23,12 @@ from discord.ext.commands import Bot, BucketType, cooldown
 from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown, NSFWChannelRequired
 from discord.ext.commands.errors import CommandError
 from discord.utils import get
+from praw.reddit import Subreddit
 
 token = os.getenv("DISCORD_TOKEN")
 
 client = commands.Bot(command_prefix='.')
+
 
 
 client.remove_command('help')
@@ -294,18 +297,17 @@ async def suggest(ctx):
 
 @client.command()
 async def kill(ctx, member : discord.Member):
-    kills = random.choice([f'{member.display_name} got killed by {ctx.message.author} with a banana',
+    kills = random.choice([f'{member.display_name} got killed by {ctx.message.author.display_name} with a banana',
                         f'{member.display_name} choked on air',
                         f'{member.display_name} got stabbed by a monkey',
                         f'{member.display_name} got killed by a creeper explosion. Haha noob',
-                        f'{member.display_name} wanted to eat grass and accidentially ate a bee. Death by bee', 
-                        f"{member.display_name}'s brain tried to flip but it didnt worked...", 
-                        f''])
+                        f'{member.display_name} I slapped you and you died of shock', 
+                        f"{ctx.message.author.display_name} ordered me to kill you but I refuse!", 
+                        f'{member.display_name} got smashed by an ant'])
     if ctx.message.author == member:
         await ctx.send(f"You cant kill yourself {ctx.message.author.display_name}. Tag someone else to kill")
     else:
         await ctx.send(kills)
-
 
 
 
@@ -316,10 +318,10 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
-    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`\n■ `kill`", inline=True)
+    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`\n■ `.kill`", inline=True)
     embed.add_field(name="**Meme Command**", value="■ `.meme`", inline=True)
     embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.foxgirl`\n■ `.neko`\n■ `.blush`", inline=True)
-    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `animeweb`", inline=True)
+    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `.animeweb`", inline=True)
     embed.add_field(name="**Commands for Moderators**", value="■ `.clear`\n■ `.kick`\n■ `.ban`\n■ `.unban`")
     embed.set_footer(text='Need more information? Try .dhelp for detailed Information and .nsfwhelp for detailed Information about the NSFW commands!' )
     await ctx.send(embed=embed)
@@ -454,5 +456,38 @@ async def animeweb(ctx):
                 'https://www.asiancrush.com',
                 'https://www.hidive.com',]
     await ctx.send(random.choice(websites))
+
+# Reddit (I should learn cogs)
+
+REDDIT_APP_ID = os.getenv("RAI")
+REDDIT_APP_SECRET = os.getenv("RAS")
+USERNAME = os.getenv("user")
+PASSWORD = os.getenv("pass")
+
+reddit = praw.Reddit(app_id = os.environ['RAI'],
+                    app_secret = os.environ['RAS'],
+                    username = os.environ['user'],
+                    password = os.environ['pass'],
+                    user_agent = 'SSagunPraw')
+
+@client.command()
+async def rmeme(ctx, subred = "meme"):
+    s1 = reddit.subreddit(subred)
+    all_subs = []
+
+    top = Subreddit.top(limit = 50)
+
+    for submission in top:
+        all_subs.append(submission)
+    
+    random_sub = random.choice(all_subs)
+
+    name = random_sub.title
+    url = random_sub.url
+
+    embed = discord.Embed(title=name)
+    embed.set_image(url=url)
+    embed.set_footer(text="If the Image is not loading just try again!")
+
 
 client.run(os.environ['DISCORD_TOKEN'])
