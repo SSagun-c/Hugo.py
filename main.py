@@ -458,26 +458,29 @@ reddit = praw.Reddit(client_id = os.environ['RAI'],
 
 @client.command(name="reddit")
 async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
-    subreddit = reddit.subreddit(subred)
-    all_subs = []
+    if subred.over_18 == True:
+        await ctx.send("Sorry but this Subreddit is marked as NSFW!")
+    else:
+        subreddit = reddit.subreddit(subred)
+        all_subs = []
 
-    top = subreddit.top(limit = 50)
+        top = subreddit.top(limit = 50)
 
-    for submission in top:
-        all_subs.append(submission)
-    
-    random_sub = random.choice(all_subs)
+        for submission in top:
+            all_subs.append(submission)
+        
+        random_sub = random.choice(all_subs)
 
-    sr_name = random_sub.subreddit
-    author = random_sub.author
-    name = random_sub.title
-    url = random_sub.url
+        sr_name = random_sub.subreddit
+        author = random_sub.author
+        name = random_sub.title
+        url = random_sub.url
 
-    embed = discord.Embed(title=author, description=name, color=0xFF4500)
-    embed.set_author(name=f'r/{sr_name}', icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
-    embed.set_image(url=url)
-    embed.set_footer(text="If the Image is not loading just try again!")
-    await ctx.send(embed=embed)
+        embed = discord.Embed(title=author, description=name, color=0xFF4500)
+        embed.set_author(name=f'r/{sr_name}', icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+        embed.set_image(url=url)
+        embed.set_footer(text="If the Image is not loading just try again!")
+        await ctx.send(embed=embed)
 
 
 client.run(os.environ['DISCORD_TOKEN'])
