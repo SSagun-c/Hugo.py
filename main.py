@@ -471,7 +471,7 @@ reddit = praw.Reddit(client_id = os.environ['RAI'],
                     user_agent = 'SSagunPraw')
 
 @client.command()
-async def rmeme(ctx, subred = "meme"):
+async def reddit(ctx, subred = "meme"):  # default subreddit is meme
     s1 = reddit.subreddit(subred)
     all_subs = []
 
