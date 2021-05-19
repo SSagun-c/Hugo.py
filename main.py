@@ -173,12 +173,6 @@ async def hentai_error(ctx, error):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 
-@foxgirl.error
-async def foxgirl_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
-
-
 @client.command()
 @cooldown(1, 8)
 async def anime(ctx):
