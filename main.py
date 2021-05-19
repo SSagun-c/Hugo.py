@@ -172,15 +172,6 @@ async def hentai_error(ctx, error):
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
-@client.command()
-@cooldown(1, 8)
-async def foxgirl(ctx):
-    async with aiohttp.ClientSession() as session:
-        request = await session.get('https://nekos.life/api/v2/img/fox_girl')
-        foxgirljson = await request.json()
-    embed = discord.Embed()
-    embed.set_image(url=foxgirljson['url'])
-    await ctx.send(embed=embed)
 
 @foxgirl.error
 async def foxgirl_error(ctx, error):
