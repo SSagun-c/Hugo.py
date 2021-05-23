@@ -449,7 +449,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 150)
+    top = subreddit.top(limit = 75)
 
     for submission in top:
         all_subs.append(submission)
