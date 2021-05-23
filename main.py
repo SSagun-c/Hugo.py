@@ -475,4 +475,7 @@ async def reddit_error(error, ctx):
         await ctx.send("Woah Woah you are too fast! Try again in a few seconds", delete_after=5)
 
 
+@client.command()
+async def invite(ctx):
+    await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=8&scope=bot')
 client.run(os.environ['DISCORD_TOKEN'])
