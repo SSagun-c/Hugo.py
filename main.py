@@ -1,10 +1,12 @@
 from asyncio.tasks import sleep
+from datetime import date
 import discord
 import json
 import random
 import os
 import aiohttp
 import asyncio
+import datetime
 import typing as t
 from discord.ext.commands.core import Command
 import praw
@@ -464,7 +466,8 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
         embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
         embed.set_image(url=url)
-        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}")
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}  • ")
         await ctx.send(embed=embed)
 
 @_reddit.error
