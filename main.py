@@ -470,7 +470,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
         embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
         embed.set_image(url=url)
-        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name} • Today at 69:69")
+        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}  Today at 69:69")
         await ctx.send(embed=embed)
 
 @_reddit.error
