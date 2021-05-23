@@ -481,7 +481,7 @@ async def invite(ctx):
     await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=8&scope=bot')
 
 
-@client.command(aliases="say")
+@client.command(aliases=["say"])
 async def repeat(ctx, *, repeat):
     if repeat == ["i am stupid",
                 "i am dumb",
