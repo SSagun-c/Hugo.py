@@ -472,7 +472,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
 
 # Youtube Search
 
-@commands.client
+@client.command
 @cooldown(1, 10)
 async def youtube(ctx, *, search):
     query_string = urllib.parse.urlencode({'search_query': search})
