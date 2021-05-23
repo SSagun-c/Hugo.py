@@ -185,7 +185,7 @@ async def anime(ctx):
 
 @anime.error
 async def anime_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
