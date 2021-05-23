@@ -8,7 +8,7 @@ import asyncio
 import datetime
 import typing as t
 from discord.ext.commands.core import Command
-import praw
+import asyncpraw
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -437,7 +437,7 @@ REDDIT_APP_SECRET = os.getenv("RAS")
 USERNAME = os.getenv("user")
 PASSWORD = os.getenv("pass")
 
-reddit = praw.Reddit(client_id = os.environ['RAI'],
+reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
                     client_secret = os.environ['RAS'],
                     username = os.environ['user'],
                     password = os.environ['pass'],
@@ -467,7 +467,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
         embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
         embed.set_image(url=url)
-        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}! • Today at {datetime.now}")
+        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}!")
         await ctx.send(embed=embed)
 
 @_reddit.error
