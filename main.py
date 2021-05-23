@@ -7,6 +7,7 @@ import aiohttp
 import asyncio
 import datetime as dt
 import typing as t
+from discord.ext.commands.core import Command
 import praw
 from PIL import Image
 from io import BytesIO
@@ -443,11 +444,12 @@ reddit = praw.Reddit(client_id = os.environ['RAI'],
                     user_agent = 'SSagunPraw')
 
 @client.command(name="reddit")
+@cooldown(1, 5)
 async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 50)
+    top = subreddit.top(limit = 1000)
 
     for submission in top:
         all_subs.append(submission)
@@ -461,13 +463,17 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         author = random_sub.author
         name = random_sub.title
         url = random_sub.url
-
+        
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
-        embed.set_author(name=f'r/{sr_name}', icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+        embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
         embed.set_image(url=url)
-        embed.set_footer(text="If the Image is not loading just try again!")
+        embed.set_footer(text="If the Image is not loading just click the title!")
         await ctx.send(embed=embed)
 
+@_reddit.error
+async def reddit_error(error, ctx):
+    if isinstance(error, CommandOnCooldown):
+        await ctx.send("Woah Woah you are too fast! Try again in a few seconds", delete_after=5)
 
 
 client.run(os.environ['DISCORD_TOKEN'])
