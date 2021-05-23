@@ -7,6 +7,7 @@ import aiohttp
 import asyncio
 import datetime
 import typing as t
+import tracemalloc
 from discord.ext.commands.core import Command
 import asyncpraw
 from PIL import Image
@@ -30,7 +31,7 @@ token = os.getenv("DISCORD_TOKEN")
 
 client = commands.Bot(command_prefix='.')
 
-
+tracemalloc.start()
 
 client.remove_command('help')
 # Event
@@ -449,7 +450,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 75)
+    top = await subreddit.top(limit = 75)
 
     for submission in top:
         all_subs.append(submission)
