@@ -7,8 +7,8 @@ import aiohttp
 import asyncio
 import datetime as dt
 import typing as t
-import re
 import praw
+import urllib.parse, urllib.request, re
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -273,7 +273,10 @@ async def kill(ctx, member : discord.Member):
                         f'{member.display_name} got killed by a creeper explosion. Haha noob',
                         f'{member.display_name} I slapped you and you died of shock', 
                         f"{ctx.message.author.display_name} ordered me to kill you but I refuse!", 
-                        f'{member.display_name} got smashed by an ant'])
+                        f'{member.display_name} got smashed by an ant',
+                        f'{member.display_name} died of death',
+                        f'{member.display_name} picked one of the thousand ways to bite into grass',
+                        f'{member.display_name} '])
     if ctx.message.author == member:
         await ctx.send(f"You cant kill yourself {ctx.message.author.display_name}. Tag someone else to kill")
     else:
@@ -466,5 +469,20 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         embed.set_footer(text="If the Image is not loading just try again!")
         await ctx.send(embed=embed)
 
+
+# Youtube Search
+
+@commands.client
+@cooldown(1, 10)
+async def youtube(ctx, *, search):
+    query_string = urllib.parse.urlencode({'search_query': search})
+    htm_content = urllib.request.urlopen('https://youtube.com/results?' + query_string)
+    search_results = re.findall('href=\"\\/watch\\?v=(.{11})', htm_content.read().decode())
+    await ctx.send('https://youtube.com/watch?v=' + search_results[0])
+
+@youtube.error
+async def youtube_error(error, ctx):
+    if isinstance(error, CommandOnCooldown):
+        await ctx.send("You are going too fast! Try again in a few seconds", delete_after=5)
 
 client.run(os.environ['DISCORD_TOKEN'])
