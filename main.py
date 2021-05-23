@@ -9,7 +9,7 @@ import asyncio
 import datetime
 import typing as t
 from discord import message
-from discord.ext.commands.core import Command
+from discord.ext.commands.core import Command, command
 import praw
 from PIL import Image
 from io import BytesIO
@@ -219,7 +219,7 @@ async def nsfwneko(ctx):
 
 @nsfwneko.error
 async def nsfwneko_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send(f"This command is ratelimited, please try again in {format(error.retry_after)} .", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
