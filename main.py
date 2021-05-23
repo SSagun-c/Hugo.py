@@ -481,7 +481,7 @@ async def youtube(ctx, *, search):
     await ctx.send('https://youtube.com/watch?v=' + search_results[0])
 
 @youtube.error
-async def youtube_error(error, ctx):
+async def youtube_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("You are going too fast! Try again in a few seconds", delete_after=5)
 
