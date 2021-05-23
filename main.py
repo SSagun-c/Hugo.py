@@ -48,7 +48,7 @@ async def change_status():
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+    await ctx.send(f'```{client.latency * 1000}ms```')
 
 @client.command(aliases=['8ball'])
 async def _8ball(ctx, *, question):
