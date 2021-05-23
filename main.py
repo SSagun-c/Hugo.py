@@ -8,7 +8,6 @@ import asyncio
 import datetime as dt
 import typing as t
 import praw
-import urllib.parse, urllib.request, re
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -469,21 +468,6 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         embed.set_footer(text="If the Image is not loading just try again!")
         await ctx.send(embed=embed)
 
-
-# Youtube Search
-
-@client.command()
-@cooldown(1, 10)
-async def youtube(ctx, *, search):
-    query_string = urllib.parse.urlencode({'search_query': search})
-    htm_content = urllib.request.urlopen('https://youtube.com/results?' + query_string)
-    search_results = re.findall('href=\"\\/watch\\?v=(.{11})', htm_content.read().decode())
-    await ctx.send('https://youtube.com/watch?v=' + search_results[0])
-
-@youtube.error
-async def youtube_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
-        await ctx.send("You are going too fast! Try again in a few seconds", delete_after=5)
 
 
 client.run(os.environ['DISCORD_TOKEN'])
