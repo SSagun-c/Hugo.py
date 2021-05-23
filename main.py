@@ -8,6 +8,7 @@ import aiohttp
 import asyncio
 import datetime
 import typing as t
+from discord import message
 from discord.ext.commands.core import Command
 import praw
 from PIL import Image
@@ -462,13 +463,16 @@ async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
         author = random_sub.author
         name = random_sub.title
         url = random_sub.url
-        
+        thumbs_up = '\N{THUMBS UP SIGN}'
+        thumbs_down = '\N{THUMBS DOWN SIGN}'
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
         embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
         embed.set_image(url=url)
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}")
         await ctx.send(embed=embed)
+        await message.add_reaction(thumbs_up)
+        await message.add_reaction(thumbs_down)
 
 @rreddit.error
 async def reddit_error(error, ctx):
