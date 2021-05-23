@@ -22,8 +22,8 @@ from discord.ext import tasks
 from itertools import cycle
 from discord import Member
 from discord.ext.commands import Bot, BucketType, cooldown
-from discord.ext.commands import has_permissions, MissingPermissions, NSFWChannelRequired
-from discord.ext.commands.errors import CommandError, CommandOnCooldown
+from discord.ext.commands import has_permissions, MissingPermissions, NSFWChannelRequired, CommandOnCooldown
+from discord.ext.commands.errors import CommandError
 from discord.utils import get
 from praw.models.listing.mixins import subreddit
 from praw.reddit import Subreddit
