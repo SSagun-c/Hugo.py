@@ -220,7 +220,7 @@ async def nsfwneko(ctx):
 @nsfwneko.error
 async def nsfwneko_error(ctx, error):
     if isinstance(error, CommandOnCooldown):
-        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
+        await ctx.send(f"This command is ratelimited, please try again in {format(error.retry_after)} .", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
