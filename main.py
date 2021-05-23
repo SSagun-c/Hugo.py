@@ -43,6 +43,10 @@ async def on_ready():
 async def change_status():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers! .help"))
 
+@client.event
+async def on_message(message):
+    if client.user.mention_in(message):
+        await message.channel.send("What do you want? .help")
 
 # Fun commands
 
@@ -478,4 +482,5 @@ async def reddit_error(error, ctx):
 @client.command()
 async def invite(ctx):
     await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=8&scope=bot')
+
 client.run(os.environ['DISCORD_TOKEN'])
