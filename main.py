@@ -449,7 +449,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 250)
+    top = subreddit.top(limit = 150)
 
     for submission in top:
         all_subs.append(submission)
@@ -465,9 +465,9 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         url = random_sub.url
         
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
-        embed.set_author(name=f'r/{sr_name}', icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+        embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
         embed.set_image(url=url)
-        embed.set_footer(text="If the Image is not loading just try again!")
+        embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}!")
         await ctx.send(embed=embed)
 
 @_reddit.error
