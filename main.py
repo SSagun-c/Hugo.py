@@ -447,10 +447,10 @@ reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
 @client.command(name="reddit")
 @cooldown(1, 5)
 async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
-    subreddit = reddit.subreddit(subred)
+    subreddit = await reddit.subreddit(subred)
     all_subs = []
 
-    top = await subreddit.top(limit = 75)
+    top = subreddit.top(limit = 75)
 
     for submission in top:
         all_subs.append(submission)
