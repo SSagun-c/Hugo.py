@@ -23,8 +23,8 @@ from discord.ext.commands import Bot, BucketType, cooldown
 from discord.ext.commands import has_permissions, MissingPermissions, CommandOnCooldown, NSFWChannelRequired
 from discord.ext.commands.errors import CommandError
 from discord.utils import get
-from praw.models.listing.mixins import subreddit
-from praw.reddit import Subreddit
+from asyncpraw.models.listing.mixins import subreddit
+from asyncpraw.reddit import Subreddit
 
 token = os.getenv("DISCORD_TOKEN")
 
