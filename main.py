@@ -45,7 +45,7 @@ async def change_status():
 
 @client.event
 async def on_message(message):
-    if client.user.mention_in(message):
+    if client.user.mentioned_in(message):
         await message.channel.send("What do you want? .help")
 
 # Fun commands
