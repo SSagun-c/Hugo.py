@@ -275,7 +275,7 @@ async def kill(ctx, member : discord.Member):
                         f'{member.display_name} got smashed by an ant',
                         f'{member.display_name} died of death',
                         f'{member.display_name} picked one of the thousand ways to bite into grass',
-                        f'{member.display_name} '])
+                        f'{member.display_name} wanted to go to his Grandma but then slipped over a stone a died'])
     if ctx.message.author == member:
         await ctx.send(f"You cant kill yourself {ctx.message.author.display_name}. Tag someone else to kill")
     else:
@@ -290,7 +290,7 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
-    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`\n■ `.kill`", inline=True)
+    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`\n■ `.kill`\n■ `.invite`\n■ `.repeat (aliases: say)`", inline=True)
     embed.add_field(name="**Reddit Command**", value="■ `.reddit <your subreddit here>`", inline=True)
     embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.neko`\n■ `.blush`", inline=True)
     embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `.animeweb`", inline=True)
@@ -444,11 +444,11 @@ reddit = praw.Reddit(client_id = os.environ['RAI'],
 
 @client.command(name="reddit")
 @cooldown(1, 5)
-async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
+async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 40)
+    top = subreddit.top(limit = 75)
 
     for submission in top:
         all_subs.append(submission)
@@ -470,7 +470,7 @@ async def _reddit(ctx, subred = "meme"):  # default subreddit is meme
         embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}")
         await ctx.send(embed=embed)
 
-@_reddit.error
+@rreddit.error
 async def reddit_error(error, ctx):
     if isinstance(error, CommandOnCooldown):
         await ctx.send("Woah Woah you are too fast! Try again in a few seconds", delete_after=5)
@@ -479,5 +479,20 @@ async def reddit_error(error, ctx):
 @client.command()
 async def invite(ctx):
     await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=8&scope=bot')
+
+
+@client.command(aliases="say")
+async def repeat(ctx, *, repeat):
+    if repeat == ["i am stupid",
+                "i am dumb",
+                "i am gay",
+                "I am stupid",
+                "I am dumb",
+                "I am Gay"]:
+        await ctx.send("We know")
+    else:
+        await ctx.send(repeat)
+
+
 
 client.run(os.environ['DISCORD_TOKEN'])
