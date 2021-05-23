@@ -136,7 +136,7 @@ async def pussy(ctx):
 
 @pussy.error
 async def pussy_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
@@ -151,7 +151,7 @@ async def neko(ctx):
 
 @neko.error
 async def neko_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
@@ -167,7 +167,7 @@ async def hentai(ctx):
 
 @hentai.error
 async def hentai_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
@@ -201,7 +201,7 @@ async def trap(ctx):
 
 @trap.error
 async def trap_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
@@ -220,7 +220,7 @@ async def nsfwneko(ctx):
 @nsfwneko.error
 async def nsfwneko_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
-        await ctx.send(f"This command is ratelimited, please try again in {format(error.retry_after * 1000)} seconds .", delete_after=5)
+        await ctx.send(f"This command is ratelimited, please try again in a few seconds", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
@@ -256,7 +256,7 @@ async def yuri(ctx):
 
 @yuri.error
 async def yuri_error(ctx, error):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
