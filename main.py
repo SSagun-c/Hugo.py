@@ -483,12 +483,7 @@ async def invite(ctx):
 
 @client.command(aliases=["say"])
 async def repeat(ctx, *, repeat):
-    if repeat == ["i am stupid",
-                "i am dumb",
-                "i am gay",
-                "I am stupid",
-                "I am dumb",
-                "I am Gay"]:
+    if repeat == "i am stupid":
         await ctx.send("We know")
     else:
         await ctx.send(repeat)
