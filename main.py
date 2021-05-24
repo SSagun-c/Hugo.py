@@ -321,14 +321,14 @@ async def nsfwhelp(ctx):
 # Moderator commands
 
 @client.command()
-@commands.has_permissions(administrator=True)
+@commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount : int):
     await ctx.channel.purge(limit=amount + 1)
 
 @clear.error
 async def clear_error(ctx, error):
     if isinstance(error, MissingPermissions):
-        text = "Sorry you are missing permission to do that! Message an Admin instead."
+        text = "Sorry you are missing permission for that"
         await ctx.send(text)
     else:
         await ctx.send(f'Please specifiy an amount of messages to delete.', delete_after=5)
