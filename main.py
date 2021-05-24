@@ -130,8 +130,11 @@ async def pussy(ctx):
                 'What A Handsome Hunk Of Cat',
                 "When The Cat's Away, The Mice Will Play",
                 'When You Have A Cat, Everyday Is Purr-fect']
-    embed = discord.Embed(title=random.choice(title))
+    embed = discord.Embed()
+    embed.set_author(name=random.choice(title), url=pussyjson['link'])
     embed.set_image(url=pussyjson['link'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @pussy.error
@@ -146,7 +149,10 @@ async def neko(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/neko')
         nekojson = await request.json()
     embed = discord.Embed()
+    embed.set_author(name="Neko", url=nekojson['url'])
     embed.set_image(url=nekojson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @neko.error
@@ -162,7 +168,10 @@ async def hentai(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/hentai')
         hentaijson = await request.json()
     embed = discord.Embed()
+    embed.set_author(name="Hentai", url=hentaijson['url'])
     embed.set_image(url=hentaijson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @hentai.error
@@ -180,7 +189,10 @@ async def anime(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/anime')
         animejson = await request.json()
     embed = discord.Embed()
+    embed.set_author(name='Anime Girl', url=animejson['url'])
     embed.set_image(url=animejson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @anime.error
@@ -196,7 +208,10 @@ async def trap(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/trap')
         trapjson = await request.json()
     embed = discord.Embed()
+    embed.set_author(name="Thats a trap", url=trapjson['url'])
     embed.set_image(url=trapjson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @trap.error
@@ -214,7 +229,10 @@ async def nsfwneko(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/nsfwneko')
         nsfwnekojson = await request.json()
     embed = discord.Embed()
+    embed.set_author(name="Lewded Neko", url=nsfwnekojson['url'])
     embed.set_image(url=nsfwnekojson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @nsfwneko.error
@@ -225,12 +243,18 @@ async def nsfwneko_error(ctx, error):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 @client.command()
+@cooldown(1, 5)
 async def roll(ctx):
     number = random.randint(1, 100)
     if number == 69:
         await ctx.send("You rolled 69 nice.")
     else:
         await ctx.send(f"You rolled {number}")
+
+@roll.error
+async def roll_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.send("Woah woah calm down sonic, I'm ratelimited", delete_after=5)
         
 
 @client.command()
@@ -241,6 +265,7 @@ async def blush(ctx):
         blushjson = await request.json()
     embed = discord.Embed(title=f'{ctx.message.author.display_name} blushes')
     embed.set_image(url=blushjson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
 
 @client.command()
@@ -251,7 +276,7 @@ async def yuri(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/yuri')
         yurijson = await request.json()
     embed = discord.Embed()
-    embed.set_author(name=yuri, url=yurijson['url'])
+    embed.set_author(name="Yuri", url=yurijson['url'])
     embed.set_image(url=yurijson['url'])
     embed.timestamp = datetime.datetime.utcnow()
     embed.set_footer(text="If the Image is not loading just click the title")
