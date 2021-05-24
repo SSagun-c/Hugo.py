@@ -444,7 +444,7 @@ rreddit = praw.Reddit(client_id = os.environ['RAI'],
                     user_agent = 'SSagunPraw')
 
 @client.command()
-@cooldown(1, 5)
+@cooldown(1, 8)
 async def reddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = rreddit.subreddit(subred)
     all_subs = []
@@ -479,7 +479,7 @@ async def reddit_error(error, ctx):
 
 @client.command()
 async def invite(ctx):
-    await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=8&scope=bot')
+    await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=4582438&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D')
 
 
 @client.command(aliases=["say"])
