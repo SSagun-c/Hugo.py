@@ -12,6 +12,7 @@ Hugo got created out of the blue after creating a Discord Server that is Anime r
 
 He is still in work but I got so far that I am able to publish him.
 
+I think soon I will completely rewrite the code and add cogs
 # Usage
 
 Hugo uses the command prefix '.'
