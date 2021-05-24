@@ -390,14 +390,14 @@ async def unban_error(ctx, error):
 @client.command()
 async def serverinfo(ctx):
     name = ctx.guild.name
-    description = str(ctx.guild.description)
+    description = ctx.guild.description
 
-    owner = str(ctx.guild.owner)
-    id = str(ctx.guild.id)
-    region = str(ctx.guild.region)  
-    memberCount = str(ctx.guild.member_count)
+    owner = ctx.guild.owner
+    id = ctx.guild.id
+    region = ctx.guild.region
+    memberCount = ctx.guild.member_count
 
-    icon = str(ctx.guild.icon_url)
+    icon = ctx.guild.icon_url
 
     embed = discord.Embed(title=name + " Server Information", description=description, color=0xFFFF00)
     embed.set_thumbnail(url=icon)
@@ -449,7 +449,7 @@ async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = reddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 75)
+    top = subreddit.top(limit = 125)
 
     for submission in top:
         all_subs.append(submission)
@@ -457,7 +457,7 @@ async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
     random_sub = random.choice(all_subs)
 
     if submission.over_18 == True:
-        await ctx.send("Sorry  but this subreddit is marked as NSFW!")
+        await ctx.send("Sorry but this subreddit is marked as NSFW!")
     else: 
         sr_name = random_sub.subreddit
         author = random_sub.author
@@ -473,7 +473,7 @@ async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
 
 @rreddit.error
 async def reddit_error(error, ctx):
-    if isinstance(error, CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("Woah Woah you are too fast! Try again in a few seconds", delete_after=5)
 
 
