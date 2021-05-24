@@ -507,7 +507,7 @@ async def reddit_error(error, ctx):
 
 @client.command()
 async def invite(ctx):
-    await ctx.send('Thanks for the thoughts of inviting me! https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=4582438&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D')
+    await ctx.send('Thanks for the thoughts of inviting me!\nhttps://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=4582470&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D832922273597227019%26permissions%3D4582438%26redirect_uri%3Dhttps%253A%252F%252Fdiscord.com%252Fapi%252Foauth2%252Fauthorize%253Fclient_id%253D&scope=bot')
 
 
 @client.command(aliases=["say"])
