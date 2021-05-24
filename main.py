@@ -437,19 +437,19 @@ REDDIT_APP_SECRET = os.getenv("RAS")
 USERNAME = os.getenv("user")
 PASSWORD = os.getenv("pass")
 
-reddit = praw.Reddit(client_id = os.environ['RAI'],
+rreddit = praw.Reddit(client_id = os.environ['RAI'],
                     client_secret = os.environ['RAS'],
                     username = os.environ['user'],
                     password = os.environ['pass'],
                     user_agent = 'SSagunPraw')
 
-@client.command(name="reddit")
+@client.command()
 @cooldown(1, 5)
-async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
-    subreddit = reddit.subreddit(subred)
+async def reddit(ctx, subred = "meme"):  # default subreddit is meme
+    subreddit = rreddit.subreddit(subred)
     all_subs = []
 
-    top = subreddit.top(limit = 125)
+    top = subreddit.top(limit = 75)
 
     for submission in top:
         all_subs.append(submission)
@@ -471,7 +471,7 @@ async def rreddit(ctx, subred = "meme"):  # default subreddit is meme
         embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}")
         await ctx.send(embed=embed)
 
-@rreddit.error
+@reddit.error
 async def reddit_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.send("Woah Woah you are too fast! Try again in a few seconds", delete_after=5)
