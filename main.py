@@ -30,7 +30,7 @@ from praw.reddit import Subreddit
 
 token = os.getenv("DISCORD_TOKEN")
 
-client = commands.Bot(command_prefix='.')
+client = commands.Bot(command_prefix='h!')
 
 client.remove_command('help')
 # Event
@@ -42,7 +42,7 @@ async def on_ready():
 
 @tasks.loop(seconds=120)
 async def change_status():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers! .help"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers! h!help"))
 
 
 # Fun commands
