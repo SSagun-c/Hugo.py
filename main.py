@@ -251,7 +251,10 @@ async def yuri(ctx):
         request = await session.get('https://api.computerfreaker.cf/v1/yuri')
         yurijson = await request.json()
     embed = discord.Embed()
+    embed.set_author(name=yuri, url=yurijson['url'])
     embed.set_image(url=yurijson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text="If the Image is not loading just click the title")
     await ctx.send(embed=embed)
 
 @yuri.error
@@ -488,7 +491,5 @@ async def repeat(ctx, *, repeat):
         await ctx.send("We know")
     else:
         await ctx.send(repeat)
-
-
 
 client.run(os.environ['DISCORD_TOKEN'])
