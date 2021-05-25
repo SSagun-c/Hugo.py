@@ -522,18 +522,19 @@ async def repeat(ctx, *, repeat):
 
 
 @client.command()
+@cooldown(1, 9)
 async def avatar(ctx, member : discord.Member):
     av = member.avatar_url
-    if member == ctx.message.author:
-        embed = discord.Embed(title=ctx.message.author.display_name, color=0x90EE90)
-        embed.set_image(url=av)
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed=embed)
-    else:
-        embed = discord.Embed(title=member.display_name, color=0x90EE90)
-        embed.set_image(url=av)
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed=embed)
-        
+    embed = discord.Embed(title=member.display_name, color=0x90EE90)
+    embed.set_image(url=av)
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
+
+@avatar.error
+async def avatar_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("Mention a member you want to get the avatar of", delete_after=10)
+    elif isinstance(error, commands.CommandOnCooldown):
+        await ctx.send("Dont be so fast! Try again in a few seconds")
 
 client.run(os.environ['DISCORD_TOKEN'])
