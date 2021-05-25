@@ -522,12 +522,11 @@ async def repeat(ctx, *, repeat):
 
 
 @client.command()
-async def avatar(ctx, member : discord.Member=None):
+async def avatar(ctx, member : discord.Member):
     av = member.avatar_url
-    av2 = ctx.message.author.avatar_url
-    if member == None:
+    if member == ctx.message.author:
         embed = discord.Embed(title=ctx.message.author.display_name, color=0x90EE90)
-        embed.set_image(url=av2)
+        embed.set_image(url=av)
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
     else:
