@@ -527,7 +527,7 @@ async def avatar(ctx, member : discord.Member=None):
     av2 = ctx.message.author.avatar_url
     if member == None:
         embed = discord.Embed(title=ctx.message.author.display_name, color=0x90EE90)
-        embed.set_image(url=av)
+        embed.set_image(url=av2)
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
     else:
