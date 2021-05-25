@@ -4,6 +4,7 @@ import discord
 import json
 import random
 import os
+from typing import Optional
 import aiohttp
 import asyncio
 import datetime
@@ -535,6 +536,27 @@ async def avatar_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("Mention a member you want to get the avatar of", delete_after=10)
     elif isinstance(error, commands.CommandOnCooldown):
-        await ctx.send("Dont be so fast! Try again in a few seconds")
+        await ctx.send("Dont be so fast! Try again in a few seconds", delete_after=5)
+
+@client.command(aliases=['memberinfo', 'mi', 'ui'])
+async def userinfo(ctx, target: Optional[Member]):
+    target = target or ctx.message.author
+
+    embed = discord.Embed(title='User Information', colour=target.colour, timestamp=datetime.utcnow())
+
+    fields = [("ID", target.id, False),
+              ("Name", str(target), True),
+              ("Bot?", target.bot, True),
+              ("Highest Role", target.top_role.mention, True),
+              ("Activity", f"{str(target.activity.type).split('.')[-1].title() if target.activity else 'N/A'} {target.activity.name if target.activity else ''}", True),
+              ("Created at:", target.created_at.strftime("%d/%m/$Y %H/%M/%S"), True),
+              ("Joined at:", target.joined_at.strftime("%d/%m/$Y %H/%M/%S"), True),
+              ("Boost", bool(target.premium_since), True)]
+    for name, value, inline in fields:
+        embed.add_field(name=name, value=value, inline=inline)
+
+    await ctx.send(embed=embed)
+
+
 
 client.run(os.environ['DISCORD_TOKEN'])
