@@ -289,9 +289,9 @@ async def yuri_error(ctx, error):
     elif isinstance(error, NSFWChannelRequired):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
-@client.command()
-async def suggest(ctx):
-    await ctx.send('Have any suggestion for the bot? Join the Help Server! https://discord.gg/6JkmzhDsps')
+@client.command(aliases=['ss'])
+async def support(ctx):
+    await ctx.send('Need support? Join the Help Server! https://discord.gg/6JkmzhDsps')
 
 @client.command()
 async def kill(ctx, member : discord.Member):
@@ -303,8 +303,11 @@ async def kill(ctx, member : discord.Member):
                         f"{ctx.message.author.display_name} ordered me to kill you but I refuse!", 
                         f'{member.display_name} got smashed by an ant',
                         f'{member.display_name} died of death',
-                        f'{member.display_name} picked one of the thousand ways to bite into grass',
-                        f'{member.display_name} wanted to go to his Grandma but then slipped over a stone a died'])
+                        f'{member.display_name} got killed by magic',
+                        f'{member.display_name} wanted to go to his Grandma but then slipped over a stone a died'
+                        f'{member.display_name} got humiliated to death with a broomstick',
+                        f'{member.display_name} had a stroke reading the enchantment table and died',
+                        f'{member.display_name} is italian. He died because the italian mafia tortured him to death by forcing him to watch how they put pineapple on pizza'])
     if ctx.message.author == member:
         await ctx.send(f"You cant kill yourself {ctx.message.author.display_name}. Tag someone else to kill")
     else:
@@ -319,7 +322,7 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
-    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.suggest`\n■ `.kill`\n■ `.invite`\n■ `.repeat (aliases: say)`", inline=True)
+    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.support`\n■ `.kill`\n■ `.invite`\n■ `.repeat (aliases: say)`\n■ `.avatar`", inline=True)
     embed.add_field(name="**Reddit Command**", value="■ `.reddit <your subreddit here>`", inline=True)
     embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.neko`\n■ `.blush`", inline=True)
     embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `.animeweb`", inline=True)
@@ -516,5 +519,15 @@ async def repeat(ctx, *, repeat):
         await ctx.send("We know")
     else:
         await ctx.send(repeat)
+
+
+@client.command()
+async def avatar(ctx, member : discord.Member):
+    av = member.avatar_url
+    embed = discord.Embed(title=member.display_name, color=0x90EE90)
+    embed.set_image(url=av)
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
+        
 
 client.run(os.environ['DISCORD_TOKEN'])
