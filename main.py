@@ -522,7 +522,7 @@ async def repeat(ctx, *, repeat):
 
 
 @client.command()
-async def avatar(ctx, member : discord.Member="None"):
+async def avatar(ctx, member : discord.Member=None):
     av = member.avatar_url
     av2 = ctx.message.author.avatar_url
     if member == None:
