@@ -543,7 +543,7 @@ async def userinfo(ctx, target: Optional[Member]):
     target = target or ctx.message.author
 
     embed = discord.Embed(title='User Information', colour=target.colour, timestamp=datetime.datetime.utcnow())
-
+    embed.set_thumbnail(url=target.avatar_url)
     fields = [("ID", target.id, False),
               ("Name", str(target), True),
               ("Bot?", target.bot, True),
