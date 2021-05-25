@@ -542,7 +542,7 @@ async def avatar_error(ctx, error):
 async def userinfo(ctx, target: Optional[Member]):
     target = target or ctx.message.author
 
-    embed = discord.Embed(title='User Information', colour=target.colour, timestamp=datetime.utcnow())
+    embed = discord.Embed(title='User Information', colour=target.colour, timestamp=datetime.datetime.utcnow())
 
     fields = [("ID", target.id, False),
               ("Name", str(target), True),
