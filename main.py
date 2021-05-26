@@ -541,7 +541,7 @@ async def userinfo(ctx, target: Optional[Member]):
 async def serverinfo(ctx):
     embed = Embed(title="Server information",
 					  colour=ctx.guild.owner.colour,
-					  timestamp=datetime.utcnow())
+					  timestamp=datetime.datetime.utcnow())
 
     embed.set_thumbnail(url=ctx.guild.icon_url)
 
