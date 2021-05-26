@@ -44,7 +44,7 @@ async def on_ready():
 
 @tasks.loop(seconds=120)
 async def change_status():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers! h!help"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers and {len(client.get_all_members)}! h!help"))
 
 
 # Fun commands
@@ -78,7 +78,7 @@ async def _8ball(ctx, *, question):
     await ctx.send(f'{random.choice(responses)}')
 
 @client.command()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 async def pussy(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://some-random-api.ml/img/cat')
@@ -145,7 +145,7 @@ async def pussy_error(ctx, error):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 async def neko(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/neko')
@@ -163,7 +163,7 @@ async def neko_error(ctx, error):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 @commands.is_nsfw()
 async def hentai(ctx):
     async with aiohttp.ClientSession() as session:
@@ -185,7 +185,7 @@ async def hentai_error(ctx, error):
 
 
 @client.command()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 async def anime(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/anime')
@@ -203,7 +203,7 @@ async def anime_error(ctx, error):
         await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
 
 @client.command()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 @commands.is_nsfw()
 async def trap(ctx):
     async with aiohttp.ClientSession() as session:
@@ -225,7 +225,7 @@ async def trap_error(ctx, error):
 
 @client.command()
 @commands.is_nsfw()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 async def nsfwneko(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/nsfwneko')
@@ -245,7 +245,7 @@ async def nsfwneko_error(ctx, error):
         await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 @client.command()
-@cooldown(1, 5)
+@cooldown(1, 5, commands.BucketType.guild)
 async def roll(ctx):
     number = random.randint(1, 100)
     if number == 69:
@@ -260,7 +260,7 @@ async def roll_error(ctx, error):
         
 
 @client.command()
-@cooldown(1, 5)
+@cooldown(1, 5, commands.BucketType.guild)
 async def blush(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.waifu.pics/sfw/blush')
@@ -270,9 +270,14 @@ async def blush(ctx):
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
 
+@blush.error
+async def blush_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.send("This Command is on a cooldown. Try again in a few seconds.", delete_after=5)
+
 @client.command()
 @commands.is_nsfw()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 async def yuri(ctx):
     async with aiohttp.ClientSession() as session:
         request = await session.get('https://api.computerfreaker.cf/v1/yuri')
@@ -456,7 +461,7 @@ rreddit = praw.Reddit(client_id = os.environ['RAI'],
                     user_agent = 'SSagunPraw')
 
 @client.command()
-@cooldown(1, 8)
+@cooldown(1, 8, commands.BucketType.guild)
 async def reddit(ctx, subred = "meme"):  # default subreddit is meme
     subreddit = rreddit.subreddit(subred)
     all_subs = []
