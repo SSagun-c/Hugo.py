@@ -537,7 +537,7 @@ async def userinfo(ctx, target: Optional[Member]):
 
     await ctx.send(embed=embed)
 
-@client.command(aliases=["si", "gi", "guildinfo"])
+@client.command(aliases=["si", "gi"])
 async def serverinfo(ctx):
     embed = Embed(title="Server information",
 					  colour=ctx.guild.owner.colour,
