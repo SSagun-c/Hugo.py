@@ -503,7 +503,7 @@ async def repeat(ctx, *, repeat):
 
 
 @client.command()
-@cooldown(1, 9)
+@cooldown(1, 9, commands.BucketType.guild)
 async def avatar(ctx, member : discord.Member):
     av = member.avatar_url
     embed = discord.Embed(title=member.display_name, color=0x90EE90)
