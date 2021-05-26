@@ -569,7 +569,7 @@ async def serverinfo(ctx):
     for name, value, inline in fields:
         embed.add_field(name=name, value=value, inline=inline)
 
-    await ctx.send(embed=embed
+    await ctx.send(embed=embed)
 
 
 client.run(os.environ['DISCORD_TOKEN'])
