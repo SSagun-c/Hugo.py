@@ -44,7 +44,7 @@ async def on_ready():
 
 @tasks.loop(seconds=120)
 async def change_status():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(client.guilds)} servers and {len(client.get_all_members)}! h!help"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="You and {len(client.guilds)︱h!help"))
 
 
 # Fun commands
@@ -329,19 +329,19 @@ async def help(ctx):
     embed = discord.Embed(title="Commands", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
     embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
-    embed.add_field(name="**General Commands**", value="■ `.ping`\n■ `.8ball`\n■ `.pussy`\n■ `.serverinfo`\n■ `.roll`\n■ `.support`\n■ `.kill`\n■ `.invite`\n■ `.repeat (aliases: say)`\n■ `.avatar`", inline=True)
-    embed.add_field(name="**Reddit Command**", value="■ `.reddit <your subreddit here>`", inline=True)
-    embed.add_field(name="**Anime Related Commands**", value="■ `.anime`\n■ `.neko`\n■ `.blush`", inline=True)
-    embed.add_field(name="**NSFW Commands**", value="■ `.hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `.animeweb`", inline=True)
-    embed.add_field(name="**Commands for Moderators**", value="■ `.clear`\n■ `.kick`\n■ `.ban`\n■ `.unban`")
-    embed.set_footer(text='Need more information? Try .dhelp for detailed Information and .nsfwhelp for detailed Information about the NSFW commands!' )
+    embed.add_field(name="**General Commands**", value="■ `h!ping`\n■ `h!8ball`\n■ `h!pussy`\n■ `h!serverinfo`\n■ `h!roll`\n■ `h!support`\n■ `h!kill`\n■ `h!invite`\n■ `h!repeat (aliases: say)`\n■ `h!avatar`\n■ `h!userinfo`", inline=True)
+    embed.add_field(name="**Reddit Command**", value="■ `h!reddit <your subreddit here>`", inline=True)
+    embed.add_field(name="**Anime Related Commands**", value="■ `h!anime`\n■ `h!neko`\n■ `h!blush`", inline=True)
+    embed.add_field(name="**NSFW Commands**", value="■ `h!hentai`\n■ `.trap`\n■ `.nsfwneko`\n■ `.animeweb`", inline=True)
+    embed.add_field(name="**Commands for Moderators**", value="■ `h!clear`\n■ `h!kick`\n■ `h!ban`\n■ `h!unban`")
+    embed.set_footer(text='Need more information? Try h!dhelp for detailed Information and h!nsfwhelp for detailed Information about the NSFW commands!' )
     await ctx.send(embed=embed)
 
 @client.command()
 async def dhelp(ctx):
     embed = discord.Embed(title="Detailed Information", color=0xFFFF00)
     embed.set_author(name="SSagun.py#6969", url="https://www.instagram.com/ssagun.py/", icon_url="https://i.postimg.cc/KjhmssMM/sagunicon.jpg")
-    embed.add_field(name="General Command Infomration", value="**What does `.ping` do?**\nThe `.ping` command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does `.8ball` do?**\nType `.8ball` and a random question, the Bot now will give you a random logical answer to your question.\n**What does `.pussy` do and is it NSFW?**\nThe `.pussy` command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does `.serverinfo` do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does `.roll` do?**\nThe `.roll` command gives you a random number between 1 and 100.\n**What is `.suggest`?**\n The `.suggest` command invites you to the official Hugo,py Help Server, where you can suggest things, report Bugs or get help by Moderators!\n**What does `.kill` do?**\n`.kill` lets you kill people in different funny ways! **this is NOT nsfw and DOES NOT promote suicide!!!**", inline=False)
+    embed.add_field(name="General Command Infomration", value="**What does `h!ping` do?**\nThe `h!ping` command shows you the response time for the Bot, that means how long the Bot takes to answer to your command\n**What does `h!8ball` do?**\nType `h!8ball` and a random question, the Bot now will give you a random logical answer to your question.\n**What does `h!pussy` do and is it NSFW?**\nThe `h!pussy` command is not NSFW related. It shows you a random cute cat with a funny Title.\n**What does `h!serverinfo` do?**\nThis command is self explanatory, it shows you Information about your Server in a cool Embed.\n**What does `h!roll` do?**\nThe `h!roll` command gives you a random number between 1 and 100.\n**What is `h!support`?**\n The `h!support` command invites you to the official Hugo.py Help Server, where you can suggest things, report Bugs or get help by Moderators!\n**What does `h!kill` do?**\n`h!kill` lets you kill people in different funny ways! **this is NOT nsfw and DOES NOT promote suicide!!!**\n**What is `h!userinfo`?\nThis command gives you highly detailed information about a member who is in the same server as you", inline=False)
     embed.add_field(name="Reddit Command Information", value="**What does the `.reddit` command do?**\nWith the `.reddit` command you can search for random pictures on a subreddit by your choice! If you just type in `.reddit` it will give you a random image from the Meme Subreddit. Be aware, if you try to execute a NSFW Subreddit it won't work!.", inline=False)
     embed.add_field(name="Anime Related Command Information", value="**What does `.anime` do?**\nThe `.anime` command fetches you a random Image from a Library with 52.199 Anime pictures.\n**What does `.neko` do?**\nThe command `.neko` fetches you a random neko Image from a Library that contains 33.046 Neko Images.\n**What does `.blush` do?**\nThe command `.blush` is something more likely used for Roleplay, it gives you a random Anime character that blushes and says: `[Username] blushes`\n**What does `.animeweb` do?**\nThe command `.animeweb` sends you a random website where you can watch anime on!", inline=False)
     embed.add_field(name="Moderator Command Information", value="**All the now listed commands are only for Administrators!**\n**What is `.clear` for?**\n`.clear` deletes your selected amount of messages to deleted in one channel.\n**What does `.ban` do?**\nI think this command is self explanatory but `.ban` bans the user you mentioned from the Server.\n**What does `.unban` do?**\nThis command requires you to write the users name you banned once with his Discriminator. As an Example: `.unban SSagun.py#6969`", inline=False)
