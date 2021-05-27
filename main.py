@@ -12,7 +12,7 @@ import datetime
 import typing as t
 from discord import message
 from discord.ext.commands.core import Command, command
-import praw
+import asyncpraw
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -27,8 +27,8 @@ from discord.ext.commands import Bot, BucketType, cooldown
 from discord.ext.commands import has_permissions, MissingPermissions, NSFWChannelRequired, CommandOnCooldown
 from discord.ext.commands.errors import CommandError
 from discord.utils import get
-from praw.models.listing.mixins import subreddit
-from praw.reddit import Subreddit
+from asyncpraw.models.listing.mixins import subreddit
+from asyncpraw.reddit import Subreddit
 
 token = os.getenv("DISCORD_TOKEN")
 
@@ -454,7 +454,7 @@ REDDIT_APP_SECRET = os.getenv("RAS")
 USERNAME = os.getenv("user")
 PASSWORD = os.getenv("pass")
 
-rreddit = praw.Reddit(client_id = os.environ['RAI'],
+rreddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
                     client_secret = os.environ['RAS'],
                     username = os.environ['user'],
                     password = os.environ['pass'],
@@ -463,7 +463,7 @@ rreddit = praw.Reddit(client_id = os.environ['RAI'],
 @client.command()
 @cooldown(1, 8, commands.BucketType.guild)
 async def reddit(ctx, subred = "meme"):  # default subreddit is meme
-    subreddit = rreddit.subreddit(subred)
+    subreddit = await rreddit.subreddit(subred, fetch=True)
     all_subs = []
 
     top = subreddit.top(limit = 75)
@@ -476,10 +476,10 @@ async def reddit(ctx, subred = "meme"):  # default subreddit is meme
     if submission.over_18 == True:
         await ctx.send("Sorry but this subreddit is marked as NSFW!")
     else: 
-        sr_name = random_sub.subreddit
-        author = random_sub.author
-        name = random_sub.title
-        url = random_sub.url
+        sr_name = await random_sub.subreddit
+        author = await random_sub.author
+        name = await random_sub.title
+        url = await random_sub.url
 
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
         embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
