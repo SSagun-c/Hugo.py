@@ -12,7 +12,7 @@ import datetime
 import typing as t
 from discord import message
 from discord.ext.commands.core import Command, command
-import asyncpraw
+import praw
 from PIL import Image
 from io import BytesIO
 from discord import Embed, Member
@@ -27,8 +27,8 @@ from discord.ext.commands import Bot, BucketType, cooldown
 from discord.ext.commands import has_permissions, MissingPermissions, NSFWChannelRequired, CommandOnCooldown
 from discord.ext.commands.errors import CommandError
 from discord.utils import get
-from asyncpraw.models.listing.mixins import subreddit
-from asyncpraw.reddit import Subreddit
+from praw.models.listing.mixins import subreddit
+from praw.reddit import Subreddit
 
 token = os.getenv("DISCORD_TOKEN")
 
@@ -454,7 +454,7 @@ REDDIT_APP_SECRET = os.getenv("RAS")
 USERNAME = os.getenv("user")
 PASSWORD = os.getenv("pass")
 
-rreddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
+rreddit = praw.Reddit(client_id = os.environ['RAI'],
                     client_secret = os.environ['RAS'],
                     username = os.environ['user'],
                     password = os.environ['pass'],
@@ -463,7 +463,7 @@ rreddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
 @client.command()
 @cooldown(1, 8, commands.BucketType.guild)
 async def reddit(ctx, subred = "meme"):  # default subreddit is meme
-    subreddit = await rreddit.subreddit(subred)
+    subreddit = rreddit.subreddit(subred)
     all_subs = []
 
     top = subreddit.top(limit = 75)
