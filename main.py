@@ -311,7 +311,7 @@ async def kill(ctx, target: Optional[Member]):
                         f'{target.display_name} got smashed by an ant',
                         f'{target.display_name} died of death',
                         f'{target.display_name} got killed by magic',
-                        f'{target.display_name} wanted to go to his Grandma but then slipped over a stone a died'
+                        f'{target.display_name} wanted to go to his Grandma but then slipped over a stone a died',
                         f'{target.display_name} got humiliated to death with a broomstick',
                         f'{target.display_name} had a stroke reading the enchantment table and died',
                         f'{target.display_name} is italian. He died because the italian mafia tortured him to death by forcing him to watch how they put pineapple on pizza'])
@@ -578,7 +578,5 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-@client.command()
-async def none(ctx):
-    await ctx.send("none")
+
 client.run(os.environ['DISCORD_TOKEN'])
