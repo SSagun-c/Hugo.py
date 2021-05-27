@@ -506,9 +506,17 @@ async def repeat(ctx, *, repeat):
                 'im stupid',
                 'i am stupid',
                 'i am retarded',
-                'im retarded']
+                'im retarded',
+                'im a reatard',
+                'i am a retard',
+                'im weird',
+                'i am weird',
+                'im weird',
+                'i am a bitch',
+                'im a bitch',
+                'im a dumbass',
+                'i am a dumbass',]
     if repeat in slenders:
-        await ctx.message.delete()
         await ctx.send("We know")
     else:
         await ctx.message.delete()
