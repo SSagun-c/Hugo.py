@@ -499,11 +499,13 @@ async def invite(ctx):
     await ctx.send('Thanks for the thoughts of inviting me!\nhttps://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot')
 
 
-@client.command(aliases=["say"])
+@client.command(aliases=["say"], pass_context=True)
 async def repeat(ctx, *, repeat):
     if repeat == "i am stupid":
+        await client.delete_message(ctx.message)
         await ctx.send("We know")
     else:
+        await client.delete_message(ctx.message)
         await ctx.send(repeat)
 
 
