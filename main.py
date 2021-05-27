@@ -476,10 +476,10 @@ async def reddit(ctx, subred = "meme"):  # default subreddit is meme
     if submission.over_18 == True:
         await ctx.send("Sorry but this subreddit is marked as NSFW!")
     else: 
-        sr_name = await random_sub.subreddit
-        author = await random_sub.author
-        name = await random_sub.title
-        url = await random_sub.url
+        sr_name = random_sub.subreddit
+        author = random_sub.author
+        name = random_sub.title
+        url = random_sub.url
 
         embed = discord.Embed(title=author, description=name, color=0xFF4500)
         embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
