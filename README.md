@@ -20,4 +20,4 @@ If you need any help just simply type '.help' in any Channel and he will give yo
 
 # Invite the Bot
 
-https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=8&scope=bot
+https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot
