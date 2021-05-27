@@ -501,7 +501,13 @@ async def invite(ctx):
 
 @client.command(aliases=["say"], pass_context=True)
 async def repeat(ctx, *, repeat):
-    if repeat == "i am stupid":
+    slenders = ['i am dumb',
+                'im dumb',
+                'im stupid',
+                'i am stupid',
+                'i am retarded',
+                'im retarded']
+    if repeat in slenders:
         await ctx.message.delete()
         await ctx.send("We know")
     else:
