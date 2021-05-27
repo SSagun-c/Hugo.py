@@ -578,5 +578,7 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-
+@client.command()
+async def none(ctx):
+    await ctx.send("none")
 client.run(os.environ['DISCORD_TOKEN'])
