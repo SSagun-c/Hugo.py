@@ -502,10 +502,10 @@ async def invite(ctx):
 @client.command(aliases=["say"], pass_context=True)
 async def repeat(ctx, *, repeat):
     if repeat == "i am stupid":
-        await client.message.delete(ctx.message)
+        await ctx.message.delete
         await ctx.send("We know")
     else:
-        await client.message.delete(ctx.message)
+        await ctx.message.delete
         await ctx.send(repeat)
 
 
