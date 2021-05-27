@@ -463,7 +463,7 @@ rreddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
 @client.command()
 @cooldown(1, 8, commands.BucketType.guild)
 async def reddit(ctx, subred = "meme"):  # default subreddit is meme
-    subreddit = await rreddit.subreddit(subred, fetch=True)
+    subreddit = await rreddit.subreddit(subred)
     all_subs = []
 
     top = subreddit.top(limit = 75)
