@@ -6,14 +6,14 @@ class errorCog(commands.Cog):
         self.bot = bot
 
 
-    async def on_command_error(self, ctx, exc):
-        if isinstance(exc, commands.MissingPermissions):
+    async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
             await ctx.send(f"Sorry {ctx.message.author.display_name}, you do not meet the required permissions.")
-        elif isinstance(exc, commands.MissingRequiredArgument):
+        elif isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("One or more required Arguments are missing")
-        elif isinstance(exc, commands.CommandOnCooldown):
+        elif isinstance(error, commands.CommandOnCooldown):
             await ctx.send(f"That command is on {str(exc.cooldown.type).split('.')[-1]} cooldown. Try again in {exc.retry_after:,.2f} secs.")
-        elif isinstance(exc, commands.NSFWChannelRequired):
+        elif isinstance(error, commands.NSFWChannelRequired):
             await ctx.send("NSFW Channel is required to use this command")
 
 def setup(bot):
