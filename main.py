@@ -354,32 +354,6 @@ async def nsfwhelp(ctx):
     embed.set_thumbnail(url='https://i.postimg.cc/RhHXLLBF/unnamed.jpg')
     embed.add_field(name="NSFW Commands", value="**KEEP IN MIND**\nThe channel has to be NSFW for the commands to work!\n**What does `h!hentai` do?**\n`h!hentai` sends you a random Hentai Image from a Library that contains 33.677 Images\n**What does `h!trap` do?**\nDo you like Traps? `h!trap` sends you a random Trap related Image from a Library that contains 25.358 Trap Images\n**What does `h!nsfwneko` do?**\nThe `h!nsfwneko` command sends you a random lewded neko Image from a Library that contains 22.017 Lewded Neko Images **PLEASE REPORT WHEN THIS BOT IS SENDING MINORS** `h!support`.\n**What is `h!yuri`?**\nThe command `h!yuri` sends a random Image from a Library that contains 26.867 Images. Yuri means Lesbian.", inline=True)
     await ctx.send(embed=embed)
-    
-
-# Moderator commands
-
-
-@client.command()
-@commands.has_permissions(administrator=True)
-async def unban(ctx, *, member : int):
-    banned_users = await ctx.guild.bans()
-    member_name, member_discriminator = member.split('#')
-
-    for ban_entry in banned_users:
-        user = ban_entry.user
-
-        if (user.name, user.discriminator) == (member_name, member_discriminator):
-            await ctx.guild.unban(user)
-            await ctx.send(f'Unbanned {user.mention}')
-            return
-
-@unban.error
-async def unban_error(ctx, error):
-    if isinstance(error, MissingPermissions):
-        text = "You cant just unban someone! Tell the person to send an unban application instead."
-        await ctx.send(text)
-    else:
-        await ctx.send("Please send the users name with his Discriminator '#'\nExample: .unban SSagun#1050")
 
 
 # For Members
@@ -551,5 +525,5 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-client.load_extension('cogs.moderator')
+client.load_extension('cogs.moderator', 'cogs.error')
 client.run(os.environ['DISCORD_TOKEN'])
