@@ -17,6 +17,16 @@ client.remove_command('help')
 async def on_ready():
     print("Bot is online and ready to use!")
 
+@client.event
+async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send(f"Sorry {ctx.message.author.display_name}, you do not meet the required permissions.")
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("One or more required Arguments are missing")
+        elif isinstance(error, commands.CommandOnCooldown):
+            await ctx.send(f"That command is on {str(error.cooldown.type).split('.')[-1]} cooldown. Try again in {error.retry_after:,.2f} secs.")
+        elif isinstance(error, commands.NSFWChannelRequired):
+            await ctx.send("NSFW Channel is required to use this command")
 
 # Ping
 
