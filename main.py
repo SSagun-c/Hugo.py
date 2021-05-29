@@ -525,5 +525,12 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-client.load_extension('cogs.moderator', 'cogs.error')
+# Loads all of the Cogs
+
+extensions = ['cogs.moderator', 'cogs.error']
+
+if __name__ == '__main__':
+    for ext in extensions:
+        client.load_extension(ext)
+
 client.run(os.environ['DISCORD_TOKEN'])
