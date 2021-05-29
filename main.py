@@ -24,7 +24,7 @@ async def on_command_error(ctx, error):
         elif isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("One or more required Arguments are missing")
         elif isinstance(error, commands.CommandOnCooldown):
-            await ctx.send(f"That command is on {str(error.cooldown.type).split('.')[-1]} cooldown. Try again in {error.retry_after:,.2f} secs.")
+            await ctx.send(f"That command is on cooldown. Try again in {error.retry_after:,.2f} secs.")
         elif isinstance(error, commands.NSFWChannelRequired):
             await ctx.send("NSFW Channel is required to use this command")
 
