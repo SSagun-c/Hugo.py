@@ -7,18 +7,15 @@ token = os.getenv("DISCORD_TOKEN")
 
 client = commands.Bot(command_prefix='h!', intents=Intents.all())
 
+activity = discord.Activity(type=discord.ActivityType.watching, name=f"Your and {len(client.guilds)} other servers // h!help")
+
 client.remove_command('help')
 
 # Events
 
 @client.event
 async def on_ready():
-    change_status.start()
     print("Bot is online and ready to use!")
-
-@client.event
-async def change_status():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"You and {len(client.guilds)} other Servers︱h!help"))
 
 
 # Ping
