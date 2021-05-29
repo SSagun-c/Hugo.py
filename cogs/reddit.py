@@ -1,4 +1,3 @@
-from main import reddit
 import discord
 import praw
 import datetime
@@ -6,7 +5,7 @@ import random
 import os
 from discord.ext import commands
 from discord.ext.commands import cooldown
-from praw import reddit
+from praw.reddit import Reddit
 
 class redditCog(commands.Cog):
     def __init__(self, bot):
@@ -27,7 +26,7 @@ class redditCog(commands.Cog):
     @commands.command(name=('reddit'), aliases=['r'])
     @cooldown(1, 8, commands.BucketType.guild)
     async def _reddit(self, ctx, subred = "meme"):  # default subreddit is meme
-        subreddit = reddit.subreddit(subred)
+        subreddit = Reddit.subreddit(subred)
         all_subs = []
 
         top = subreddit.top(limit = 75)
