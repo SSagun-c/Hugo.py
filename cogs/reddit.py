@@ -5,7 +5,7 @@ import random
 import os
 from discord.ext import commands
 from discord.ext.commands import cooldown
-from praw.reddit import Reddit
+from praw import reddit
 
 class redditCog(commands.Cog):
     def __init__(self, bot):
@@ -26,7 +26,13 @@ class redditCog(commands.Cog):
     @commands.command(name=('reddit'), aliases=['r'])
     @cooldown(1, 8, commands.BucketType.guild)
     async def _reddit(self, ctx, subred = "meme"):  # default subreddit is meme
-        subreddit = Reddit.subreddit(subred)
+        reddit = praw.Reddit(client_id = os.environ['RAI'],
+                        client_secret = os.environ['RAS'],
+                        username = os.environ['user'],
+                        password = os.environ['pass'],
+                        user_agent = 'SSagunPraw')
+
+        subreddit = reddit.subreddit(subred)
         all_subs = []
 
         top = subreddit.top(limit = 75)
