@@ -18,7 +18,7 @@ async def on_ready():
     print("Bot is online and ready to use!")
 
 @client.event
-async def on_command_error(self, ctx, error):
+async def on_command_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send(f"Sorry {ctx.message.author.display_name}, you do not meet the required permissions.")
         elif isinstance(error, commands.MissingRequiredArgument):
