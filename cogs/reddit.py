@@ -6,7 +6,6 @@ import random
 import os
 from discord.ext import commands
 from discord.ext.commands import cooldown
-from praw.reddit import Reddit, Subreddit
 
 class redditCog(commands.Cog):
     def __init__(self, bot):
