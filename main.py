@@ -358,47 +358,6 @@ async def nsfwhelp(ctx):
 
 # Moderator commands
 
-@client.command()
-@commands.has_permissions(manage_messages=True)
-async def clear(ctx, amount : int):
-    await ctx.channel.purge(limit=amount + 1)
-
-@clear.error
-async def clear_error(ctx, error):
-    if isinstance(error, MissingPermissions):
-        text = "Sorry you are missing permission for that"
-        await ctx.send(text)
-    else:
-        await ctx.send(f'Please specifiy an amount of messages to delete.', delete_after=5)
-
-
-@client.command()
-@commands.has_permissions(administrator=True)
-async def kick(ctx, member : discord.Member, *, reason=None):
-    await member.kick(reason=reason)
-    await ctx.send(f'Kicked!')
-
-@kick.error
-async def kick_error(ctx, error):
-    if isinstance(error, MissingPermissions):
-        text = "Sorry you are missing permission to do that! Message an Admin instead."
-        await ctx.send(text)
-    else:
-        await ctx.send("Please mention the Member you want to kick.")
-
-@client.command()
-@commands.has_permissions(administrator=True)
-async def ban(ctx, member : discord.Member, *, reason=None):
-    await member.ban(reason=reason, delete_message_days=1)
-    await ctx.send(f'Banned!')
-
-@ban.error
-async def ban_error(ctx, error):
-    if isinstance(error, MissingPermissions):
-        await ctx.send('Sorry you are missing permission to do that! Message an Admin instead.')
-    else:
-        await ctx.send('Please mention the member you want to ban.')
-
 
 @client.command()
 @commands.has_permissions(administrator=True)
@@ -592,5 +551,5 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-
+client.load_extension('cogs.moderator')
 client.run(os.environ['DISCORD_TOKEN'])
