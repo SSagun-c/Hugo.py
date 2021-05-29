@@ -37,7 +37,6 @@ async def ping(ctx):
 
 # Loads all of the Cogs
 
-client.load_extension('cogs.error')
 client.load_extension('cogs.help')
 client.load_extension('cogs.image')
 client.load_extension('cogs.info')
