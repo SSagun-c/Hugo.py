@@ -1,13 +1,12 @@
 import discord
 import os
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord import Intents
+from itertools import cycle
 
 token = os.getenv("DISCORD_TOKEN")
 
 client = commands.Bot(command_prefix='h!', intents=Intents.all())
-
-activity = discord.Activity(type=discord.ActivityType.watching, name=f"Your and {len(client.guilds)} other servers // h!help")
 
 client.remove_command('help')
 
@@ -15,7 +14,16 @@ client.remove_command('help')
 
 @client.event
 async def on_ready():
+    change_status.start()
     print("Bot is online and ready to use!")
+
+@tasks.loop(seconds=1024)
+async def change_status():
+    status = cycle(['with some users... h!help', 'annoying my guy Unnamed... h!help', 'osu! h!help', 'with you... h!help'])
+    await client.change_presence(activity=discord.Game(next(status)))
+
+
+
 
 @client.event
 async def on_command_error(ctx, error):
