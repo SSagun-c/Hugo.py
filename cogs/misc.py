@@ -39,7 +39,7 @@ class miscCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 5, commands.BucketType.guild)
-    async def roll(self, ctx, amount='100'):
+    async def roll(self, ctx, amount: int):
         number = random.randint(1, amount)
         if number == 69:
             await ctx.send("You rolled 69 nice.")
