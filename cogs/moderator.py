@@ -7,18 +7,18 @@ class moderatorCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @client.command()
+    @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount : int):
         await ctx.channel.purge(limit=amount + 1)
 
-    @client.command()
+    @commands.command()
     @commands.has_permissions(administrator=True)
     async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
         await ctx.send(f'{member} got kicked at {datetime.datetime.utcnow()} because of: {reason}')
 
-    @client.command()
+    @commands.command()
     @commands.has_permissions(administrator=True)
     async def ban(self, ctx, member : discord.Member, *, reason=None):
         await ctx.message.delete()
