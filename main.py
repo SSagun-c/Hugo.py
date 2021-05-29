@@ -27,12 +27,12 @@ async def ping(ctx):
 
 # Loads all of the Cogs
 
-client.load_extension('cog.error')
-client.load_extension('cog.help')
-client.load_extension('cog.image')
-client.load_extension('cog.info')
-client.load_extension('cog.misc')
-client.load_extension('cog.moderator')
-client.load_extension('cog.reddit')
+client.load_extension('cogs.error')
+client.load_extension('cogs.help')
+client.load_extension('cogs.image')
+client.load_extension('cogs.info')
+client.load_extension('cogs.misc')
+client.load_extension('cogs.moderator')
+client.load_extension('cogs.reddit')
 
 client.run(os.environ['DISCORD_TOKEN'])
