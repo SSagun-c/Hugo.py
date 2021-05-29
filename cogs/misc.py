@@ -133,6 +133,7 @@ class miscCog(commands.Cog):
 
     @commands.command(aliases=['inv'])
     async def invite(self, ctx):
-        await ctx.message.add_reaction('👍')
+        emoji = '\U0001f44d'
+        await ctx.message.add_reaction(emoji)
         directmsg = await ctx.message.author.create_dm()
         await directmsg.send('Thanks for the thoughts of inviting me!\nhttps://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot')
