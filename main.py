@@ -551,5 +551,5 @@ async def serverinfo(ctx):
 
     await ctx.send(embed=embed)
 
-client.load_extension('cogs.moderator.py')
+client.load_extension('cogs.moderator')
 client.run(os.environ['DISCORD_TOKEN'])
