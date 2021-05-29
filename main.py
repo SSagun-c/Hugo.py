@@ -1,6 +1,5 @@
 import discord
 import os
-from asyncio import tasks
 from discord.ext import commands
 from discord import Intents
 
@@ -17,7 +16,7 @@ async def on_ready():
     change_status.start()
     print("Bot is online and ready to use!")
 
-@tasks.loop(seconds=120)
+@client.event
 async def change_status():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"You and {len(client.guilds)} other Servers︱h!help"))
 
