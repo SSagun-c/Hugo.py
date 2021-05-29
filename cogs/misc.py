@@ -137,3 +137,6 @@ class miscCog(commands.Cog):
         await ctx.message.add_reaction(emoji)
         directmsg = await ctx.message.author.create_dm()
         await directmsg.send('Thanks for the thoughts of inviting me!\nhttps://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot')
+
+def setup(bot):
+    bot.add_cog(miscCog(bot))
