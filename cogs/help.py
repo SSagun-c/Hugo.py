@@ -1,9 +1,8 @@
-from aiohttp import helpers
 import discord
 from discord.ext import commands
 
 
-class helpCog(commands.cog):
+class helpCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
