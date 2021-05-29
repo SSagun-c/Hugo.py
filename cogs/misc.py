@@ -42,9 +42,9 @@ class miscCog(commands.Cog):
     async def roll(self, ctx, amount: int=100):
         number = random.randint(1, amount)
         if number == 69:
-            await ctx.send("You rolled 69 nice.")
+            await ctx.send(f"{ctx.message.author.display_name} rolled 69 nice.")
         else:
-            await ctx.send(f"You rolled {number}")
+            await ctx.send(f"{ctx.message.author.display_name} rolled {number}")
 
 
     @commands.command()
