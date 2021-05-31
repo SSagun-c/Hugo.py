@@ -5,9 +5,7 @@ from discord import Intents
 from itertools import cycle
 
 token = os.getenv("DISCORD_TOKEN")
-
 client = commands.Bot(command_prefix='h!', intents=Intents.all())
-
 client.remove_command('help')
 
 # Events
@@ -45,8 +43,7 @@ async def ping(ctx):
 client.load_extension('cogs.help')
 client.load_extension('cogs.image')
 client.load_extension('cogs.info')
-client.load_extension('cogs.misc')
+client.load_extension('cogs.misc')                    # I really could do this simpler
 client.load_extension('cogs.moderator')
 client.load_extension('cogs.reddit')
-
 client.run(os.environ['DISCORD_TOKEN'])
