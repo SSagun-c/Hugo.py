@@ -1,5 +1,6 @@
 import discord
 import os
+import random
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
@@ -22,6 +23,7 @@ async def on_ready():
     change_status.start()
     print("Bot is online and ready to use!")
 
+
 @client.event
 async def on_command_error(ctx, error):
             if isinstance(error, commands.MissingPermissions):
@@ -32,6 +34,18 @@ async def on_command_error(ctx, error):
                 await ctx.send(f"That command is on cooldown. Try again in {error.retry_after:,.2f} secs.", delete_after=5)
             elif isinstance(error, commands.NSFWChannelRequired):
                 await ctx.send("NSFW Channel is required to run this command", delete_after=5)
+
+
+@client.event
+async def on_message(message):
+    messages = ['hugo sucks',
+                'hugo is trash',
+                'hugo is ass']
+    answers = ['Wow that hurt...',
+               'sorry',
+               'Yikes...']
+    if messages in message.content:
+        await message.channel.send(random.choice(answers))
 
 
 # Ping
