@@ -36,18 +36,6 @@ async def on_command_error(ctx, error):
                 await ctx.send("NSFW Channel is required to run this command", delete_after=5)
 
 
-@client.event
-async def on_message(message):
-    messages = ['hugo sucks',
-                'hugo is trash',
-                'hugo is ass']
-    answers = ['Wow that hurt...',
-               'sorry',
-               'Yikes...']
-    if str(messages) in message.content:
-        await message.channel.send(random.choice(answers))
-
-
 # Ping
 
 @client.command()
