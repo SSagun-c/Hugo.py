@@ -44,7 +44,7 @@ async def on_message(message):
     answers = ['Wow that hurt...',
                'sorry',
                'Yikes...']
-    if messages in message.content:
+    if str(messages) in message.content:
         await message.channel.send(random.choice(answers))
 
 
