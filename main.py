@@ -8,6 +8,7 @@ token = os.getenv("DISCORD_TOKEN")
 client = commands.Bot(command_prefix='h!', intents=Intents.all())
 client.remove_command('help')
 
+
 # Events
 
 @tasks.loop(seconds=120)
@@ -31,6 +32,8 @@ async def on_command_error(ctx, error):
                 await ctx.send(f"That command is on cooldown. Try again in {error.retry_after:,.2f} secs.", delete_after=5)
             elif isinstance(error, commands.NSFWChannelRequired):
                 await ctx.send("NSFW Channel is required to run this command", delete_after=5)
+
+
 # Ping
 
 @client.command()
