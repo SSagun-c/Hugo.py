@@ -157,5 +157,11 @@ class miscCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
+
+     # THANK YOU Xignotic#0001 FOR THIS API, IF YOU SEE THIS I LOVE YOU MAN
+
+
+
+
 def setup(bot):
     bot.add_cog(miscCog(bot))
