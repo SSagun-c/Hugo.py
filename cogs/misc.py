@@ -163,6 +163,7 @@ class miscCog(commands.Cog):
 
 
     @commands.command()
+    @commands.is_nsfw()
     @cooldown(1, 10, commands.BucketType.guild)
     async def sauce(self, ctx):
         sauce = random.randint(1, 350000)
