@@ -164,7 +164,7 @@ class miscCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.guild)
-    async def sauce(ctx):
+    async def sauce(self, ctx):
         sauce = random.randint(1, 350000)
         await ctx.send('https://nhentai.to/g/' + sauce)
 
