@@ -26,21 +26,41 @@ class roleplayCog(commands.Cog):
     embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
     await ctx.send(embed=embed)
     
+    
   @commands.command()
   @cooldown(1, 5, commands.BucketType.guild)
   async def kiss(self, ctx, target: Optional[Member]):
-    target = target or ctx.message.author
+    if target == ctx.message.author:
+      await ctx.send("Sorry {ctx.message.author.display_name} but you cant kiss yourself :(")
+    else:
+      async with aiohttp.ClientSession() as session:
+        request = await session.get('https://shiro.gg/api/images/kiss')
+        kissjson = await request.json()
+        
+      embed = discord.Embed(color=0xFFC0CB)
+      embed.set_author(name=f"{ctx.message.author.display_name} kisses {target.display_name} :3", url=kissjson['url'])
+      embed.set_image(url=kissjson['url'])
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
+      await ctx.send(embed=embed)
     
-    async with aiohttp.ClientSession() as session:
-      request = await session.get('https://shiro.gg/api/images/kiss')
-      kissjson = await request.json()
-      
-    embed = discord.Embed(color=0xFFC0CB)
-    embed.set_author(name=f"{ctx.message.author.display_name} kisses {target.display_name} :3", url=kissjson['url'])
-    embed.set_image(url=kissjson['url'])
-    embed.timestamp = datetime.datetime.utcnow()
-    embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
-    await ctx.send(embed=embed)
+    
+  @commands.command()
+  @cooldown(1, 5, commands.BucketType.guild)
+  async def hug(self, ctx, target: Optional[Member]):
+    if target == ctx.message.author:
+      await ctx.send(f"Sorry {ctx.message.author.display_name} but you can't hug yourself :(")
+    else:
+      async with aiohttp.ClientSession() as session:
+        request = await session.get('https://shiro.gg/api/images/hug')
+        hugjson = await request.json()
+        
+      embed = discord.Embed(color=0xF3C7CB)
+      embed.set_author(name=f"{ctx.message.author.display_name} hugs {target.display_name} ^^", url=hugjson['url'])
+      embed.set_image(url=hugjson['url'])
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
+      await ctx.send(embed=embed)
     
     
 def setup(bot):
