@@ -51,4 +51,5 @@ client.load_extension('cogs.info')
 client.load_extension('cogs.misc')                    # I really could do this simpler
 client.load_extension('cogs.moderator')
 client.load_extension('cogs.reddit')
+client.load_extension('cogs.roleplay')
 client.run(os.environ['DISCORD_TOKEN'])
