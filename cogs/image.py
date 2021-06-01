@@ -179,7 +179,7 @@ class imageCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=['h'])
+    @commands.command()
     @cooldown(1, 8, commands.BucketType.guild)
     @commands.is_nsfw()
     async def boobs(self, ctx):
@@ -188,8 +188,8 @@ class imageCog(commands.Cog):
             boobsjson = await request.json()
 
         embed = discord.Embed(color=0xB6245B)
-        embed.set_author(name="🔞 Boobs", url=boobsjson['url'])
-        embed.set_image(url=boobsjson['url'])
+        embed.set_author(name="🔞 Boobs", url=boobsjson["url"])
+        embed.set_image(url=boobsjson["url"])
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text=f"Requested by {ctx.message.author}")
 
