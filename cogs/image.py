@@ -31,16 +31,16 @@ class imageCog(commands.Cog):
     @commands.command(aliases=['nn'])
     @commands.is_nsfw()
     @cooldown(1, 8, commands.BucketType.guild)
-    async def nsfwneko(self, ctx):
+    async def thighs(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.computerfreaker.cf/v1/nsfwneko')
-            nsfwnekojson = await request.json()
+            request = await session.get('https://shiro.gg/api/images/nsfw/thighs')
+            thighsjson = await request.json()
 
         embed = discord.Embed()
-        embed.set_author(name="🔞 Lewded Neko", url=nsfwnekojson['url'])
-        embed.set_image(url=nsfwnekojson['url'])
+        embed.set_author(name="🔞 Thighs", url=thighsjson['url'])
+        embed.set_image(url=thighsjson['url'])
         embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"PLEASE REPORT IF ITS A MINOR `h!help`\nRequested by {ctx.message.author}")
+        embed.set_footer(text=f"Requested by {ctx.message.author}")
 
         await ctx.send(embed=embed)
 
@@ -67,7 +67,7 @@ class imageCog(commands.Cog):
     @commands.is_nsfw()
     async def hentai(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.computerfreaker.cf/v1/hentai')
+            request = await session.get('https://shiro.gg/api/images/nsfw/hentai')
             hentaijson = await request.json()
 
         embed = discord.Embed()
