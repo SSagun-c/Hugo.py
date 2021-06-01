@@ -184,18 +184,18 @@ class roleplayCog(commands.Cog):
 
   @commands.command()
   @cooldown(1, 5, commands.BucketType.guild)
-  async def slaps(self, ctx, target: Optional[Member]):
+  async def slap(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
       await ctx.send(f"Sorry {ctx.message.author.display_name} but you can't slap yourself") 
 
     else:
       async with aiohttp.ClientSession() as session:
-        request = await session.get('https://shiro.gg/api/images/punch')
+        request = await session.get('https://shiro.gg/api/images/slap')
         slapjson = await request.json()
         
       embed = discord.Embed(color=0xFF0EFC)
-      embed.set_author(name=f"{ctx.message.author.display_name} slap {target.display_name} ( ๑˃̵ᴗ˂̵ )و", url=slapjson['url'])
+      embed.set_author(name=f"{ctx.message.author.display_name} slaps {target.display_name} ( ๑˃̵ᴗ˂̵ )و", url=slapjson['url'])
       embed.set_image(url=slapjson['url'])
       embed.timestamp = datetime.datetime.utcnow()
       embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
@@ -212,8 +212,22 @@ class roleplayCog(commands.Cog):
       embed = discord.Embed(title=f'{ctx.message.author.display_name} is embarassed')
       embed.set_image(url=blushjson['url'])
       embed.timestamp = datetime.datetime.utcnow()
-
       await ctx.send(embed=embed)
 
+
+  @commands.command()
+  @cooldown(1, 5, commands.BucketType.guild)
+  async def sleep(self, ctx):
+      async with aiohttp.ClientSession() as session:
+          request = await session.get('https://shiro.gg/api/images/sleep')
+          sleepjson = await request.json()
+
+      embed = discord.Embed(title=f'{ctx.message.author.display_name} is sleeping...💤', url=sleepjson['url'])
+      embed.set_image(url=sleepjson['url'])
+      embed.timestamp = datetime.datetime.utcnow()
+      await ctx.send(embed=embed)
+
+
+  
 def setup(bot):
   bot.add_cog(roleplayCog(bot))
