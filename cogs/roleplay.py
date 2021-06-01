@@ -67,7 +67,7 @@ class roleplayCog(commands.Cog):
     
   @commands.command()
   @cooldown(1, 5, commands.BucketType.guild)
-  async def pouch(self, ctx, target: Optional[Member]):
+  async def poke(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
       await ctx.send(f"Sorry {ctx.message.author.display_name} but you can't poke yourself") 
