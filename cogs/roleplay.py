@@ -2,6 +2,7 @@ import discord
 import aiohttp
 import datetime
 from typing import Optional
+from discord import Member
 from discord.ext import commands
 from discord.ext.commands import cooldown
 
