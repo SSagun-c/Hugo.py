@@ -35,7 +35,7 @@ class roleplayCog(commands.Cog):
       request = await session.get('https://shiro.gg/api/images/kiss')
       kissjson = await request.json()
       
-    embed = discord.Embed()
+    embed = discord.Embed(color=FFC0CB)
     embed.set_author(name=f"{ctx.message.author.display_name} kisses {target.display_name} :3", url=kissjson['url'])
     embed.set_image(url=kissjson['url'])
     embed.timestamp = datetime.datetime.utcnow()
