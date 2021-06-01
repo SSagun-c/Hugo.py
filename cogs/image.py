@@ -97,20 +97,6 @@ class imageCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=['b'])
-    @cooldown(1, 5, commands.BucketType.guild)
-    async def blush(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.waifu.pics/sfw/blush')
-            blushjson = await request.json()
-
-        embed = discord.Embed(title=f'{ctx.message.author.display_name} is embarassed')
-        embed.set_image(url=blushjson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-
-        await ctx.send(embed=embed)
-
-
     @commands.command()
     @cooldown(1, 8, commands.BucketType.guild)
     async def pussy(self, ctx):
