@@ -24,7 +24,7 @@ class roleplayCog(commands.Cog):
     embed.set_author(name=f"{target.display_name} is crying T_T", url=cryjson['url'])
     embed.set_image(url=cryjson['url'])
     embed.timestamp = datetime.datetime.utcnow()
-    embed.set_footer(text=f"Requested by {target.display_name"})
+    embed.set_footer(text=f"Requested by {target.display_name}")
     await ctx.send(embed=embed)
     
     
