@@ -65,5 +65,24 @@ class roleplayCog(commands.Cog):
       await ctx.send(embed=embed)
     
     
+  @commands.command()
+  @cooldown(1, 5, commands.BucketType.guild)
+  async def pouch(self, ctx, target: Optional[Member]):
+    target = target or ctx.message.author
+    if target == ctx.message.author:
+      await ctx.send(f"Sorry {ctx.message.author.display_name} but you can't poke yourself") 
+    else:
+      async with aiohttp.ClientSession() as session:
+        request = await session.get('https://shiro.gg/api/images/poke')
+        pokejson = await request.json()
+        
+      embed = discord.Embed(color=0xF8E7CB)
+      embed.set_author(name=f"{ctx.message.author.display_name} pokes {target.display_name} *bop*", url=pokejson['url'])
+      embed.set_image(url=pokejson['url'])
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
+      await ctx.send(embed=embed)
+      
+      
 def setup(bot):
   bot.add_cog(roleplayCog(bot))
