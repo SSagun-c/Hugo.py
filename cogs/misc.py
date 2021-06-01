@@ -1,3 +1,4 @@
+import aiohttp
 import discord
 import random
 import datetime
@@ -132,12 +133,29 @@ class miscCog(commands.Cog):
     async def support(self, ctx):
         await ctx.send('Need support? Join the Help Server! https://discord.gg/6JkmzhDsps')
 
+
     @commands.command(aliases=['inv'])
     async def invite(self, ctx):
         emoji = '\U0001f44d'
         await ctx.message.add_reaction(emoji)
         directmsg = await ctx.message.author.create_dm()
         await directmsg.send('Thanks for the thoughts of inviting me!\nhttps://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot')
+
+
+    @commands.command(aliases=['wp', 'bg', 'background'])
+    @cooldown(1, 5, commands.BucketType.guild)
+    async def wallpaper(self, ctx):
+        async with aiohttp.ClientSession() as session:
+            request = await session.get('https://shiro.gg/api/images/wallpapers')
+            wpjson = await request.json()
+
+        embed = discord.Embed(color=0x5195F7)
+        embed.set_author(name=f"Here is a Wallpaper for you {ctx.message.author.display_name}")
+        embed.set_image(url=wpjson['url'])
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_footer(text=f"Requested by {ctx.message.author}")
+        await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(miscCog(bot))

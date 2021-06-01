@@ -236,10 +236,35 @@ class roleplayCog(commands.Cog):
           request = await session.get('https://shiro.gg/api/images/smug')
           smugjson = await request.json()
 
-      embed = discord.Embed(color=0xFFFEE0)
+      embed = discord.Embed(color=0xA91BB5)
       embed.set_author(name=f'{ctx.message.author.display_name} smugs ¬‿¬', url=smugjson['url'])
       embed.set_image(url=smugjson['url'])
       embed.timestamp = datetime.datetime.utcnow()
       await ctx.send(embed=embed)
+
+
+  @commands.command()
+  @cooldown(1, 5, commands.BucketType.guild)
+  async def tickle(self, ctx, target: Optional[Member]):
+    target = target or ctx.message.author
+    if target == ctx.message.author:
+      await ctx.send(f"Sorry {ctx.message.author.display_name} but you can't tickle yourself") 
+
+    else:
+      async with aiohttp.ClientSession() as session:
+        request = await session.get('https://shiro.gg/api/images/tickle')
+        ticklejson = await request.json()
+        
+      embed = discord.Embed(color=0xFF0EFC)
+      embed.set_author(name=f"{ctx.message.author.display_name} tickles {target.display_name} (￣∇￣)", url=ticklejson['url'])
+      embed.set_image(url=ticklejson['url'])
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
+      await ctx.send(embed=embed)
+
+
+
+
+
 def setup(bot):
   bot.add_cog(roleplayCog(bot))
