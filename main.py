@@ -14,7 +14,7 @@ client.remove_command('help')
 
 @tasks.loop(seconds=120)
 async def change_status():
-    status = cycle(['with some users... h!help', 'annoying my guy Unnamed... h!help', 'osu! h!help', 'with you... h!help'])
+    status = cycle([f'with {len(client.guilds)} Servers! h!help'])
     await client.change_presence(activity=discord.Game(next(status)))
 
 
