@@ -18,7 +18,7 @@ class roleplayCog(commands.Cog):
       request = await session.get('https://shiro.gg/api/images/cry')
       cryjson = await request.json()
       
-    embes = discord.Embed()
+    embed = discord.Embed()
     embed.set_author(name=f"{ctx.message.author.display_name} is crying T_T", url=cryjson['url'])
     embed.set_image(url=cryjson['url'])
     embed.timestamp = datetime.datetime.utcnow()
