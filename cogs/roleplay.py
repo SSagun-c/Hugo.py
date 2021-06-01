@@ -17,7 +17,7 @@ class roleplayCog(commands.Cog):
     target = target or ctx.message.author
     
     async with aiohttp.ClientSession() as session:
-      request = await session.get("https://shiro.gg/api/images/cry")
+      request = await session.get('https://shiro.gg/api/images/cry')
       cryjson = await request.json()
       
     embes = discord.Embed()
@@ -26,3 +26,7 @@ class roleplayCog(commands.Cog):
     embed.timestamp = datetime.datetime.utcnow()
     embed.set_footer(text=f"Requested by {target.display_name"})
     await ctx.send(embed=embed)
+    
+    
+def setup(bot):
+  bot.add_cog(roleplayCog(bot))
