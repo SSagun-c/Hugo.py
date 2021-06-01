@@ -10,7 +10,7 @@ class roleplayCog(commands.Cog):
     self.bot = bot
     
  
-  @commands.commands()
+  @commands.command()
   @cooldown(1, 5, commands.BucketType.guild)
   async def cry(self, ctx, target: Optional[Member]):
     
