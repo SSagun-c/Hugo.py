@@ -53,7 +53,7 @@ class imageCog(commands.Cog):
             request = await session.get('https://api.computerfreaker.cf/v1/trap')
             trapjson = await request.json()
 
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xC21456)
         embed.set_author(name="🔞 Trap", url=trapjson['url'])
         embed.set_image(url=trapjson['url'])
         embed.timestamp = datetime.datetime.utcnow()
@@ -178,6 +178,22 @@ class imageCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
+
+    @commands.command(aliases=['h'])
+    @cooldown(1, 8, commands.BucketType.guild)
+    @commands.is_nsfw()
+    async def boobs(self, ctx):
+        async with aiohttp.ClientSession() as session:
+            request = await session.get('https://anime-api.hisoka17.repl.co/img/nsfw/boobs')
+            boobsjson = await request.json()
+
+        embed = discord.Embed(color=0xB6245B)
+        embed.set_author(name="🔞 Boobs", url=boobsjson['url'])
+        embed.set_image(url=boobsjson['url'])
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(imageCog(bot))

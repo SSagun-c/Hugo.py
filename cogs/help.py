@@ -16,7 +16,7 @@ class helpCog(commands.Cog):
         embed.add_field(name="**Reddit Command**", value="■ `h!reddit <your subreddit here>`", inline=True)
         embed.add_field(name="**Roleplay Commands**", value="■ `h!kiss`\n■ `h!cry`\n■ `h!hug`\n■ `h!poke`\n■ `h!lick`\n■ `h!pat`\n■ `h!nom`\n■ `h!pout`\n■ `h!punch`\n■ `h!slap`\n■ `h!blush`\n■ `h!smug`\n■ `h!sleep`\n■ `h!tickle`", inline=True)
         embed.add_field(name="**Anime Related Commands**", value="■ `h!anime`\n■ `h!neko`\n■ `h!animeweb`", inline=True)
-        embed.add_field(name="**NSFW Commands**", value="■ `h!hentai`\n■ `h!trap`\n■ `h!thighs`", inline=True)
+        embed.add_field(name="**NSFW Commands**", value="■ `h!hentai`\n■ `h!trap`\n■ `h!thighs`\n■ `h!boobs`", inline=True)
         embed.add_field(name="**Commands for Moderators**", value="■ `h!clear`\n■ `h!kick`\n■ `h!ban`\n■ `h!unban`")
         embed.set_footer(text='Hope this helped! If you have questions join the Help-Server! h!support' )
         await ctx.send(embed=embed)
