@@ -30,8 +30,9 @@ class roleplayCog(commands.Cog):
   @commands.command()
   @cooldown(1, 5, commands.BucketType.guild)
   async def kiss(self, ctx, target: Optional[Member]):
+    target = target or ctx.message.author
     if target == ctx.message.author:
-      await ctx.send("Sorry {ctx.message.author.display_name} but you cant kiss yourself :(")
+      await ctx.send(f"Sorry {ctx.message.author.display_name} but you cant kiss yourself :(")
     else:
       async with aiohttp.ClientSession() as session:
         request = await session.get('https://shiro.gg/api/images/kiss')
@@ -48,6 +49,7 @@ class roleplayCog(commands.Cog):
   @commands.command()
   @cooldown(1, 5, commands.BucketType.guild)
   async def hug(self, ctx, target: Optional[Member]):
+    target = target or ctx.message.author
     if target == ctx.message.author:
       await ctx.send(f"Sorry {ctx.message.author.display_name} but you can't hug yourself :(")
     else:
