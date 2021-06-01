@@ -92,6 +92,7 @@ class miscCog(commands.Cog):
 
     
     @commands.command(aliases=["say"], pass_context=True)
+    @cooldown(1, 5, commands.BucketType.guild)
     async def repeat(self, ctx, *, repeat):
         weknow = ['i am dumb',
                     'im dumb',
