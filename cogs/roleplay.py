@@ -222,12 +222,24 @@ class roleplayCog(commands.Cog):
           request = await session.get('https://shiro.gg/api/images/sleep')
           sleepjson = await request.json()
 
-      embed = discord.Embed(title=f'{ctx.message.author.display_name} is sleeping...💤', url=sleepjson['url'])
+      embed = discord.Embed(color=0xFFF332)
+      embed.set_author(name=f'{ctx.message.author.display_name} is sleeping...💤', url=sleepjson['url'])
       embed.set_image(url=sleepjson['url'])
       embed.timestamp = datetime.datetime.utcnow()
       await ctx.send(embed=embed)
 
 
-  
+  @commands.command()
+  @cooldown(1, 5, commands.BucketType.guild)
+  async def smug(self, ctx):
+      async with aiohttp.ClientSession() as session:
+          request = await session.get('https://shiro.gg/api/images/smug')
+          smugjson = await request.json()
+
+      embed = discord.Embed(color=0xFFFEE0)
+      embed.set_author(name=f'{ctx.message.author.display_name} smugs ¬‿¬', url=smugjson['url'])
+      embed.set_image(url=smugjson['url'])
+      embed.timestamp = datetime.datetime.utcnow()
+      await ctx.send(embed=embed)
 def setup(bot):
   bot.add_cog(roleplayCog(bot))
