@@ -14,7 +14,7 @@ class helpCog(commands.Cog):
         embed.set_thumbnail(url='https://i.postimg.cc/xdyWm6Fj/images.jpg')
         embed.add_field(name="**General Commands**", value="■ `h!ping`\n■ `h!8ball`\n■ `h!pussy`\n■ `h!serverinfo`\n■ `h!roll`\n■ `h!support`\n■ `h!kill`\n■ `h!invite`\n■ `h!repeat (aliases: say)`\n■ `h!avatar`\n■ `h!userinfo`", inline=True)
         embed.add_field(name="**Reddit Command**", value="■ `h!reddit <your subreddit here>`", inline=True)
-        embed.add_field(name="**Roleplay Commands**", value="■ `h!kiss`\n■ `h!cry`\n■ `h!hug`\n■ `h!poke`\n■ `h!lick`\n■ `h!pat`\n■ `h!nom`\n■ `h!pout`\n■ `h!punch`\n■ `h!slap`\n■ `h!blush`")
+        embed.add_field(name="**Roleplay Commands**", value="■ `h!kiss`\n■ `h!cry`\n■ `h!hug`\n■ `h!poke`\n■ `h!lick`\n■ `h!pat`\n■ `h!nom`\n■ `h!pout`\n■ `h!punch`\n■ `h!slap`\n■ `h!blush`", inline=True)
         embed.add_field(name="**Anime Related Commands**", value="■ `h!anime`\n■ `h!neko`\n■ `h!animeweb`", inline=True)
         embed.add_field(name="**NSFW Commands**", value="■ `h!hentai`\n■ `h!trap`\n■ `h!nsfwneko`", inline=True)
         embed.add_field(name="**Commands for Moderators**", value="■ `h!clear`\n■ `h!kick`\n■ `h!ban`\n■ `h!unban`")
