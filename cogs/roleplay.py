@@ -25,6 +25,22 @@ class roleplayCog(commands.Cog):
     embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
     await ctx.send(embed=embed)
     
+  @commands.command()
+  @cooldown(1, 5, commands.BucketType.guild)
+  async def kiss(self, ctx, target: Optional[Member]):
+    target = target or ctx.message.author
+    
+    async with aiohttp.ClientSession() as session:
+      request = await session.get('https://shiro.gg/api/images/kiss')
+      kissjson = await request.json()
+      
+    embed = discord.Embed()
+    embed.set_author(name=f"{ctx.message.author.display_name} kisses {target.display_name} :3", url=kissjson['url'])
+    embed.set_image(url=kissjson['url'])
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
+    await ctx.send(embed=embed)
+    
     
 def setup(bot):
   bot.add_cog(roleplayCog(bot))
