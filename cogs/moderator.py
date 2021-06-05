@@ -1,5 +1,6 @@
 import discord
 import datetime
+import asyncio
 from discord.ext import commands
 
 class moderatorCog(commands.Cog):
@@ -34,7 +35,7 @@ class moderatorCog(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, *, member : int):
         banned_users = await ctx.guild.bans()
         member_name, member_discriminator = member.split('#')
@@ -47,6 +48,47 @@ class moderatorCog(commands.Cog):
                 await ctx.send(f'Unbanned {member} on {datetime.datetime.utcmow()} by {ctx.message.author}')
                 return
 
+
+    @commands.command()
+    @commands.has_permission(mute_members=True)
+    async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
+        guild = ctx.guild
+
+        for role in guild.roles:
+            if role.name == "Muted":
+                await member.add_roles(role)
+            
+            else:
+                perms = discord.Permissions(send_messages=False)
+                await guild.create_role(name='Muted')
+                await member.add_roles(role)
+
+                continue
+
+            embed = discord.Embed(title=f"Case: Mute │ Time: {d} ", description=f"User: {member}", colour=discord.Colour.light_gray())
+            embed.add_field(name="Reason:", value=reason, inline=False)
+            embed.timestamp = datetime.datetime.utcnow()
+            embed.set_footer(text=f"Muted by {ctx.message.author}")
+            await ctx.send(embed=embed)
+
+            if d == "s":
+                await asyncio.sleep(time)
+
+            if d == "m":
+                await asyncio.sleep(time*60)
+
+            if d == "h":
+                await asyncio.sleep(time*60*60)
+
+            if d == "d":
+                await asyncio.sleep(time*60*60*24)
+
+            await member.remove_roles(role)
+
+            embed = discord.Embed(title="unmute (temp) ", description=f"unmuted -{member.mention} ", colour=discord.Colour.light_gray())
+            await ctx.send(embed=embed)
+
+            return
 
 def setup(bot):
     bot.add_cog(moderatorCog(bot))
