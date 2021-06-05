@@ -29,16 +29,24 @@ class TimeConverter(commands.Converter):
 class moderatorCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+    
     @commands.command()
     @commands.has_permissions(manage_roles=True)
-    async def mute(self, ctx, member:discord.Member, *, time:TimeConverter = None):
+    async def mute(self, ctx, member:discord.Member, time:TimeConverter = None, *, reason=None):
 
         role = discord.utils.get(ctx.guild.roles, name="Muted")
-        await member.add_roles(role)
-        await ctx.send(("Muted {} for {}s" if time else "Muted {}").format(member, time))
-        if time:
-            await asyncio.sleep(time)
-            await member.remove_roles(role)
+        if role == None:
+            await ctx.send("Please add a Role called `Muted` with the no access to sending messages")
+        else:
+            await member.add_roles(role)
+            embed = discord.Embed(title=f"Case  Tempmute │ Time  {time}" if time else "Case  Mute", description=f"{member}", color=0xFFFF00)
+            embed.timestamp = datetime.datetime.utcnow()
+            embed.add_field(name="Reason", value=f"{reason}")
+            embed.set_footer(text=f"Tempmuted by {ctx.message.author}")
+            await ctx.send(embed=embed)
+            if time:
+                await asyncio.sleep(time)
+                await member.remove_roles(role)
 
     
     @commands.command()
