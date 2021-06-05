@@ -56,6 +56,18 @@ class moderatorCog(commands.Cog):
                 embed.set_footer(text=f"Tempmuted by {ctx.message.author}")
                 await ctx.send(embed=embed)
     
+
+    @commands.command()
+    @commands.has_permissions(manage_roles=True)
+    async def unmute(ctx, member: discord.Member):
+        mutedRole = discord.utils.get(ctx.guild.roles, name="Muted")
+
+        await member.remove_roles(mutedRole)
+        embed = discord.Embed(title=f"Unmuted!", description=f"{member}", color=0x00FF00)
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.add_field(name="Moderator", value=f"{ctx.message.author}")
+        await ctx.send(embed=embed)
+
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount : int):
