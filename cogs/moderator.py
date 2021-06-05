@@ -36,10 +36,13 @@ class moderatorCog(commands.Cog):
 
         role = discord.utils.get(ctx.guild.roles, name="Muted")
         if role == None:
-            await ctx.send("Please add a Role called `Muted` with the no access to sending messages")
+            perms = discord.Permissions(send_messages=False, read_messages=True)
+            await ctx.message.guild.create_role(name="Muted", permissions=perms)
+            await ctx.send("Sweet! I created the `Muted` role! Now try again!")
         else:
             await member.add_roles(role)
-            embed = discord.Embed(title=f"Case  Tempmute │ Time  {time}" if time else "Case  Mute", description=f"{member}", color=0xFFFF00)
+            await ctx.message.delete()
+            embed = discord.Embed(title=f"Case  Tempmute │ Time  {time}s" if time else "Case  Mute", description=f"{member}", color=0xFFFF00)
             embed.timestamp = datetime.datetime.utcnow()
             embed.add_field(name="Reason", value=f"{reason}")
             embed.set_footer(text=f"Tempmuted by {ctx.message.author}")
@@ -47,7 +50,11 @@ class moderatorCog(commands.Cog):
             if time:
                 await asyncio.sleep(time)
                 await member.remove_roles(role)
-
+                embed = discord.Embed(title=f"Case  Time's up!", description=f"{member}", color=0x00FF00)
+                embed.timestamp = datetime.datetime.utcnow()
+                embed.add_field(name="Reason", value=f"{reason}")
+                embed.set_footer(text=f"Tempmuted by {ctx.message.author}")
+                await ctx.send(embed=embed)
     
     @commands.command()
     @commands.has_permissions(manage_messages=True)
