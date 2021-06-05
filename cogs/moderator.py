@@ -52,8 +52,8 @@ class moderatorCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def tempmute(self, ctx, member: discord.Member, time: int, d, *, reason=None):
-        guild = ctx.guild
+    async def mute(self, ctx, member: discord.Member, time: int, d, *, reason=None):
+        guild = ctx.message.guild
 
         for role in guild.roles:
             if role.name == "Muted":
