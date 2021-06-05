@@ -60,8 +60,9 @@ class moderatorCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_roles=True)
     async def unmute(self, ctx, member: discord.Member):
+        mutedRole = discord.utils.get(ctx.guild.roles, name="Muted")
 
-        await member.remove_roles(name="Muted")
+        await member.remove_roles(mutedRole)
         embed = discord.Embed(title=f"Unmuted!", description=f"{member}", color=0x00FF00)
         embed.timestamp = datetime.datetime.utcnow()
         embed.add_field(name="Moderator", value=f"{ctx.message.author}")
