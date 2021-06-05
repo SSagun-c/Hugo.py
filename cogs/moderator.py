@@ -1,17 +1,51 @@
 import discord
 import datetime
 import asyncio
+import sys
+import re
 from discord import permissions
 from discord.ext import commands
+
+
+time_regex = re.compile("(?:(\d{1,5})(h|s|m|d))+?")
+time_dict = {"h":3600, "s":1, "m":60, "d":86400}
+
+
+class TimeConverter(commands.Converter):
+    async def convert(self, ctx, argument):
+        args = argument.lower()
+        matches = re.findall(time_regex, args)
+        time = 0
+        for v, k in matches:
+            try:
+                time += time_dict[k]*float(v)
+            except KeyError:
+                raise commands.BadArgument("{} is an invalid time-key! s/m/h/d are valid!".format(k))
+            except ValueError:
+                raise commands.BadArgument("{} is not a number!".format(v))
+        return time
+
 
 class moderatorCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+    @commands.command()
+    @commands.has_permissions(manage_roles=True)
+    async def mute(self, ctx, member:discord.Member, *, time:TimeConverter = None):
+
+        role = discord.utils.get(ctx.guild.roles, name="Muted")
+        await member.add_roles(role)
+        await ctx.send(("Muted {} for {}s" if time else "Muted {}").format(member, time))
+        if time:
+            await asyncio.sleep(time)
+            await member.remove_roles(role)
+
     
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount : int):
         await ctx.channel.purge(limit=amount + 1)
+
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
@@ -24,6 +58,7 @@ class moderatorCog(commands.Cog):
         embed.set_footer(text=f"Kicked by {ctx.message.author}")
         await ctx.send(embed=embed)
 
+
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason=None):
@@ -34,6 +69,7 @@ class moderatorCog(commands.Cog):
         embed.add_field(name="Reason", value=f"{reason}")
         embed.set_footer(text=f"Banned by {ctx.message.author}")
         await ctx.send(embed=embed)
+
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
@@ -49,44 +85,6 @@ class moderatorCog(commands.Cog):
                 await ctx.send(f'Unbanned {member} on {datetime.datetime.utcmow()} by {ctx.message.author}')
                 return
 
-
-    @commands.command()
-    @commands.has_permissions(kick_members=True)
-    async def mute(self, ctx, member: discord.Member, time: int, d, *, reason=None):
-        guild = ctx.message.guild
-
-        for role in guild.roles:
-            if role.name == "Muted":
-                await member.add_roles(role)
-            
-            else:
-                await ctx.send("Please create a role called `Muted`")
-
-
-            embed = discord.Embed(title=f"Case: Mute │ Time: {d} ", description=f"User: {member}", colour=discord.Colour.light_gray())
-            embed.add_field(name="Reason:", value=reason, inline=False)
-            embed.timestamp = datetime.datetime.utcnow()
-            embed.set_footer(text=f"Muted by {ctx.message.author}")
-            await ctx.send(embed=embed)
-
-            if d == "s":
-                await asyncio.sleep(time)
-
-            if d == "m":
-                await asyncio.sleep(time*60)
-
-            if d == "h":
-                await asyncio.sleep(time*60*60)
-
-            if d == "d":
-                await asyncio.sleep(time*60*60*24)
-
-            await member.remove_roles(role)
-
-            embed = discord.Embed(title="unmute (temp) ", description=f"unmuted -{member.mention} ", colour=discord.Colour.light_gray())
-            await ctx.send(embed=embed)
-
-            return
 
 def setup(bot):
     bot.add_cog(moderatorCog(bot))
