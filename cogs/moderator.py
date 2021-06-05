@@ -51,8 +51,7 @@ class moderatorCog(commands.Cog):
 
 
     @commands.command()
-    @commands.has_permissions(kick_members
-    =True)
+    @commands.has_permissions(kick_members=True)
     async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
         guild = ctx.guild
 
@@ -61,9 +60,7 @@ class moderatorCog(commands.Cog):
                 await member.add_roles(role)
             
             else:
-                perms = discord.Permissions(send_messages=False)
-                await guild.create_role(name='Muted', permissions=perms)
-                await member.add_roles(role)
+                await ctx.send("Please create a role called `Muted`")
 
 
             embed = discord.Embed(title=f"Case: Mute │ Time: {d} ", description=f"User: {member}", colour=discord.Colour.light_gray())
