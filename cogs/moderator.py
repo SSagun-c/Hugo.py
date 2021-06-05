@@ -50,7 +50,7 @@ class moderatorCog(commands.Cog):
 
 
     @commands.command()
-    @commands.has_permissions(mute_members=True)
+    @commands.has_permissions(kick_members=True)
     async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
         guild = ctx.guild
 
