@@ -1,6 +1,7 @@
 import discord
 import datetime
 import asyncio
+from discord import permissions
 from discord.ext import commands
 
 class moderatorCog(commands.Cog):
@@ -50,7 +51,8 @@ class moderatorCog(commands.Cog):
 
 
     @commands.command()
-    @commands.has_permissions(kick_members=True)
+    @commands.has_permissions(kick_members
+    =True)
     async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
         guild = ctx.guild
 
@@ -60,7 +62,7 @@ class moderatorCog(commands.Cog):
             
             else:
                 perms = discord.Permissions(send_messages=False)
-                await guild.create_role(name='Muted')
+                await guild.create_role(name='Muted', permissions=perms)
                 await member.add_roles(role)
 
                 continue
