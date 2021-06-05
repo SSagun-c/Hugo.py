@@ -65,7 +65,6 @@ class moderatorCog(commands.Cog):
                 await guild.create_role(name='Muted', permissions=perms)
                 await member.add_roles(role)
 
-                continue
 
             embed = discord.Embed(title=f"Case: Mute │ Time: {d} ", description=f"User: {member}", colour=discord.Colour.light_gray())
             embed.add_field(name="Reason:", value=reason, inline=False)
