@@ -59,7 +59,7 @@ class moderatorCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_roles=True)
-    async def unmute(ctx, member: discord.Member):
+    async def unmute(self, ctx, member: discord.Member):
 
         await member.remove_roles(name="Muted")
         embed = discord.Embed(title=f"Unmuted!", description=f"{member}", color=0x00FF00)
