@@ -170,9 +170,9 @@ class miscCog(commands.Cog):
         await ctx.send(f"https://nhentai.to/g/{sauce}")
 
 
-    @client.command(case_insensitive = True, aliases = ["remind", "remindme", "remind_me"])
+    @commands.command(case_insensitive = True, aliases = ["remind", "remindme", "remind_me"])
     @commands.bot_has_permissions(attach_files = True, embed_links = True)
-    async def reminder(ctx, time, *, reminder):
+    async def reminder(self, ctx, time, *, reminder):
         print(time)
         print(reminder)
         user = ctx.message.author
