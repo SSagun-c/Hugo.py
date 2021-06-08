@@ -1,6 +1,7 @@
 import aiohttp
 import discord
 import random
+import asyncio
 import datetime
 from typing import Optional
 from discord import Member
@@ -170,7 +171,7 @@ class miscCog(commands.Cog):
         await ctx.send(f"https://nhentai.to/g/{sauce}")
 
 
-    @commands.command(case_insensitive = True, aliases = ["remind", "remindme", "remind_me"]
+    @commands.command(case_insensitive = True, aliases = ["remind", "remindme", "remind_me"])
     async def reminder(self, ctx, time, *, reminder):
         user = ctx.message.author
         embed = discord.Embed(color=0x55a7f7, timestamp=datetime.utcnow())
@@ -202,7 +203,8 @@ class miscCog(commands.Cog):
             await ctx.send(f"Alright, I will remind you about {reminder} in {counter}.")
             await asyncio.sleep(seconds)
             await ctx.send(f"Hi, you asked me to remind you about {reminder} {counter} ago.")
-            return
         await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(miscCog(bot))
