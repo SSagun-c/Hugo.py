@@ -27,13 +27,18 @@ async def on_ready():
 @client.event
 async def on_command_error(ctx, error):
             if isinstance(error, commands.MissingPermissions):
-                await ctx.send(f"Sorry {ctx.message.author.display_name}, either you or I am missing permissions to do this.")
+                embed = discord.Embed(title=f"❌ Sorry {ctx.message.author.display_name}, either you or I am missing permissions to do this", color=color=0xFF0000)
+                await ctx.send(embed=embed)
             elif isinstance(error, commands.MissingRequiredArgument):
-                await ctx.send("One or more required Arguments are missing")
+                embed = discord.Embed(title=f"❌ Its a regired Argument thats missing", color=0xFF0000)
+                await ctx.send(embed=embed)
             elif isinstance(error, commands.CommandOnCooldown):
-                await ctx.send(f"That command is on cooldown. Try again in {error.retry_after:,.2f} secs.")
+                embed = discord.Embed(title=f"❌ Ratelimited. Try again in {error.retry_after:,.2f} secs.")
+                await ctx.send(embed=embed)
+                
             elif isinstance(error, commands.NSFWChannelRequired):
-                await ctx.send("NSFW Channel is required to run this command")
+                embed = discord.Embed(title="❌ This is not a NSFW Channel")
+                await ctx.send(embed=embed)
 
 
 # Ping
