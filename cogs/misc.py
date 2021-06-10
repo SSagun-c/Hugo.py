@@ -1,7 +1,6 @@
 import aiohttp
 import discord
 import random
-import asyncio
 import datetime
 from typing import Optional
 from discord import Member
@@ -171,40 +170,17 @@ class miscCog(commands.Cog):
         await ctx.send(f"https://nhentai.to/g/{sauce}")
 
 
-    @commands.command(case_insensitive = True, aliases = ["remind", "remindme", "remind_me"])
-    async def reminder(self, ctx, time, *, reminder):
-        user = ctx.message.author
-        embed = discord.Embed(color=0x55a7f7, timestamp=datetime.utcnow())
-        embed.set_footer(text="If you have any questions, suggestions or bug reports, please join our support Discord Server: h!support") 
-        seconds = 0
-        if reminder is None:
-            embed.add_field(name='Warning', value='Please specify what do you want me to remind you about.') # Error message
-        if time.lower().endswith("d"):
-            seconds += int(time[:-1]) * 60 * 60 * 24
-            counter = f"{seconds // 60 // 60 // 24} days"
-        if time.lower().endswith("h"):
-            seconds += int(time[:-1]) * 60 * 60
-            counter = f"{seconds // 60 // 60} hours"
-        elif time.lower().endswith("m"):
-            seconds += int(time[:-1]) * 60
-            counter = f"{seconds // 60} minutes"
-        elif time.lower().endswith("s"):
-            seconds += int(time[:-1])
-            counter = f"{seconds} seconds"
-        if seconds == 0:
-            embed.add_field(name='Warning',
-                            value='Please specify a proper duration, send `reminder_help` for more information.')
-        elif seconds < 300:
-            embed.add_field(name='Warning',
-                            value='You have specified a too short duration!\nMinimum duration is 5 minutes.')
-        elif seconds > 7776000:
-            embed.add_field(name='Warning', value='You have specified a too long duration!\nMaximum duration is 90 days.')
-        else:
-            await ctx.send(f"Alright, I will remind you about {reminder} in {counter}.")
-            await asyncio.sleep(seconds)
-            await ctx.send(f"Hi, you asked me to remind you about {reminder} {counter} ago.")
+    @commands.command(aliases=['emb'])
+    @commands.has_permissions(manage_messages=True)
+    async def embed(self, ctx, *, emsg):
+      if emsg == None:
+        embed = discord.Embed(description="❌ Please provide a Message to be embedded")
         await ctx.send(embed=embed)
-
-
+      
+      else:
+        embed = discord.Embed(title=f"Embed by {ctx.message.author}", description=f"{emsg}")
+        embed.timestamp = datetime.datetime.utcnow()
+        await ctx.send(embed=embed)
+    
 def setup(bot):
     bot.add_cog(miscCog(bot))
