@@ -178,6 +178,7 @@ class miscCog(commands.Cog):
         await ctx.send(embed=embed)
       
       else:
+        await ctx.message.delete()
         embed = discord.Embed(title=f"Embed by {ctx.message.author}", description=f"{emsg}")
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
