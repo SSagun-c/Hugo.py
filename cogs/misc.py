@@ -178,11 +178,11 @@ class miscCog(commands.Cog):
         await ctx.send(embed=embed)
       
       else:
-        await ctx.message.delete()
         embed = discord.Embed(title=f"Embed by {ctx.message.author}", color=0xEE6363)
-        embed.add_field(value=f"{emsg}")
+        embed.add_field(value=emsg)
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
+        await ctx.message.delete()
     
 def setup(bot):
     bot.add_cog(miscCog(bot))
