@@ -172,16 +172,12 @@ class miscCog(commands.Cog):
 
     @commands.command(aliases=['emb'])
     @commands.has_permissions(manage_messages=True)
-    async def embed(self, ctx, *, emsg):
-      if emsg == None:
-        embed = discord.Embed(description="❌ Please provide a Message to be embedded")
-        await ctx.send(embed=embed)
-      
-      else:
-        embed = discord.Embed(title=f"Embed by {ctx.message.author}", color=0xEE6363)
-        embed.add_field(title=("Embed"), value=emsg)
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed=embed)
+    async def embed(self, ctx, title, *, emsg):
+
+      embed = discord.Embed(title=title if title else f"Embed by {ctx.message.author}", color=0xEE6363)
+        
+      embed.timestamp = datetime.datetime.utcnow()
+      await ctx.send(embed=embed)
     
 def setup(bot):
     bot.add_cog(miscCog(bot))
