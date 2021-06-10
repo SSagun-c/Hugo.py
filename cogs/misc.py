@@ -174,7 +174,7 @@ class miscCog(commands.Cog):
     @commands.has_permissions(manage_messages=True)
     async def embed(self, ctx, title, *, emsg):
 
-      embed = discord.Embed(title=title if title else f"Embed by {ctx.message.author}", color=0xEE6363)
+      embed = discord.Embed(title=title if title else f"Embed by {ctx.message.author}", description=emsg, color=0xEE6363)
         
       embed.timestamp = datetime.datetime.utcnow()
       await ctx.send(embed=embed)
