@@ -10,7 +10,8 @@ class helpCog(commands.Cog):
     @commands.command()
     async def help(self, ctx):
 
-        embed = discord.Embed(title="Hugo.py Command List", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)")
+        embed = discord.Embed(title="Currently being edited", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)", color=0x8962AA)
+
         await ctx.send(embed=embed)
 
 def setup(bot):
