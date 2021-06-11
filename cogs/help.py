@@ -10,7 +10,7 @@ class helpCog(commands.Cog):
     @commands.command()
     async def help(self, ctx):
 
-        embed = discord.Embed(title="Hugo.py Command List", description="For help join the help Server" + "here", url='https://discord.gg/6JkmzhDsps')
+        embed = discord.Embed(title="Hugo.py Command List", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)")
         await ctx.send(embed=embed)
 
 def setup(bot):
