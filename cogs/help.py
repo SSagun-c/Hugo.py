@@ -12,7 +12,7 @@ class helpCog(commands.Cog):
         reddit = '<:reddit:853000371601277018>'
         embed = discord.Embed(title="Hugo.py Commands", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)\nPrefix  `h!`", color=0x8962AA)
 
-        embed.add_field(name='⚙ General Commands', value="`ping`  `8ball`  `pussy`\n`serverinfo`  `roll`  `support`\n`kill`  `invite`  `repeat`\n`avatar`  `userinfo`  `wallpaper`", inline=True)
+        embed.add_field(name='⚙️ General Commands', value="`ping`  `8ball`  `pussy`\n`serverinfo`  `roll`  `support`\n`kill`  `invite`  `repeat`\n`avatar`  `userinfo`  `wallpaper`", inline=True)
         embed.add_field(name="🎭 Roleplay Commands", value="`kiss`  `cry`  `hug`  `poke`\n`lick`  `pat`  `nom`  `pout`\n`punch`  `slap`  `blush`\n`smug`  `sleep`  `tickle`", inline=True)
         embed.add_field(name="🖋 Anime Commands", value="`anime`  `neko`  `animeweb`", inline=True)
         embed.add_field(name="🔞 NSFW Commands", value="`hentai`  `trap`  `thighs`\n`boobs`  `yuri`", inline=True)
