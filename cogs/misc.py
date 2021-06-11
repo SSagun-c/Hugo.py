@@ -174,10 +174,16 @@ class miscCog(commands.Cog):
     @commands.has_permissions(manage_messages=True)
     async def embed(self, ctx, title, *, emsg):
 
-      embed = discord.Embed(title=title if title else f"Embed by {ctx.message.author}", description=emsg, color=0xEE6363)
+      embed = discord.Embed(title=title, description=emsg, color=0xEE6363)
         
       embed.timestamp = datetime.datetime.utcnow()
       await ctx.send(embed=embed)
     
+
+    @commands.command()
+    async def vote(self, ctx):
+        embed = discord.Embed(title="Click me to vote me!", url='https://top.gg/bot/832922273597227019/vote', color=0x7289DA)
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(miscCog(bot))
