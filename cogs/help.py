@@ -34,7 +34,7 @@ class helpCog(commands.Cog):
       embed.add_field(name="Mute", value="`h!mute <time(Leave blank for permamute)> <Reason(Optional)>`")
       embed.add_field(name="Unban", value="`h!unban <User and Discriminator(e.g. h!unban SSagun.py#6969)>`")
       embed.add_field(name="Unmute", value="`h!unmute <member>`")
-      embed.add_field(name="Clear", value="`h!clear <amou(Please dont exaggerate)>`")
+      embed.add_field(name="Clear", value="`h!clear <amount(Please dont exaggerate)>`")
         
       embed.set_footer(text="If this still didnt help you, you should join the Help Server! h!support")
       
