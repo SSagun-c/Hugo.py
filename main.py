@@ -48,6 +48,15 @@ async def ping(ctx):
     await ctx.send(f'```{client.latency * 1000}ms```')
 
 
+# Bot owner only commands
+@client.command(pass_context=True)
+@commands.is_owner()
+async def servers(ctx):
+        activeservers = client.guilds
+        for guild in activeservers:
+            await ctx.send(guild.name)
+            print(guild.name)
+
 # Loads all of the Cogs
 
 client.load_extension('cogs.help')
