@@ -42,4 +42,7 @@ class weatherCog(commands.Cog):
           else:
             embed = discord.Embed(description='❌ City not found', color=0xFF0000)
             await channel.send(embed=embed)
-      
+
+
+def setup.Cog(bot):
+  bot.add_cog(weatherCog(bot))
