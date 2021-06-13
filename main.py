@@ -7,21 +7,21 @@ from discord import Intents
 from itertools import cycle
 
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix='h!', intents=Intents.all())
-client.remove_command('help')
+bot = commands.Bot(command_prefix='h!', intents=Intents.all())
+bot.remove_command('help')
 
 dbl_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzMjkyMjI3MzU5NzIyNzAxOSIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIzNTk0MjM3fQ.B7SfrpVkf7ilGU2JiVPE7xy8Fn49wqWiLpZ1yy7X6Do"
-client.topggpy = topgg.DBLClient(client, dbl_token)
+bot.topggpy = topgg.DBLClient(bot, dbl_token)
 
 # Events
 
 @tasks.loop(seconds=120)
 async def change_status():
-    status = cycle([f'with {len(client.guilds)} Servers! h!help'])
-    await client.change_presence(activity=discord.Game(next(status)))
+    status = cycle([f'with {len(bot.guilds)} Servers! h!help'])
+    await bot.change_presence(activity=discord.Game(next(status)))
 
 
-@client.event
+@bot.event
 async def on_ready():
     change_status.start()
     print("Bot is online and ready to use!")
@@ -29,7 +29,7 @@ async def on_ready():
 @tasks.loop(minutes=30)
 async def update_stats():
     try:
-        await client.topgg.post_guild_count()
+        await bot.topgg.post_guild_count()
         print(f"Posted!")
     except Exception as e:
         print(f"Failed! \n{e.__class__.__name__}: {e}")
@@ -37,7 +37,7 @@ async def update_stats():
 
 
 
-@client.event
+@bot.event
 async def on_command_error(ctx, error):
             if isinstance(error, commands.MissingPermissions):
                 embed = discord.Embed(title=f"❌ Sorry {ctx.message.author.display_name}, either you or I am missing permissions to do this", color=0xFF0000)
@@ -56,28 +56,28 @@ async def on_command_error(ctx, error):
 
 # Ping
 
-@client.command()
+@bot.command()
 async def ping(ctx):
-    await ctx.send(f'```{client.latency * 1000}ms```')
+    await ctx.send(f'```{bot.latency * 1000}ms```')
 
 
 # Bot owner only commands
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 @commands.is_owner()
 async def servers(ctx):
-        activeservers = client.guilds
+        activeservers = bot.guilds
         for guild in activeservers:
             await ctx.send(guild.name)
             print(guild.name)
 
 # Loads all of the Cogs
 
-client.load_extension('cogs.help')
-client.load_extension('cogs.image')
-client.load_extension('cogs.info')
-client.load_extension('cogs.misc')                    # I really could do this simpler
-client.load_extension('cogs.moderator')
-client.load_extension('cogs.reddit')
-client.load_extension('cogs.roleplay')
+bot.load_extension('cogs.help')
+bot.load_extension('cogs.image')
+bot.load_extension('cogs.info')
+bot.load_extension('cogs.misc')                    # I really could do this simpler
+bot.load_extension('cogs.moderator')
+bot.load_extension('cogs.reddit')
+bot.load_extension('cogs.roleplay')
 update_stats.start()
-client.run(os.environ['DISCORD_TOKEN'])
+bot.run(os.environ['DISCORD_TOKEN'])
