@@ -6,12 +6,14 @@ from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
 
+
+topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix='h!', intents=Intents.all())
+client = commands.client(command_prefix='h!', intents=Intents.all())
 client.remove_command('help')
 
-dbl_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzMjkyMjI3MzU5NzIyNzAxOSIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIzNTk0MjM3fQ.B7SfrpVkf7ilGU2JiVPE7xy8Fn49wqWiLpZ1yy7X6Do"
-client.topggpy = topgg.DBLClient(client, dbl_token)
+dbl_token = topggtoken
+client.topgg = topgg.DBLClient(client, dbl_token)
 
 # Events
 
