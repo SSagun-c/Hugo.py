@@ -4,3 +4,4 @@ Pillow
 pymongo
 praw
 topggpy
+kitsu-wrapper

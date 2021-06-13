@@ -165,7 +165,7 @@ class imageCog(commands.Cog):
 
     @commands.command(aliases=['a'])
     @cooldown(1, 8, commands.BucketType.guild)
-    async def anime(self, ctx):
+    async def anigirl(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://api.computerfreaker.cf/v1/anime')
             animejson = await request.json()
