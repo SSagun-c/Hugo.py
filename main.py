@@ -1,6 +1,7 @@
 import discord
 import os
 import random
+import topgg
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
@@ -9,6 +10,8 @@ token = os.getenv("DISCORD_TOKEN")
 client = commands.Bot(command_prefix='h!', intents=Intents.all())
 client.remove_command('help')
 
+dbl_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzMjkyMjI3MzU5NzIyNzAxOSIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIzNTk0MjM3fQ.B7SfrpVkf7ilGU2JiVPE7xy8Fn49wqWiLpZ1yy7X6Do"
+bot.topggpy = topgg.DBLClient(bot, dbl_token)
 
 # Events
 
@@ -22,6 +25,16 @@ async def change_status():
 async def on_ready():
     change_status.start()
     print("Bot is online and ready to use!")
+
+@tasks.loop(minutes=30)
+async def update_stats():
+    try:
+        await bot.topgg.post_guild_count()
+        print(f"Posted!")
+    except Exception as e:
+        print(f"Failed! \n{e.__class__.__name__}: {e}")
+
+
 
 
 @client.event
@@ -66,4 +79,5 @@ client.load_extension('cogs.misc')                    # I really could do this s
 client.load_extension('cogs.moderator')
 client.load_extension('cogs.reddit')
 client.load_extension('cogs.roleplay')
+update_stats.start()
 client.run(os.environ['DISCORD_TOKEN'])
