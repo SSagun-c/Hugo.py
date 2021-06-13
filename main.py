@@ -9,7 +9,7 @@ from itertools import cycle
 
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
-client = commands.client(command_prefix='h!', intents=Intents.all())
+client = commands.Bot(command_prefix='h!', intents=Intents.all())
 client.remove_command('help')
 
 dbl_token = topggtoken
