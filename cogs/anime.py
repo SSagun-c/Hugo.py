@@ -24,9 +24,9 @@ class animeCog(commands.Cog):
             aqjson = await request.json()
 
 
-        embed = discord.Embed(title=aqjson['anime'], description=f"Character: {aqjson['character']}")
+        embed = discord.Embed(title=f"Anime: {aqjson['anime']}", description=f"Character: {aqjson['character']}", color=0xE0A899)
 
-        embed.add_field(name=None, value=aqjson['quote'])
+        embed.add_field(name="Quote", value=aqjson['quote'])
 
 
         await ctx.send(embed=embed)
