@@ -11,7 +11,7 @@ client = commands.Bot(command_prefix='h!', intents=Intents.all())
 client.remove_command('help')
 
 dbl_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzMjkyMjI3MzU5NzIyNzAxOSIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIzNTk0MjM3fQ.B7SfrpVkf7ilGU2JiVPE7xy8Fn49wqWiLpZ1yy7X6Do"
-bot.topggpy = topgg.DBLClient(bot, dbl_token)
+client.topggpy = topgg.DBLClient(client, dbl_token)
 
 # Events
 
@@ -29,7 +29,7 @@ async def on_ready():
 @tasks.loop(minutes=30)
 async def update_stats():
     try:
-        await bot.topgg.post_guild_count()
+        await client.topgg.post_guild_count()
         print(f"Posted!")
     except Exception as e:
         print(f"Failed! \n{e.__class__.__name__}: {e}")
