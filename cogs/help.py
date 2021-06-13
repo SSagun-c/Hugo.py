@@ -14,7 +14,7 @@ class helpCog(commands.Cog):
 
         embed.add_field(name='⚙️ General Commands', value="`ping` │ `8ball` │ `pussy`\n`serverinfo` │ `roll` │ `support`\n`kill` │ `invite` │ `repeat`\n`avatar` │ `userinfo` │ `wallpaper` │ `embed`", inline=True)
         embed.add_field(name="🎭 Roleplay Commands", value="`kiss` │ `cry` │ `hug` │ `poke`\n`lick` │ `pat` │ `nom` │ `pout`\n`punch` │ `slap` │ `blush`\n`smug` │ `sleep` │ `tickle`", inline=True)
-        embed.add_field(name="🖋 Anime Commands", value="`anigirl` │ `neko` │ `animeweb`", inline=True)
+        embed.add_field(name="🖋 Anime Commands", value="`anigirl` │ `neko` │ `animeweb`\n`animequote`", inline=True)
         embed.add_field(name="🔞 NSFW Commands", value="`hentai` │ `trap` │ `thighs`\n`boobs` │ `yuri`", inline=True)
         embed.add_field(name=f"{reddit} Reddit Command", value="`reddit <your subreddit here>`", inline=True)
         embed.add_field(name="🔎 Moderator Commands", value="`ban` │ `kick` │ `clear`\n`mute` │ `unmute` │ `unban`", inline=True)
