@@ -47,24 +47,7 @@ class animeCog(commands.Cog):
         embed = discord.Embed(title=f"Here's your Avatar {ctx.message.author.display_name}", color=0xAE0786)
 
         embed.set_image(url=ajson['url'])
-        print(ajson['url'])
         await ctx.send(embed=embed)
-
-
-    @commands.command()
-    @cooldown(1, 10, commands.BucketType.user)
-    async def anime(self, ctx, *, name='Naruto'):
-
-        async with aiohttp.ClientSession() as session:
-
-            request = await session.get(f" https://api.jikan.moe/v3/search/anime?q={name}")
-            
-            anijson = await request.json()
-
-        embed = discord.Embed(title=anijson['results'])
-
-        await ctx.send(embed=embed)
-        print(anijson['results'])
 
 
 def setup(bot):
