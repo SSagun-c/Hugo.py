@@ -13,7 +13,7 @@ class imageCog(commands.Cog):
 
     @commands.command(aliases=['y'])
     @commands.is_nsfw()
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     async def yuri(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://api.computerfreaker.cf/v1/yuri')
@@ -30,7 +30,7 @@ class imageCog(commands.Cog):
 
     @commands.command(aliases=['nn'])
     @commands.is_nsfw()
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     async def thighs(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://shiro.gg/api/images/nsfw/thighs')
@@ -46,7 +46,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     @commands.is_nsfw()
     async def trap(self, ctx):
         async with aiohttp.ClientSession() as session:
@@ -63,7 +63,7 @@ class imageCog(commands.Cog):
 
     
     @commands.command(aliases=['h'])
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     @commands.is_nsfw()
     async def hentai(self, ctx):
         async with aiohttp.ClientSession() as session:
@@ -82,7 +82,7 @@ class imageCog(commands.Cog):
     # sfw image commands
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     async def neko(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://api.computerfreaker.cf/v1/neko')
@@ -98,7 +98,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     async def pussy(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://some-random-api.ml/img/cat')
@@ -164,7 +164,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command(aliases=['a'])
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     async def anigirl(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://api.computerfreaker.cf/v1/anime')
@@ -180,7 +180,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     @commands.is_nsfw()
     async def boobs(self, ctx):
         async with aiohttp.ClientSession() as session:

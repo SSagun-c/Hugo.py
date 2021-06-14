@@ -39,7 +39,7 @@ class miscCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 5, commands.BucketType.guild)
+    @cooldown(1, 5, commands.BucketType.user)
     async def roll(self, ctx, amount: int=100):
         number = random.randint(1, amount)
         if number == 69:
@@ -93,7 +93,7 @@ class miscCog(commands.Cog):
 
     
     @commands.command(aliases=["say"], pass_context=True)
-    @cooldown(1, 5, commands.BucketType.guild)
+    @cooldown(1, 5, commands.BucketType.user)
     async def repeat(self, ctx, *, repeat):
         weknow = ['i am dumb',
                     'im dumb',
@@ -118,7 +118,7 @@ class miscCog(commands.Cog):
 
 
     @commands.command(aliases=['av'])
-    @cooldown(1, 9, commands.BucketType.guild)
+    @cooldown(1, 9, commands.BucketType.user)
     async def avatar(self, ctx, target: Optional[Member]):
         target = target or ctx.message.author
         av = target.avatar_url
@@ -139,11 +139,11 @@ class miscCog(commands.Cog):
         emoji = '\U0001f44d'
         await ctx.message.add_reaction(emoji)
         directmsg = await ctx.message.author.create_dm()
-        await directmsg.send('Thanks for the thoughts of inviting me!\nhttps://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot')
+        await directmsg.send('Thanks for the thoughts of inviting me!\nhttps://top.gg/bot/832922273597227019')
 
 
     @commands.command(aliases=['wp', 'bg', 'background'])
-    @cooldown(1, 5, commands.BucketType.guild)
+    @cooldown(1, 5, commands.BucketType.user)
     async def wallpaper(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://shiro.gg/api/images/wallpapers')

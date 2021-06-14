@@ -12,7 +12,7 @@ class animeCog(commands.Cog):
 
     
     @commands.command(aliases=['aq'])
-    @cooldown(1, 5, commands.BucketType.guild)
+    @cooldown(1, 5, commands.BucketType.user)
 
     async def animequote(self, ctx):
 
@@ -33,8 +33,22 @@ class animeCog(commands.Cog):
 
         
 
+    @commands.command(aliases=['aav', 'avatars'])
+    @cooldown(1, 10, commands.BucketType.user)
+    async def animeavatar(self, ctx):
+
+        async with aiohttp.ClientSession() as Session:
+
+            request = await Session.get('https://shiro.gg/api/images/avatars')
+
+            ajson = await request.json()
 
 
+        embed = discord.Embed(title=f"Here's your Avatar {ctx.message.author.display_name}", color=0xAE0786)
+
+        embed.set_image(url=ajson['url'])
+
+        await ctx.send(embed=embed)
 
 
 

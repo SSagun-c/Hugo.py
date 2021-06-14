@@ -23,7 +23,7 @@ class redditCog(commands.Cog):
                         user_agent = 'SSagunPraw')
 
     @commands.command(name=('reddit'), aliases=['r'])
-    @cooldown(1, 8, commands.BucketType.guild)
+    @cooldown(1, 8, commands.BucketType.user)
     async def _reddit(self, ctx, subred = "meme"):  # default subreddit is meme
         reddit = praw.Reddit(client_id = os.environ['RAI'],
                         client_secret = os.environ['RAS'],

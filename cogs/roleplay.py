@@ -12,7 +12,7 @@ class roleplayCog(commands.Cog):
     
  
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def cry(self, ctx):
     
     async with aiohttp.ClientSession() as session:
@@ -28,7 +28,7 @@ class roleplayCog(commands.Cog):
     
     
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def kiss(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -48,7 +48,7 @@ class roleplayCog(commands.Cog):
     
     
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def hug(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -68,7 +68,7 @@ class roleplayCog(commands.Cog):
     
     
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def poke(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -88,7 +88,7 @@ class roleplayCog(commands.Cog):
       
       
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def lick(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -108,7 +108,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def pat(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -128,7 +128,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def nom(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -148,7 +148,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def pout(self, ctx):
     async with aiohttp.ClientSession() as session:
       request = await session.get('https://shiro.gg/api/images/pout')
@@ -163,7 +163,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def punch(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -183,7 +183,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def slap(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
@@ -203,7 +203,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command(aliases=['b'])
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def blush(self, ctx):
       async with aiohttp.ClientSession() as session:
           request = await session.get('https://api.waifu.pics/sfw/blush')
@@ -216,7 +216,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def sleep(self, ctx):
       async with aiohttp.ClientSession() as session:
           request = await session.get('https://shiro.gg/api/images/sleep')
@@ -230,7 +230,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def smug(self, ctx):
       async with aiohttp.ClientSession() as session:
           request = await session.get('https://shiro.gg/api/images/smug')
@@ -244,7 +244,7 @@ class roleplayCog(commands.Cog):
 
 
   @commands.command()
-  @cooldown(1, 5, commands.BucketType.guild)
+  @cooldown(1, 5, commands.BucketType.user)
   async def tickle(self, ctx, target: Optional[Member]):
     target = target or ctx.message.author
     if target == ctx.message.author:
