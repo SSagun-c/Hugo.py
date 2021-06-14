@@ -1,3 +1,5 @@
+import datetime
+from re import escape
 import discord
 import os
 import random
@@ -62,15 +64,31 @@ async def on_command_error(ctx, error):
 @client.command()
 @cooldown(1, 10, commands.BucketType.user)
 async def botinfo(ctx):
+    activeservers = client.guilds
+
+    sum = 0
+
+    for s in activeservers:
+        sum += len(s.members)
+    
+
     embed = discord.Embed(title="Information about me", color=0xFF00FF)
 
 
     embed.add_field(name="Servers", value=f"{len(client.guilds)} Servers", inline=True)
 
+    embed.add_field(name="Users", value=f"{sum} Users", inline=True)
+
+    embed.add_field(name="Latency", value=f"{round(client.latency) * 100}ms")
+
+    embed.add_field(name="Support me", value="[Vote for me](https://top.gg/bot/832922273597227019/vote) │ (Invite me)[https://top.gg/bot/832922273597227019] │ (Help Server)[https://discord.gg/6JkmzhDsps]")
+
+    embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+    embed.timestamp = datetime.datetime.utcnow()
+
 
     await ctx.send(embed=embed)
-
-
 
 
 
