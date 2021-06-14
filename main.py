@@ -17,8 +17,8 @@ dbl_token = topggtoken
 client.topgg = topgg.DBLClient(client, dbl_token)
 
 
-def get_prefix(bot, message):
-    return when_mentioned_or(PREFIX)(bot, message)
+def get_prefix(client, message):
+    return when_mentioned_or(PREFIX)(client, message)
 
 
 # Events
