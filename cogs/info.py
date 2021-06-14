@@ -4,6 +4,8 @@ from discord.ext import commands
 from discord import Member, Embed
 from typing import Optional
 
+from discord.ext.commands.core import cooldown
+
 class infoCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -62,6 +64,23 @@ class infoCog(commands.Cog):
             embed.add_field(name=name, value=value, inline=inline)
 
         await ctx.send(embed=embed)
+
+
+    @commands.command()
+    @cooldown(1, 10, commands.BucketType.user)
+    async def botinfo(self, ctx):
+        embed = discord.Embed(title="Information about me", color=0xFF00FF)
+
+        embed.add_field(name="Servers", description=f"{len(commands.guilds)}")
+
+        await ctx.send(embed=embed)
+
+
+
+
+
+
+
 
 
 def setup(bot):
