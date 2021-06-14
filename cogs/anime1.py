@@ -7,7 +7,7 @@ import discord
 from discord.ext import commands
 import xml.etree.ElementTree as ET
 
-class anime(commands.Cog):
+class animeCog(commands.Cog):
     '''Alles rund um Animes'''
 
     def __init__(self, bot):
@@ -428,4 +428,4 @@ class anime(commands.Cog):
     #             await ctx.send(':x: Konnte den Benutzer nicht finden (falsche URL?)')
 
 def setup(bot):
-    bot.add_cog(anime(bot))
+    bot.add_cog(animeCog(bot))
