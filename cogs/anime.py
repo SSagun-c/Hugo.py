@@ -47,7 +47,7 @@ class animeCog(commands.Cog):
         embed = discord.Embed(title=f"Here's your Avatar {ctx.message.author.display_name}", color=0xAE0786)
 
         embed.set_image(url=ajson['url'])
-
+        print(ajson['url'])
         await ctx.send(embed=embed)
 
 
@@ -64,7 +64,7 @@ class animeCog(commands.Cog):
         embed = discord.Embed(title=anijson['results'])
 
         await ctx.send(embed=embed)
-        print(['results'])
+        print(anijson['results'])
 
 
 def setup(bot):
