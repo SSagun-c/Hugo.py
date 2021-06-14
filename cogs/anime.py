@@ -57,7 +57,7 @@ class animeCog(commands.Cog):
 
         async with aiohttp.ClientSession() as session:
 
-            request = session.get(f" https://api.jikan.moe/v3/search/anime?q={name}")
+            request = await session.get(f" https://api.jikan.moe/v3/search/anime?q={name}")
             
             anijson = await request.json(['results', '0:'])
 
