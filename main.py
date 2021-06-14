@@ -1,15 +1,10 @@
 import discord
 import os
 import random
-from discord.ext.commands.bot import when_mentioned_or
 import topgg
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
-
-
-
-
 
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
