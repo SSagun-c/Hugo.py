@@ -37,7 +37,7 @@ class animeCog(commands.Cog):
 
     async def anime(self, ctx, *, anime):
 
-        async with aiohttp.CLientSesssion() as session:
+        async with aiohttp.CLientSession() as session:
 
 
             request = await session.get(f'https://kitsu.io/api/edge/anime?filter[text]={anime}')
