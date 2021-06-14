@@ -64,7 +64,7 @@ class animeCog(commands.Cog):
         embed = discord.Embed(title=anijson['results'])
 
         await ctx.send(embed=embed)
-
+        print(['results'])
 
 
 def setup(bot):
