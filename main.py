@@ -61,7 +61,7 @@ async def on_command_error(ctx, error):
 
 @client.command()
 @cooldown(1, 10, commands.BucketType.user)
-async def botinfo(self, ctx):
+async def botinfo(ctx):
     embed = discord.Embed(title="Information about me", color=0xFF00FF)
 
 
