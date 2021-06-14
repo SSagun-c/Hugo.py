@@ -53,16 +53,18 @@ class animeCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
-    async def anime(self, ctx, *, name='Naruto'):
+    async def anime(self, ctx, *, name):
 
         async with aiohttp.ClientSession() as session:
 
             request = await session.get(f" https://api.jikan.moe/v3/search/anime?q={name}")
             
             anijson = await request.json()
+            title = []
+            for i in anijson['results']:
+                title.append(i['title'])
 
-        embed = discord.Embed(title=anijson['results': '0': 'title'])
-
+        embed = discord.Embed(title=title)
         await ctx.send(embed=embed)
 
 
