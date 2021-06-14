@@ -61,7 +61,7 @@ class animeCog(commands.Cog):
             
             anijson = await request.json()
 
-        embed = discord.Embed(title=anijson['results']['0']['title'])
+        embed = discord.Embed(title=anijson['results': '0': 'title'])
 
         await ctx.send(embed=embed)
 
