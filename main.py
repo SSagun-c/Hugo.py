@@ -5,6 +5,7 @@ import topgg
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
+from discord.ext.commands import cooldown
 
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
@@ -53,6 +54,26 @@ async def on_command_error(ctx, error):
             elif isinstance(error, commands.NSFWChannelRequired):
                 embed = discord.Embed(title="❌ This is not a NSFW Channel")
                 await ctx.send(embed=embed)
+
+
+
+# Botinfo
+
+@client.command()
+@cooldown(1, 10, commands.BucketType.user)
+async def botinfo(self, ctx):
+    embed = discord.Embed(title="Information about me", color=0xFF00FF)
+
+
+    embed.add_field(name="Servers", value=f"{len(client.guilds)} Servers", inline=True)
+
+    embed.add_field(name="Users", value=f"{len(client.users)}", Inline =True)
+
+
+    await ctx.send(embed=embed)
+
+
+
 
 
 # Ping

@@ -66,22 +66,6 @@ class infoCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command()
-    @cooldown(1, 10, commands.BucketType.user)
-    async def botinfo(self, ctx):
-        embed = discord.Embed(title="Information about me", color=0xFF00FF)
-
-        embed.add_field(name="Servers", description=f"{len(commands.guilds)}")
-
-        await ctx.send(embed=embed)
-
-
-
-
-
-
-
-
 
 def setup(bot):
     bot.add_cog(infoCog(bot))
