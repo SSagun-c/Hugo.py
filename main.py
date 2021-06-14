@@ -5,20 +5,15 @@ import topgg
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
-from discord.ext.commands import when_mentioned_or
 
 
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix='h', intents=Intents.all())
+client = commands.Bot(command_prefix='h!', intents=Intents.all())
 client.remove_command('help')
 
 dbl_token = topggtoken
 client.topgg = topgg.DBLClient(client, dbl_token)
-
-
-
-
 
 # Events
 
