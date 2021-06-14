@@ -59,9 +59,9 @@ class animeCog(commands.Cog):
 
             request = await session.get(f" https://api.jikan.moe/v3/search/anime?q={name}")
             
-            anijson = await request.json(['results', '0:'])
+            anijson = await request.json()
 
-        embed = discord.Embed(title=anijson['title'])
+        embed = discord.Embed(title=anijson['results', '0', 'title'])
 
         await ctx.send(embed=embed)
 
