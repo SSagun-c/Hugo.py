@@ -53,7 +53,7 @@ class animeCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
-    async def anime(self, ctx, *, name):
+    async def anime(self, ctx, *, name='Naruto'):
 
         async with aiohttp.ClientSession() as session:
 
