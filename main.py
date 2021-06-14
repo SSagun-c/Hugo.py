@@ -81,7 +81,7 @@ async def botinfo(ctx):
 
     embed.add_field(name="Latency", value=f"{round(client.latency) * 100}ms")
 
-    embed.add_field(name="Support me", value="[Vote for me](https://top.gg/bot/832922273597227019/vote) │ (Invite me)[https://top.gg/bot/832922273597227019] │ (Help Server)[https://discord.gg/6JkmzhDsps]")
+    embed.add_field(name="Support me", value="[Vote for me](https://top.gg/bot/832922273597227019/vote) │ [Invite me](https://top.gg/bot/832922273597227019] │ [Help Server](https://discord.gg/6JkmzhDsps)")
 
     embed.set_footer(text=f"Requested by {ctx.message.author}")
 
