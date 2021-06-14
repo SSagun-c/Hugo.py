@@ -37,14 +37,13 @@ class animeCog(commands.Cog):
 
     async def anime(self, ctx, *, anime):
 
-        async with aiohttp.ClientSession as session:
-
+        async with aiohttp.ClientSession() as session:
 
             request = await session.get(f'https://kitsu.io/api/edge/anime?filter[text]={anime}')
 
             animejson = await request.json()
 
-        
+
         embed = discord.Embed(title={animejson['titles': 'en']}, description=animejson['description'])
 
         embed.set_thumbnail(url=animejson['posterImage': 'original'])
