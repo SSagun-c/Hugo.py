@@ -35,7 +35,7 @@ class animeCog(commands.Cog):
     @commands.command(aliases=['anisearch', 'kitsu', 'as'])
     @cooldown(1, 10, commands.BucketType.guild)
 
-    async def anime(self, ctx, anime):
+    async def anime(self, ctx, *, anime):
 
         async with aiohttp.ClientSession() as session:
 
