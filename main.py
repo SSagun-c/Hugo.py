@@ -67,8 +67,6 @@ async def botinfo(ctx):
 
     embed.add_field(name="Servers", value=f"{len(client.guilds)} Servers", inline=True)
 
-    embed.add_field(name="Users", value=f"{len(client.users)}", Inline =True)
-
 
     await ctx.send(embed=embed)
 
