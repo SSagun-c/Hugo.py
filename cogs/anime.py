@@ -32,114 +32,40 @@ class animeCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=['anilist'])
-    async def anime(self, ctx, *, animeName: str):
+    @commands.command(aliases=['anisearch', 'kitsu', 'as'])
+    @cooldown(1, 10, commands.BucketType.guild)
 
-        api = 'https://graphql.anilist.co'
-        query = '''
-        query ($name: String){
-          Media(search: $name, type: ANIME) {
-            id
-            idMal
-            description
-            title {
-              romaji
-              english
-            }
-            coverImage {
-              large
-            }
-            startDate {
-              year
-              month
-              day
-            }
-            endDate {
-              year
-              month
-              day
-            }
-            synonyms
-            format
-            status
-            episodes
-            duration
-            nextAiringEpisode {
-              episode
-            }
-            averageScore
-            meanScore
-            source
-            genres
-            tags {
-              name
-            }
-            studios(isMain: true) {
-              nodes {
-                name
-              }
-            }
-            siteUrl
-          }
-        }
-        '''
-        variables = {
-            'name': animeName
-        }
+    async def anime(self, ctx, anime):
 
         async with aiohttp.ClientSession() as session:
-            async with session.post(api, json={'query': query, 'variables': variables}, headers = self.bot.userAgentHeaders) as r:
-                if r.status == 200:
-                    json = await r.json()
-                    data = json['data']['Media']
 
-                    embed = discord.Embed(color=ctx.author.top_role.colour)
-                    embed.set_footer(text='API provided by AniList.co | ID: {}'.format(str(data['id'])))
-                    embed.set_thumbnail(url=data['coverImage']['large'])
-                    if data['title']['english'] == None or data['title']['english'] == data['title']['romaji']:
-                        embed.add_field(name='Title', value=data['title']['romaji'], inline=False)
-                    else:
-                        embed.add_field(name='Title', value='{} ({})'.format(data['title']['english'], data['title']['romaji']), inline=False)
+            request = await session.get(f'https://kitsu.io/api/edge/anime?filter[text]={anime}')
 
-                    
-                    if data['synonyms'] != []:
-                        embed.add_field(name='Synonymus', value=', '.join(data['synonyms']), inline=True)
+            animejson = await request.json()
 
-                    embed.add_field(name='Typ', value=data['format'].replace('_', ' ').title().replace('Tv', 'TV'), inline=True)
-                    if data['episodes'] > 1:
-                        embed.add_field(name='Episodes', value='{} à {} min'.format(data['episodes'], data['duration']), inline=True)
-                    else:
-                        embed.add_field(name='Time', value=str(data['duration']) + ' min', inline=True)
 
-                    embed.add_field(name='Started at', value='{}.{}.{}'.format(data['startDate']['day'], data['startDate']['month'], data['startDate']['year']), inline=True)
-                    if data['endDate']['day'] == None:
-                        embed.add_field(name='Released Episodes', value=data['nextAiringEpisode']['episode'] - 1, inline=True)
-                    elif data['episodes'] > 1:
-                        embed.add_field(name='Ended at', value='{}.{}.{}'.format(data['endDate']['day'], data['endDate']['month'], data['endDate']['year']), inline=True)
+        embed = discord.Embed(title={animejson['data': '0': 'attributes']['titles': 'en']}, description=animejson['data': '0': 'attributes']['description'])
 
-                    embed.add_field(name='Status', value=data['status'].replace('_', ' ').title(), inline=True)
+        embed.set_thumbnail(url=animejson['data': '0': 'attributes']['posterImage': 'original'])
 
-                    try:
-                        embed.add_field(name='Main Studio', value=data['studios']['nodes'][0]['name'], inline=True)
-                    except IndexError:
-                        pass
-                    embed.add_field(name='Ø Score', value=data['averageScore'], inline=True)
-                    embed.add_field(name='Genres', value=', '.join(data['genres']), inline=False)
-                    tags = ''
-                    for tag in data['tags']:
-                        tags += tag['name'] + ', '
-                    embed.add_field(name='Tags', value=tags[:-2], inline=False)
-                    try:
-                        embed.add_field(name='Adapted by', value=data['source'].replace('_', ' ').title(), inline=True)
-                    except AttributeError:
-                        pass
+        embed.add_field(name="Status", value=animejson['data': '0': 'attributes']['status'])
+        embed.add_field(name="Genres", value=animejson['data': '0': 'attributes']['ageRatingGuide'])
 
-                    embed.add_field(name='AniList Link', value=data['siteUrl'], inline=False)
-                    embed.add_field(name='MyAnimeList Link', value='https://myanimelist.net/anime/' + str(data['idMal']), inline=False)
-                    await ctx.send(embed=embed)
+        embed.add_field(name="💯Average Rating", value=f"{animejson['data': '0': 'attributes']['averageRating']}/100")
+        embed.add_field(name="✨Popularity Rank", value=f"Rank #{animejson['data': '0': 'attributes']['popularityRank']}")
+        embed.add_field(name="1️⃣ Rating Rank", value=f"Rank #{animejson['data': '0': 'attributes']['ratingRank']}")
 
-                else:
-                    await ctx.send("Couldn't find your Anime!")
+        embed.add_field(name="Started at", value=animejson['startDate'])
+        embed.add_field(name="Ended at", value=animejson['endDate'])
+
+        embed.timestamp = datetime.datetime.utcnow()
+
+        await ctx.send(embed=embed)
+
+        
+
+
+
 
 
 
