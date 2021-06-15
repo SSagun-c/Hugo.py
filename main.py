@@ -114,14 +114,33 @@ async def servers(ctx):
             print(guild.name)
 
 # Loads all of the Cogs
+ext = [
 
-client.load_extension('cogs.help')
-client.load_extension('cogs.image')
-client.load_extension('cogs.info')
-client.load_extension('cogs.misc')                    # I really could do this simpler
-client.load_extension('cogs.moderator')
-client.load_extension('cogs.reddit')
-client.load_extension('cogs.roleplay')
-client.load_extension('cogs.anime')
+    'cogs.anime',
+
+    'cogs.help',
+
+    'cogs.image',
+
+    'cogs.info',
+
+    'cogs.misc',
+
+    'cogs.moderator',
+
+    'cogs.reddit',
+
+    'cogs.roleplay'
+    
+]
+
+if __name__ == '__main__':
+
+    for x in ext:
+
+        client.load_extension(x)
+
+
 update_stats.start()
+
 client.run(os.environ['DISCORD_TOKEN'])
