@@ -60,12 +60,8 @@ class animeCog(commands.Cog):
 
                 json_data = await r.json()
 
-            
-            embed = discord.Embed(title=json_data['results'][0]['title'])
+            print(json_data['results'][0]['attributes']['description'])
 
-            print(json_data['results'][0]['title'])
-
-            await ctx.send(embed=embed)
 
 
 
