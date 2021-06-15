@@ -56,13 +56,11 @@ class animeCog(commands.Cog):
 
         async with aiohttp.ClientSession() as session:
 
-            request = await session.get(f" https://api.jikan.moe/v3/search/anime?q={name}")
-            
-            anijson = await request.json()
+            async with session.get(f"https://api.jikan.moe/v3/search/anime?q=Naruto") as r:
 
-        embed = discord.Embed(title=anijson['results'][0]['title'])
+                json_data = await r.json()
 
-        await ctx.send(embed=embed)
+            print(json_data['results'][0]['title'])
 
 
 
