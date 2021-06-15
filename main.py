@@ -96,10 +96,11 @@ async def botinfo(ctx):
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! 🏓 Time Taken\n```{client.latency * 100}ms```')
+    await ctx.send('Pong! {0}'.format(round(client.latency, 1)))
 
 
 # Bot owner only commands
+
 @client.command(pass_context=True)
 @commands.is_owner()
 async def servers(ctx):
