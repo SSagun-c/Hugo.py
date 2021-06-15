@@ -79,7 +79,7 @@ async def botinfo(ctx):
 
     embed.add_field(name="Users", value=f"{sum} Users", inline=True)
 
-    embed.add_field(name="Latency", value=f"{round(client.latency) * 100}ms")
+    embed.add_field(name="Latency", value=f"{client.latency * 100}ms")
 
     embed.add_field(name="Support me", value="[Vote for me](https://top.gg/bot/832922273597227019/vote) │ [Invite me](https://top.gg/bot/832922273597227019) │ [Help Server](https://discord.gg/6JkmzhDsps)")
 
@@ -96,7 +96,7 @@ async def botinfo(ctx):
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! {client.latency, 2}')
+    await ctx.send(f'Pong!\n```{client.latency}```')
 
 
 # Bot owner only commands
