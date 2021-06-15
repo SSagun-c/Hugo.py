@@ -72,20 +72,24 @@ async def botinfo(ctx):
         sum += len(s.members)
     
 
-    embed = discord.Embed(title="Information about me", color=0xFF00FF)
+    embed = discord.Embed(title="Hugo.py │ Information about me", description="Hello! I am Hugo.py. Nice to meet you!\n\n", color=0xFFFFFF)
+
+    embed.set_thumbnail(url='https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg')
 
 
-    embed.add_field(name="Servers", value=f"{len(client.guilds)} Servers", inline=True)
+    embed.add_field(name="About me", value="**Name:** Hugo.py#9153\n**ID:** 832922273597227019\n**Avatar:** [Click Me!](https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg)\n**Prefix:** `h!`\n**My Developer:** SSagun.py#6969 **ID:** 544810950952353823", inline=False)
+    
+    embed.add_field(name="Short description", value="Image commands / Roleplay commands and more! Simple and Easy to use Bot for especially your Anime Server!", inline=False)
 
-    embed.add_field(name="Users", value=f"{sum} Users", inline=True)
+    embed.add_field(name="Info about my Servers and Users", value=f"**Amount of Servers I serve:** {len(client.guilds)} Servers\n**Users Active:** {sum} Users!\n**Raw Latency:** {client.latency * 100}ms", inline=False)
 
-    embed.add_field(name="Latency", value=f"{client.latency * 100}ms")
+    embed.add_field(name="Support me!", value="[Vote for me!](https://top.gg/bot/832922273597227019/vote) - [Support Server](https://discord.gg/6JkmzhDsps) - [Invite me](https://discord.com/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot)")
 
-    embed.add_field(name="Support me", value="[Vote for me](https://top.gg/bot/832922273597227019/vote) │ [Invite me](https://top.gg/bot/832922273597227019) │ [Help Server](https://discord.gg/6JkmzhDsps)")
-
-    embed.set_footer(text=f"Requested by {ctx.message.author}")
 
     embed.timestamp = datetime.datetime.utcnow()
+
+
+    embed.set_footer(text=f"Requested by {ctx.message.author}")
 
 
     await ctx.send(embed=embed)
