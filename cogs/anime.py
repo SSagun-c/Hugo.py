@@ -52,35 +52,51 @@ class animeCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
-    async def anime(self, ctx, *, name):
+    async def anime(self, ctx, *, AnimeName):
 
         async with aiohttp.ClientSession() as session:
 
-            async with session.get(f"https://kitsu.io/api/edge/anime?filter[text]={name}") as r:
+            async with session.get(f"https://kitsu.io/api/edge/anime?filter[text]={AnimeName}") as r:
 
                 json_data = await r.json()
 
 
-        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'])
+        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'], color=0xEE00EE)
+
+
+        embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
+
+
+        fields = ["Created", json_data['data'][0]['attributes']['startDate'], True,
+
+                "Finished", json_data['data'][0]['attributes']['endDate'], True,
+
+                "Status", json_data['data'][0]['attributes']['status'], True,
+
+                "Episodes", f"{json_data['data'][0]['attributes']['episodeCount']} Episodes", True,
+
+                "Average Episode Length", f"{json_data['data'][0]['attributes']['episodeLength']} Minutes", True,
+
+                "Total Length (Minutes)", f"{json_data['data'][0]['attributes']['totalLength']} Minutes", True,
+
+                "Average Rating", f"{json_data['data'][0]['attributes']['averageRating']}/100", True,
+                
+                "Popularity Rank", f"#{json_data['data'][0]['attributes']['popularityRank']}", True,
+
+                "Rating Rank", f"#{json_data['data'][0]['attributes']['ratingRank']}", True]
+
+        for name, value, inline in fields:
+
+            embed.add_field(name=name, value=value, inline=inline)
+
+        
+        embed.set_footer(text=f"Powered by ©Kistu")
+
+
+        embed.timestamp = datetime.datetime.utcnow()
 
 
         await ctx.send(embed=embed)
-
-
-        print(json_data['results'][0]['description'])
-
-
-
-
-
-
-
-    @anime.error
-    async def anime_error(self, ctx, error):
-
-        if isinstance(error, commands.MissingRequiredArgument):
-            
-            await ctx.send(f"{ctx.message.author.display_name} to use this command correctly do: `h!anime <anime name>")
 
 
 
