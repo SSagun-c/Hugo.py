@@ -44,7 +44,7 @@ async def update_stats():
 @client.event
 async def on_command_error(ctx, error):
             if isinstance(error, commands.MissingPermissions):
-                embed = discord.Embed(title=f"❌ Sorry {ctx.message.author.display_name}, you sadly don't have the permissions to run this command.", color=0xFF0000)
+                embed = discord.Embed(title=f"❌ {error}", color=0xFF0000)
                 await ctx.send(embed=embed)
             elif isinstance(error, commands.MissingRequiredArgument):
                 embed = discord.Embed(title=f"❌ I need more than just this", color=0xFF0000)
