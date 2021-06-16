@@ -64,7 +64,9 @@ class animeCog(commands.Cog):
 
         embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'], color=0xEE00EE)
 
+        embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
+        
         embed.add_field(name="Started", value=json_data['data'][0]['attributes']['startDate'])
 
         embed.add_field(name="Ended", value=json_data['data'][0]['attributes']['endDate'])
