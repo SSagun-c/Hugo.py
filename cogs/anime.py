@@ -75,14 +75,12 @@ class animeCog(commands.Cog):
 
 
 
-
-    async def cog_command_error(self, ctx, error):
+    @anime.error
+    async def anime_error(self, ctx, error):
 
         if isinstance(error, commands.MissingRequiredArgument):
             
-            embed = discord.Embed(title=f"{ctx.message.author.display_name} Please provide the name of the Anime you want. e.g. h!anime Date A Live", color=0xFF0000)
-
-            await ctx.send(embed=embed)
+            await ctx.send(f"{ctx.message.author.display_name} to use this command correctly do: `h!anime <anime name>")
 
 
 
