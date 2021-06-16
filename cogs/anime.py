@@ -65,7 +65,9 @@ class animeCog(commands.Cog):
         embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'], color=0xEE00EE)
 
 
-        embed.add_field(name="Created", value=json_data['data'][0]['attributes']['startDate'])
+        embed.add_field(name="Started", value=json_data['data'][0]['attributes']['startDate'])
+
+        embed.add_field(name="Ended", value=json_data['data'][0]['attributes']['endDate'])
     
         
         embed.set_footer(text=f"Powered by ©Kistu")
