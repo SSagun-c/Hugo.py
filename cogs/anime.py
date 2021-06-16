@@ -73,6 +73,8 @@ class animeCog(commands.Cog):
     
         embed.add_field(name="Status", value=json_data['data'][0]['attributes']['status'])
 
+        embed.add_field(name="Episodes", value=f"{json_data['data'][0]['attributes']['episodeCount']} Episodes")
+
 
 
         embed.set_footer(text=f"Powered by ©Kistu")
