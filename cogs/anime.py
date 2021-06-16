@@ -66,12 +66,15 @@ class animeCog(commands.Cog):
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
-        
+
         embed.add_field(name="Started", value=json_data['data'][0]['attributes']['startDate'])
 
         embed.add_field(name="Ended", value=json_data['data'][0]['attributes']['endDate'])
     
-        
+        embed.add_field(name="Status", value=json_data['data'][0]['attributes']['status'])
+
+
+
         embed.set_footer(text=f"Powered by ©Kistu")
 
 
