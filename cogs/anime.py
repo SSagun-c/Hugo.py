@@ -52,15 +52,30 @@ class animeCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
-    async def anime(self, ctx, *, name="Naruto"):
+    async def anime(self, ctx, *, name):
 
         async with aiohttp.ClientSession() as session:
 
-            async with session.get(f"https://api.jikan.moe/v3/search/anime?q={name}") as r:
+            async with session.get(f"https://kitsu.io/api/edge/anime?filter[text]={name}") as r:
 
                 json_data = await r.json()
 
-            print(json_data['results'][0]['attributes']['description'])
+
+        if name == None:
+
+            embed = discord.Embed(title="Please provide the Name of the Anime you want!", color=0xFF0000)
+
+            await ctx.send(embed=embed)
+
+        else:
+
+            embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'])
+
+
+            await ctx.send(embed=embed)
+
+
+            print(json_data['results'][0]['description'])
 
 
 
