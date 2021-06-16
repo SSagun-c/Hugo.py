@@ -1,4 +1,5 @@
 import asyncio
+from aiohttp.tracing import TraceRequestRedirectParams
 import discord
 import aiohttp
 import datetime
@@ -66,24 +67,21 @@ class animeCog(commands.Cog):
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
-
-        embed.add_field(name="Started", value=json_data['data'][0]['attributes']['startDate'])
-
-        embed.add_field(name="Ended", value=json_data['data'][0]['attributes']['endDate'])
+        embed.add_field(name="📆 Aired", value=f"From {json_data['data'][0]['attributes']['startDate']} to {json_data['data'][0]['attributes']['endDate']}", inline=False)
     
-        embed.add_field(name="Status", value=f"{json_data['data'][0]['attributes']['status']}\n\n")
+        embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}\n\n", inline=True)
 
-        embed.add_field(name="Episodes", value=f"{json_data['data'][0]['attributes']['episodeCount']} Episodes")
+        embed.add_field(name="💿 Total Episodes", value=f"{json_data['data'][0]['attributes']['episodeCount']} Episodes", inline=False)
 
-        embed.add_field(name="Average Episode Length", value=f"{json_data['data'][0]['attributes']['episodeLength']} Minutes")
+        embed.add_field(name="⌚ Average Episode Length", value=f"{json_data['data'][0]['attributes']['episodeLength']} Minutes", inline=True)
 
-        embed.add_field(name="Total Length (Minutes)", value=f"{json_data['data'][0]['attributes']['totalLength']} Minutes\n\n")
+        embed.add_field(name="🕒 Total Length (Minutes)", value=f"{json_data['data'][0]['attributes']['totalLength']} Minutes\n\n", inline=True)
 
-        embed.add_field(name="Average Rating", value=f"{json_data['data'][0]['attributes']['averageRating']}/100")
+        embed.add_field(name="🏆 Average Rating", value=f"{json_data['data'][0]['attributes']['averageRating']}/100", inline=False)
 
-        embed.add_field(name="Popularity Rank", value=f"#{json_data['data'][0]['attributes']['popularityRank']}")
+        embed.add_field(name="✨ Popularity Rank", value=f"#{json_data['data'][0]['attributes']['popularityRank']}", inline=False)
 
-        embed.add_field(name="Rating Rank", value=f"#{json_data['data'][0]['attributes']['ratingRank']}")
+        embed.add_field(name="💯 Rating Rank", value=f"#{json_data['data'][0]['attributes']['ratingRank']}", inline=True)
 
 
         embed.set_footer(text=f"Powered by ©Kistu")
