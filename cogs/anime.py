@@ -110,11 +110,11 @@ class animeCog(commands.Cog):
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
-        embed.add_field(name="📆 Published", value=f"From **{json_data['data'][0]['attributes']['startDate']}** to **{json_data['data'][0]['attributes']['endDate']}**", inline=True)
+        embed.add_field(name="📆 Published", value=f"From **{json_data['data'][0]['attributes']['startDate']}** to **{json_data['data'][0]['attributes']['endDate']}**", inline=False)
 
-        embed.add_field(name="📜 SubType", value=json_data['data'][0]['attributes']['subtype'], inline=True)
+        embed.add_field(name="📜 SubType", value=json_data['data'][0]['attributes']['subtype'], inline=False)
 
-        embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}", inline=True)
+        embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}", inline=False)
 
         embed.add_field(name="📖 Chapters", value=f"{json_data['data'][0]['attributes']['chapterCount']} Chapter(s)", inline=True)
 
