@@ -111,6 +111,9 @@ class animeCog(commands.Cog):
 
         embed.add_field(name="📆 Published", value=f"From **{json_data['data'][0]['attributes']['startDate']}** to **{json_data['data'][0]['attributes']['endDate']}**", inline=True)
 
+        embed.add_field(name="📜 SubType", value=json_data['data'][0]['attributes']['subtype'], inline=True)
+
+        embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}", inline=True)
 
         embed.set_footer(text=f"Powered by Kitsu ©")
 
