@@ -115,6 +115,16 @@ class animeCog(commands.Cog):
 
         embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}", inline=True)
 
+        embed.add_field(name="📖 Chapters", value=f"{json_data['data'][0]['attributes']['chapterCount']} Chapter(s)", inline=True)
+
+        embed.add_field(name="📰 Total Volumes", value=f"{json_data['data'][0]['attributes']['volumeCount']} Volume(s)", inline=True)
+
+        embed.add_field(name="🏆 Average Rating", value=f"{json_data['data'][0]['attributes']['averageRating']}/100", inline=False)
+
+        embed.add_field(name="✨ Popularity Rank", value=f"#{json_data['data'][0]['attributes']['popularityRank']}", inline=False)
+
+        embed.add_field(name="💯 Rating Rank", value=f"#{json_data['data'][0]['attributes']['ratingRank']}", inline=True)
+
         embed.set_footer(text=f"Powered by Kitsu ©")
 
 
