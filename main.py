@@ -47,14 +47,14 @@ async def on_command_error(ctx, error):
                 embed = discord.Embed(title=f"❌ {error}", color=0xFF0000)
                 await ctx.send(embed=embed)
             elif isinstance(error, commands.MissingRequiredArgument):
-                embed = discord.Embed(title=f"❌ I need more than just this", color=0xFF0000)
+                embed = discord.Embed(title=f"❌ {error}", color=0xFF0000)
                 await ctx.send(embed=embed)
             elif isinstance(error, commands.CommandOnCooldown):
                 embed = discord.Embed(title=f"❌ Ratelimited. Try again in {error.retry_after:,.2f} secs.", color=0xFF0000)
                 await ctx.send(embed=embed)
                 
             elif isinstance(error, commands.NSFWChannelRequired):
-                embed = discord.Embed(title="❌ This is not a NSFW Channel", color=0xFF0000)
+                embed = discord.Embed(title="❌ Uh Oh looks like this is not a NSFW Channel", color=0xFF0000)
                 await ctx.send(embed=embed)
 
 
