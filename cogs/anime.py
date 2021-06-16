@@ -98,7 +98,7 @@ class animeCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
-    async def Manga(self, ctx, *, Manga_Name):
+    async def manga(self, ctx, *, Manga_Name):
 
         async with aiohttp.ClientSession() as session:
 
