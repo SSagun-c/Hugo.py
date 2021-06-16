@@ -79,6 +79,9 @@ class animeCog(commands.Cog):
 
         embed.add_field(name="Total Length (Minutes)", value=f"{json_data['data'][0]['attributes']['totalLength']} Minutes")
 
+        embed.add_field(name="Average Rating", value=f"{json_data['data'][0]['attributes']['averageRating']}/100")
+
+        embed.add_field(name="Popularity Rank", value=f"#{json_data['data'][0]['attributes']['popularityRank']}")
 
 
         embed.set_footer(text=f"Powered by ©Kistu")
