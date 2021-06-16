@@ -63,7 +63,7 @@ class animeCog(commands.Cog):
                 json_data = await r.json()
 
 
-        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], url=json_data['data'][0]['links']['self'], description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xEE00EE)
+        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], url=f"https://kitsu.io/anime/{json_data['data'][0]['id']}", description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xEE00EE)
 
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
@@ -106,7 +106,7 @@ class animeCog(commands.Cog):
 
                 json_data = await r.json()
 
-        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], url=json_data['data'][0]['links']['self'], description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xFF00EE)
+        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], url=f"https://kitsu.io/manga/{json_data['data'][0]['id']}", description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xFF00EE)
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
