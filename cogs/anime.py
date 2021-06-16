@@ -61,22 +61,28 @@ class animeCog(commands.Cog):
                 json_data = await r.json()
 
 
-        if name == None:
+        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'])
 
-            embed = discord.Embed(title="Please provide the Name of the Anime you want!", color=0xFF0000)
+
+        await ctx.send(embed=embed)
+
+
+        print(json_data['results'][0]['description'])
+
+
+
+
+
+
+
+
+    async def cog_command_error(self, ctx, error):
+
+        if isinstance(error, commands.MissingRequiredArgument):
+            
+            embed = discord.Embed(title=f"{ctx.message.author.display_name} Please provide the name of the Anime you want. e.g. h!anime Date A Live", color=0xFF0000)
 
             await ctx.send(embed=embed)
-
-        else:
-
-            embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'])
-
-
-            await ctx.send(embed=embed)
-
-
-            print(json_data['results'][0]['description'])
-
 
 
 

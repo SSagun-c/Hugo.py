@@ -44,10 +44,10 @@ async def update_stats():
 @client.event
 async def on_command_error(ctx, error):
             if isinstance(error, commands.MissingPermissions):
-                embed = discord.Embed(title=f"❌ Sorry {ctx.message.author.display_name}, either you or I am missing permissions to do this", color=0xFF0000)
+                embed = discord.Embed(title=f"❌ Sorry {ctx.message.author.display_name}, you sadly don't have the permissions to run this command.", color=0xFF0000)
                 await ctx.send(embed=embed)
             elif isinstance(error, commands.MissingRequiredArgument):
-                embed = discord.Embed(title=f"❌ Its a regired Argument thats missing", color=0xFF0000)
+                embed = discord.Embed(title=f"❌ Something is missing.... a required argument.....", color=0xFF0000)
                 await ctx.send(embed=embed)
             elif isinstance(error, commands.CommandOnCooldown):
                 embed = discord.Embed(title=f"❌ Ratelimited. Try again in {error.retry_after:,.2f} secs.", color=0xFF0000)
