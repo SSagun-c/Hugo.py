@@ -67,7 +67,7 @@ class animeCog(commands.Cog):
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
-        embed.add_field(name="📆 Aired", value=f"From {json_data['data'][0]['attributes']['startDate']} to {json_data['data'][0]['attributes']['endDate']}", inline=False)
+        embed.add_field(name="📆 Aired", value=f"From **{json_data['data'][0]['attributes']['startDate']}** to **{json_data['data'][0]['attributes']['endDate']}**", inline=False)
     
         embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}\n\n", inline=True)
 
