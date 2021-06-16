@@ -62,7 +62,7 @@ class animeCog(commands.Cog):
                 json_data = await r.json()
 
 
-        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xEE00EE)
+        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xEE00EE)
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
