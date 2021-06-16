@@ -1,3 +1,4 @@
+import asyncio
 import discord
 import aiohttp
 import datetime
@@ -64,31 +65,8 @@ class animeCog(commands.Cog):
         embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en'], description=json_data['data'][0]['attributes']['synopsis'], color=0xEE00EE)
 
 
-        embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
-
-
-        fields = ["Created", json_data['data'][0]['attributes']['startDate'], True,
-
-                "Finished", json_data['data'][0]['attributes']['endDate'], True,
-
-                "Status", json_data['data'][0]['attributes']['status'], True,
-
-                "Episodes", f"{json_data['data'][0]['attributes']['episodeCount']} Episodes", True,
-
-                "Average Episode Length", f"{json_data['data'][0]['attributes']['episodeLength']} Minutes", True,
-
-                "Total Length (Minutes)", f"{json_data['data'][0]['attributes']['totalLength']} Minutes", True,
-
-                "Average Rating", f"{json_data['data'][0]['attributes']['averageRating']}/100", True,
-                
-                "Popularity Rank", f"#{json_data['data'][0]['attributes']['popularityRank']}", True,
-
-                "Rating Rank", f"#{json_data['data'][0]['attributes']['ratingRank']}", True]
-
-        for name, value, inline in fields:
-
-            embed.add_field(name=name, value=value, inline=inline)
-
+        embed.add_field(name="Created", value=json_data['data'][0]['attributes']['startDate'])
+    
         
         embed.set_footer(text=f"Powered by ©Kistu")
 
@@ -97,7 +75,6 @@ class animeCog(commands.Cog):
 
 
         await ctx.send(embed=embed)
-
 
 
 def setup(bot):
