@@ -54,16 +54,17 @@ class animeCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
-    async def anime(self, ctx, *, AnimeName):
+    async def anime(self, ctx, *, Anime_Name):
 
         async with aiohttp.ClientSession() as session:
 
-            async with session.get(f"https://kitsu.io/api/edge/anime?filter[text]={AnimeName}") as r:
+            async with session.get(f"https://kitsu.io/api/edge/anime?filter[text]={Anime_Name}") as r:
 
                 json_data = await r.json()
 
 
         embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], url=json_data['data'][0]['links']['self'], description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xEE00EE)
+
 
         embed.set_thumbnail(url=json_data['data'][0]['attributes']['posterImage']['original'])
 
@@ -84,13 +85,55 @@ class animeCog(commands.Cog):
         embed.add_field(name="💯 Rating Rank", value=f"#{json_data['data'][0]['attributes']['ratingRank']}", inline=True)
 
 
-        embed.set_footer(text=f"Powered by ©Kistu")
+        embed.set_footer(text=f"Powered by Kitsu ©")
 
 
         embed.timestamp = datetime.datetime.utcnow()
 
 
         await ctx.send(embed=embed)
+
+
+
+
+    @commands.command()
+    @cooldown(1, 10, commands.BucketType.user)
+    async def Manga(self, ctx, *, Manga_Name):
+
+        async with aiohttp.ClientSession() as session:
+
+            async with session.get(f"https://kitsu.io/api/edge/anime?filter[text]={Manga_Name}") as r:
+
+                json_data = await r.json()
+
+        embed = discord.Embed(title=json_data['data'][0]['attributes']['titles']['en_jp'], url=json_data['data'][0]['links']['self'], description=f"{json_data['data'][0]['attributes']['synopsis']}\n\n", color=0xFF00EE)
+
+
+        embed.add_field(name="📆 Published", value=f"From **{json_data['data'][0]['attributes']['startDate']}** to **{json_data['data'][0]['attributes']['endDate']}**", inline=True)
+
+        embed.add_field(name="📜 SubType", value=json_data['data'][0]['attributes']['subtype'], inline=True)
+
+        embed.add_field(name="⌛ Status", value=f"{json_data['data'][0]['attributes']['status']}", inline=True)
+
+        embed.add_field(name="📖 Chapters", value=f"{json_data['data'][0]['attributes']['chapterCount']} Chapter(s)", inline=True)
+
+        embed.add_field(name="📰 Total Volumes", value=f"{json_data['data'][0]['attributes']['volumeCount']} Volume(s)", inline=True)
+
+        embed.add_field(name="🏆 Average Rating", value=f"{json_data['data'][0]['attributes']['averageRating']}/100", inline=False)
+
+        embed.add_field(name="✨ Popularity Rank", value=f"#{json_data['data'][0]['attributes']['popularityRank']}", inline=False)
+
+        embed.add_field(name="💯 Rating Rank", value=f"#{json_data['data'][0]['attributes']['ratingRank']}", inline=True)
+
+
+        embed.set_footer(text=f"Powered by Kitsu ©")
+
+
+        embed.timestamp = datetime.datetime.utcnow()
+
+
+        await ctx.send(embed=embed)
+
 
 
 def setup(bot):
