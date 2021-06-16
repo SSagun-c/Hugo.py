@@ -117,8 +117,6 @@ class animeCog(commands.Cog):
 
         embed.add_field(name="📖 Chapters", value=f"{json_data['data'][0]['attributes']['chapterCount']} Chapter(s)", inline=True)
 
-        embed.add_field(name="📰 Total Volumes", value=f"{json_data['data'][0]['attributes']['volumeCount']} Volume(s)", inline=True)
-
         embed.set_footer(text=f"Powered by Kitsu ©")
 
 
