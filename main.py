@@ -50,7 +50,7 @@ async def update_stats():
 @client.event
 async def on_dbl_vote(data):
 
-    channel = '854827158002073601'
+    channel = client.get_channel(854827158002073601)
     
     await channel.send(data)
 
@@ -128,7 +128,7 @@ async def servers(ctx):
         for guild in activeservers:
 
             await ctx.send(guild.name)
-            
+
             print(guild.name)
 
 # Loads all of the Cogs
