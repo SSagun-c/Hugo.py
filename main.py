@@ -1,5 +1,5 @@
 import datetime
-from re import escape
+from re import A, escape
 import discord
 import os
 import random
@@ -21,24 +21,38 @@ client.topgg = topgg.DBLClient(client, dbl_token)
 
 @tasks.loop(seconds=120)
 async def change_status():
+
     status = cycle([f'with {len(client.guilds)} Servers! h!help'])
+
     await client.change_presence(activity=discord.Game(next(status)))
 
 
 @client.event
 async def on_ready():
+
     change_status.start()
+
     print("Bot is online and ready to use!")
 
 @tasks.loop(minutes=30)
 async def update_stats():
+
     try:
+
         await client.topgg.post_guild_count()
+
         print(f"Posted!")
+
     except Exception as e:
+
         print(f"Failed! \n{e.__class__.__name__}: {e}")
 
+@client.event
+async def on_dbl_vote(data):
 
+    channel = '854827158002073601'
+    
+    await channel.send(data)
 
 
 @client.event
@@ -108,9 +122,13 @@ async def ping(ctx):
 @client.command(pass_context=True)
 @commands.is_owner()
 async def servers(ctx):
+
         activeservers = client.guilds
+
         for guild in activeservers:
+
             await ctx.send(guild.name)
+            
             print(guild.name)
 
 # Loads all of the Cogs
