@@ -47,14 +47,6 @@ async def update_stats():
         print(f"Failed! \n{e.__class__.__name__}: {e}")
 
 @client.event
-async def on_dbl_vote(data):
-
-    channel = client.get_channel(854827158002073601)
-    
-    await channel.send(data)
-
-
-@client.event
 async def on_command_error(ctx, error):
             if isinstance(error, commands.MissingPermissions):
                 embed = discord.Embed(title=f"❌ {error}", color=0xFF0000)
