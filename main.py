@@ -1,5 +1,4 @@
 import datetime
-from re import A, escape
 import discord
 import os
 import random
