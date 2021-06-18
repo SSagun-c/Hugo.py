@@ -32,7 +32,7 @@ async def get_prefix(client, message):
 
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix=get_prefix, intents=Intents.all(), case_insensitive=True)
+client = commands.Bot(command_prefix=get_prefix, intents=Intents.all())
 client.DEFAULT_PREFIX = "h!"
 client.remove_command('help')
 
@@ -90,7 +90,7 @@ async def on_guild_remove(guild):
 
     await client.prefixes.unset({"_id": guild.id, "prefix": 1})
 
-@client.event
+@client.event(case_insensitive=True)
 async def on_message(message):
 
     if message.content.startswith('hugo sucks'):
