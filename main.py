@@ -2,8 +2,8 @@ import datetime
 import discord
 import os
 import random
-import topgg
 import discordmongo
+import topgg
 import motor.motor_asyncio
 from discord.ext import commands, tasks
 from discord import Intents
@@ -177,6 +177,7 @@ if __name__ == '__main__':
     client.db = client.mongo["discord"]
 
     client.prefixes = discordmongo.Mongo(connection_url=client.db, dbname="prefixes")
+
     for x in ext:
 
         client.load_extension(x)
