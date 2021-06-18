@@ -90,7 +90,7 @@ async def on_guild_remove(guild):
 
     await client.prefixes.unset({"_id": guild.id, "prefix": 1})
 
-@client.event(case_insensitive=True)
+@client.event
 async def on_message(message):
 
     if message.content.startswith('hugo sucks'):
