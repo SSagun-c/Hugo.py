@@ -3,14 +3,37 @@ import discord
 import os
 import random
 import topgg
+import discordmongo
+import motor.motor_asyncio
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
 from discord.ext.commands import cooldown
 
+async def get_prefix(client, message):
+
+    if not message.guild:
+
+        return commands.when_mentioned_or(client.DEFAULT_PREFIX)(client, message)
+    
+    try:
+
+        data = await client.prefixes.find(message.guild.id)
+
+        if not data or "prefix" not in data:
+            
+            return commands.when_mentioned_or(client.DEFAULT_PREFIX)(client, message)
+
+        return commands.when_mentioned_or(data["prefix"])(client, message)
+
+    except:
+
+        return commands.when_mentioned_or(client.DEFAULT_PREFIX)(client, message)
+
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix='h!', intents=Intents.all())
+client = commands.Bot(command_prefix=get_prefix, intents=Intents.all())
+client.DEFAULT_PREFIX = "h!"
 client.remove_command('help')
 
 dbl_token = topggtoken
@@ -122,7 +145,9 @@ async def servers(ctx):
 
             print(guild.name)
 
+
 # Loads all of the Cogs
+
 ext = [
 
     'cogs.anime',
@@ -139,12 +164,19 @@ ext = [
 
     'cogs.reddit',
 
-    'cogs.roleplay'
+    'cogs.roleplay',
+
+    'cogs.config'
     
 ]
 
 if __name__ == '__main__':
 
+    client.mongo = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("mongodata"))
+
+    client.db = client.mongo["discord"]
+
+    client.prefixes = discordmongo.Mongo(connection_url=client.db, dbname="prefixes")
     for x in ext:
 
         client.load_extension(x)
