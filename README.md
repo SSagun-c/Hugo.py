@@ -1,6 +1,6 @@
 # Hugo.py your favorite Image Bot
 
-**Version 2021.06.05**
+**Version 2021.06.18**
 
 # About
 
@@ -18,6 +18,6 @@ I think soon I will completely rewrite the code and add cogs
 Hugo uses the command prefix 'h!'
 If you need any help just simply type 'h!help' in any Channel and he will give you a list of things he can do!
 
-# Invite the Bot
+# Vote for him! 
 
-https://discord.com/api/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot
+https://top.gg/bot/832922273597227019/vote
