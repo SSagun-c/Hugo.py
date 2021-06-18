@@ -85,7 +85,10 @@ async def on_command_error(ctx, error):
                 embed = discord.Embed(title="❌ Uh Oh looks like this is not a NSFW Channel", color=0xFF0000)
                 await ctx.send(embed=embed)
 
+@client.event
+async def on_guild_remove(guild):
 
+    await client.prefixes.unset({"_id": guild.id, "prefix": 1})
 
 # Botinfo
 
