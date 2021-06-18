@@ -13,6 +13,10 @@ class configCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def prefix(self, ctx, prefix=None):
+        
+        if prefix is None:
+
+            return await ctx.send("Please enter a Valid Prefix")
 
         data = await self.bot.prefixes.find(ctx.guild.id)
 
