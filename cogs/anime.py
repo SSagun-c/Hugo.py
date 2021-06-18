@@ -1,8 +1,9 @@
 import asyncio
-from aiohttp.tracing import TraceRequestRedirectParams
+from typing import Optional
 import discord
 import aiohttp
 import datetime
+from discord import Member
 from discord.ext import commands
 from discord.ext.commands import cooldown
 
@@ -52,7 +53,7 @@ class animeCog(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['sex'])
-    async def fuck(self, ctx):
+    async def fuck(self, ctx, target: Optional[Member]):
 
         await ctx.send("You can do that alone....")
 
