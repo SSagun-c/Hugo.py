@@ -1,7 +1,7 @@
 discord
 aiohttp
 Pillow
-discordmongo
+pymongo
 praw
 topggpy
 kitsu-wrapper
