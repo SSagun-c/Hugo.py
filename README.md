@@ -4,19 +4,23 @@
 
 # About
 
-Hugo.py is a Discord Bot written in python who is exclusively for Anime related Servers.
-Hugo is able to send Pictures of different anime categories, such as neko and anime.
-He also provides NSFW.
+This is Hugo.py exclusively for Anime related Servers.
 
-Hugo got created out of the blue after creating a Discord Server that is Anime related and needed some random pictures.
+NOW NEW! Search for your Manga or Anime using h!anime [Anime Name] and h!manga [Manga Name]
 
-He is still in work but I got so far that I am able to publish him.
+What he does » Sending Images from different Categories e.g. Anime or Neko.
 
-I think soon I will completely rewrite the code and add cogs
-# Usage
+» Is linked to reddit so you can get Images from different subreddits e.g. h!reddit Anime
 
-Hugo uses the command prefix 'h!'
-If you need any help just simply type 'h!help' in any Channel and he will give you a list of things he can do!
+» Gives highly detailed info about a User or about your Server
+
+» Has 14 Commands made for Roleplay and more being added in the future
+
+If you want to see more just invite the bot and see for yourself! ;) » Can give you different websites were you can watch Anime on (17 currently supported)
+
+» Has also use for Moderation
+
+Prefix is h! but you can change it with h!prefix <new prefix>
 
 # Vote for him! 
 
