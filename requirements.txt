@@ -7,4 +7,5 @@ asyncio
 topggpy
 pymongo
 motor
+dnspython
 kitsu-wrapper
