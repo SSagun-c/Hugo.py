@@ -8,7 +8,8 @@ This is Hugo.py exclusively for Anime related Servers.
 
 NOW NEW! Search for your Manga or Anime using h!anime [Anime Name] and h!manga [Manga Name]
 
-What he does » Sending Images from different Categories e.g. Anime or Neko.
+What he does
+» Sending Images from different Categories e.g. Anime or Neko.
 
 » Is linked to reddit so you can get Images from different subreddits e.g. h!reddit Anime
 
