@@ -51,6 +51,10 @@ class animeCog(commands.Cog):
         embed.set_image(url=ajson['url'])
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=['sex'])
+    async def fuck(self, ctx):
+
+        await ctx.send("You can do that alone....")
 
     @commands.command()
     @cooldown(1, 10, commands.BucketType.user)
