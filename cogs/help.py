@@ -17,7 +17,7 @@ class helpCog(commands.Cog):
         embed.add_field(name="🖋 Anime Commands", value="`anigirl`  `neko`  `animeweb`  `anime <Anime Name>`  `manga <Manga Name>`", inline=True)
         embed.add_field(name="🔞 NSFW Commands", value="`hentai`  `trap`  `thighs`\n`boobs`  `yuri`", inline=True)
         embed.add_field(name=f"{reddit} Reddit Command", value="`reddit <your subreddit here>`", inline=True)
-        embed.add_field(name="🔎 Moderator Commands", value="`ban`  `kick`  `clear`\n`mute`  `unmute`  `unban`", inline=True)
+        embed.add_field(name="🔎 Moderator Commands", value="`ban`  `kick`  `clear`\n`mute`  `unmute`  `unban`  `prefix`  `clearprefix`", inline=True)
         embed.add_field(name="About the Bot", value="[Invite the bot](https://discord.com/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot) - [Join the Help Server](https://discord.gg/6JkmzhDsps) - [Vote for me!](https://top.gg/bot/832922273597227019/vote)", inline=False)
         
         embed.set_footer(text="Dont know how to use the Moderator commands? Just send h!mod")
