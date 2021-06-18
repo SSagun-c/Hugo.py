@@ -32,7 +32,7 @@ async def get_prefix(client, message):
 
 topggtoken = os.getenv("TOPGGTOKEN")
 token = os.getenv("DISCORD_TOKEN")
-client = commands.Bot(command_prefix=get_prefix, intents=Intents.all())
+client = commands.Bot(command_prefix=get_prefix, intents=Intents.all(),  case_insensitive=True)
 client.DEFAULT_PREFIX = "h!"
 client.remove_command('help')
 
