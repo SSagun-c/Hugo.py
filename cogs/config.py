@@ -28,7 +28,7 @@ class configCog(commands.Cog):
 
     
     @commands.command()
-    @commands.has_permissions(managae_guild=True)
+    @commands.has_permissions(manage_guild=True)
     async def clearprefix(self, ctx):
         
         await self.bot.prefixes.unset({"_id": ctx.guild.id, "prefix": 1})
