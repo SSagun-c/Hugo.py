@@ -3,5 +3,6 @@ aiohttp
 Pillow
 discordmongopy
 praw
+asyncio
 topggpy
 kitsu-wrapper
