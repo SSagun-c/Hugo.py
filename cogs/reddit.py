@@ -80,23 +80,19 @@ class redditCog(commands.Cog):
         random_sub = random.choice(all_subs)
 
 
-        sr_name = random_sub.subreddit
-        author = random_sub.author
         name = random_sub.title
 
 
-        embed = discord.Embed(title=author, description=name, color=0xFF4500)
+        embed = discord.Embed(title=name, color=0xEEEEEE)
 
-        embed.set_author(name=f'r/{sr_name}', icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+        embed.set_author(name='Would you Rather?')
 
         embed.timestamp = datetime.datetime.utcnow()
 
         embed.set_footer(text=f"Would you rather...this.. or... this?")
 
 
-        msg = await ctx.send(embed=embed)
-
-        await msg.add_reaction(["🟥", "🟦"])
+        await ctx.send(embed=embed)
 
 
 def setup(bot):
