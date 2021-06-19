@@ -78,7 +78,7 @@ class imageCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['b'])
+    @commands.command()
     @cooldown(1, 8, commands.BucketType.user)
     @commands.is_nsfw()
     async def bondage(self, ctx):
@@ -93,7 +93,7 @@ class imageCog(commands.Cog):
         embed.set_footer(text=f"Requested by {ctx.message.author}")
 
         await ctx.send(embed=embed)
-        
+
     # sfw image commands
 
     @commands.command()
