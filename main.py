@@ -89,12 +89,12 @@ async def on_command_error(ctx, error):
 async def on_guild_remove(guild):
 
     await client.prefixes.unset({"_id": guild.id, "prefix": 1})
-
+    print(f"Left {guild.name}")
 
 @client.event
 async def on_guild_join(guild):
 
-    print(guild.name)
+    print(f"Joined {guild.name}")
 
 # Botinfo
 
