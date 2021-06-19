@@ -81,12 +81,12 @@ class redditCog(commands.Cog):
 
 
         name = random_sub.title
-
+        url = random_sub.url
 
         embed = discord.Embed(title=name, color=0xEEEEEE)
 
         embed.set_author(name='Would you Rather?')
-
+        embed.set_image(url=url)
         embed.timestamp = datetime.datetime.utcnow()
 
         embed.set_footer(text=f"Would you rather...this.. or... this?")
