@@ -112,6 +112,5 @@ class moderatorCog(commands.Cog):
                 await ctx.send(f'Unbanned {member} on {datetime.datetime.utcmow()} by {ctx.message.author}')
                 return
 
-
 def setup(bot):
     bot.add_cog(moderatorCog(bot))

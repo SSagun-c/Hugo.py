@@ -85,7 +85,7 @@ class imageCog(commands.Cog):
     @cooldown(1, 8, commands.BucketType.user)
     async def neko(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.computerfreaker.cf/v1/neko')
+            request = await session.get('https://shiro.gg/api/images/neko')
             nekojson = await request.json()
 
         embed = discord.Embed()
