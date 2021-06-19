@@ -2,8 +2,7 @@ discord
 aiohttp
 Pillow
 discordmongopy
-asyncpraw
-redditeasy
+asynpraw
 asyncio
 topggpy
 pymongo
