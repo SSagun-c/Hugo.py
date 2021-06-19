@@ -78,7 +78,22 @@ class imageCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=['b'])
+    @cooldown(1, 8, commands.BucketType.user)
+    @commands.is_nsfw()
+    async def bondage(self, ctx):
+        async with aiohttp.ClientSession() as session:
+            request = await session.get('https://shiro.gg/api/images/nsfw/bondage')
+            bondjson = await request.json()
 
+        embed = discord.Embed()
+        embed.set_author(name="🔞 Bondage", url=bondjson['url'])
+        embed.set_image(url=bondjson['url'])
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+        await ctx.send(embed=embed)
+        
     # sfw image commands
 
     @commands.command()
