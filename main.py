@@ -119,7 +119,7 @@ async def botinfo(ctx):
     embed.set_thumbnail(url='https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg')
 
 
-    embed.add_field(name="💠 About me", value="**Name:** Hugo.py#9153\n**ID:** 832922273597227019\n**Avatar:** [Click Me!](https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg)\n**Prefix:** `h!`\n**My Developer:** SSagun.py#6969 **ID:** 544810950952353823", inline=False)
+    embed.add_field(name="💠 About me", value="**Name:** Hugo.py#9153\n**ID:** 832922273597227019\n**Avatar:** [Click Me!](https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg)\n**Standardprefix:** `h!`\n**My Developer:** SSagun.py#6969 **ID:** 544810950952353823", inline=False)
     
     embed.add_field(name="💠 Short description", value="Image commands / Roleplay commands and more! Simple and Easy to use Bot for especially your Anime Server!", inline=False)
 
