@@ -2,7 +2,7 @@ discord
 aiohttp
 Pillow
 discordmongopy
-praw
+asyncpraw
 asyncio
 topggpy
 pymongo

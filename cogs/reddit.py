@@ -1,5 +1,5 @@
 import discord
-import praw
+import asyncpraw
 import datetime
 import random
 import os
@@ -16,7 +16,7 @@ class redditCog(commands.Cog):
     USERNAME = os.getenv("user")
     PASSWORD = os.getenv("pass")
 
-    reddit = praw.Reddit(client_id = os.environ['RAI'],
+    reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
                         client_secret = os.environ['RAS'],
                         username = os.environ['user'],
                         password = os.environ['pass'],
@@ -25,18 +25,18 @@ class redditCog(commands.Cog):
     @commands.command(name=('reddit'), aliases=['r'])
     @cooldown(1, 8, commands.BucketType.user)
     async def _reddit(self, ctx, subred = "meme"):  # default subreddit is meme
-        reddit = praw.Reddit(client_id = os.environ['RAI'],
+        reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
                         client_secret = os.environ['RAS'],
                         username = os.environ['user'],
                         password = os.environ['pass'],
                         user_agent = 'SSagunPraw')
 
-        subreddit = reddit.subreddit(subred)
+        subreddit = await reddit.subreddit(subred)
         all_subs = []
 
         top = subreddit.top(limit = 75)
 
-        for submission in top:
+        async for submission in top:
             all_subs.append(submission)
         
         random_sub = random.choice(all_subs)
@@ -61,7 +61,7 @@ class redditCog(commands.Cog):
     @cooldown(1, 8, commands.BucketType.user)
     async def wouldyourather(self, ctx):
 
-        reddit = praw.Reddit(client_id = os.environ['RAI'],
+        reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
 
                         client_secret = os.environ['RAS'],
 
@@ -72,14 +72,14 @@ class redditCog(commands.Cog):
                         user_agent = 'SSagunPraw')
 
 
-        subreddit = reddit.subreddit("wouldyourather")
+        subreddit = await reddit.subreddit("wouldyourather")
         all_subs = []
 
 
         top = subreddit.top(limit = 75)
 
 
-        for submission in top:
+        async for submission in top:
             all_subs.append(submission)
         
 
@@ -88,9 +88,9 @@ class redditCog(commands.Cog):
 
         author = sub.author
         name = sub.title
-        desc = sub.description
+        description = sub.description
 
-        embed = discord.Embed(title=name, description=f"{desc}", color=0xFF4500)
+        embed = discord.Embed(title=name, description=f"{description}", color=0xFF4500)
 
 
         embed.set_author(name=author, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
