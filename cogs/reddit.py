@@ -70,7 +70,7 @@ class redditCog(commands.Cog):
         all_subs = []
 
 
-        top = subreddit.top(limit = None)
+        top = subreddit.top(limit = 100)
 
 
         async for submission in top:
