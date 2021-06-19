@@ -3,6 +3,7 @@ aiohttp
 Pillow
 discordmongopy
 asyncpraw
+redditeasy
 asyncio
 topggpy
 pymongo

@@ -3,6 +3,7 @@ import asyncpraw
 import datetime
 import random
 import os
+import redditeasy
 from discord.ext import commands
 from discord.ext.commands import cooldown
 
@@ -25,36 +26,34 @@ class redditCog(commands.Cog):
     @commands.command(name=('reddit'), aliases=['r'])
     @cooldown(1, 8, commands.BucketType.user)
     async def _reddit(self, ctx, subred = "meme"):  # default subreddit is meme
-        reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
-                        client_secret = os.environ['RAS'],
-                        username = os.environ['user'],
-                        password = os.environ['pass'],
-                        user_agent = 'SSagunPraw')
+        post = redditeasy.AsyncSubreddit(subreddit = subred,
 
-        subreddit = await reddit.subreddit(subred)
-        all_subs = []
+                                        client_id = os.environ['RAI'],
 
-        top = subreddit.top(limit = 75)
+                                        client_secret = os.environ['RAS'],
 
-        async for submission in top:
-            all_subs.append(submission)
-        
-        random_sub = random.choice(all_subs)
+                                        username = os.environ['user'],
 
-        if submission.over_18 == True:
-            await ctx.send("Sorry but this subreddit is marked as NSFW!")
-        else: 
-            sr_name = random_sub.subreddit
-            author = random_sub.author
-            name = random_sub.title
-            url = random_sub.url
+                                        password = os.environ['pass'],
 
-            embed = discord.Embed(title=author, description=name, color=0xFF4500)
-            embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
-            embed.set_image(url=url)
-            embed.timestamp = datetime.datetime.utcnow()
-            embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}!")
-            await ctx.send(embed=embed)
+                                        user_agent = 'SSagunPraw')
+
+
+        postoutput = await post.get_post()
+
+
+        embed = discord.Embed(title=f"{postoutput.title}", description=f"💬 {postoutput.comment_count}", url=postoutput.post_url, color=0xFF4500) 
+
+        embed.set_author(name=postoutput.author)
+
+        embed.set_image(url=postoutput.content)
+
+        embed.set_footer(text=f"Created at {postoutput.created_at}")
+
+        embed.timestamp = datetime.datetime.utcnow()
+
+        await ctx.send(embed=embed)
+
 
 
     @commands.command(aliases=['wyr'])
@@ -90,7 +89,7 @@ class redditCog(commands.Cog):
         name = sub.title
 
         embed = discord.Embed(title=name, color=0xFF4500)
-        
+
 
 
         embed.set_author(name=author, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
