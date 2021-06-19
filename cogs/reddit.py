@@ -56,6 +56,48 @@ class redditCog(commands.Cog):
             embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}!")
             await ctx.send(embed=embed)
         
+    @commands.commands(aliases=['wyr'])
+    @cooldown(1, 5, commands.BucketType.user)
+    async def wouldyourather(self, ctx):
+        reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
+                        client_secret = os.environ['RAS'],
+                        username = os.environ['user'],
+                        password = os.environ['pass'],
+                        user_agent = 'SSagunPraw')
+
+
+        subreddit = await reddit.subreddit("wouldyourather")
+        all_subs = []
+
+
+        top = subreddit.top(limit = 75)
+
+
+        async for submission in top:
+            all_subs.append(submission)
         
+
+        random_sub = random.choice(all_subs)
+
+
+        sr_name = random_sub.subreddit
+        author = random_sub.author
+        name = random_sub.title
+
+
+        embed = discord.Embed(title=author, description=name, color=0xFF4500)
+
+        embed.set_author(name=f'r/{sr_name}', icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+
+        embed.timestamp = datetime.datetime.utcnow()
+
+        embed.set_footer(text=f"Would you rather...this.. or... this?")
+
+
+        msg = await ctx.send(embed=embed)
+
+        await msg.add_reaction(["🟥", "🟦"])
+
+
 def setup(bot):
     bot.add_cog(redditCog(bot))
