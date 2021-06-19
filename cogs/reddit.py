@@ -90,6 +90,7 @@ class redditCog(commands.Cog):
         name = sub.title
 
         embed = discord.Embed(title=name, color=0xFF4500)
+        
 
 
         embed.set_author(name=author, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
