@@ -56,7 +56,7 @@ class redditCog(commands.Cog):
             embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}!")
             await ctx.send(embed=embed)
         
-    @commands.commands(aliases=['wyr'])
+    @commands.command(aliases=['wyr'])
     @cooldown(1, 5, commands.BucketType.user)
     async def wouldyourather(self, ctx):
         reddit = asyncpraw.Reddit(client_id = os.environ['RAI'],
