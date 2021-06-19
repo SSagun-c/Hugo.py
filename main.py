@@ -1,4 +1,4 @@
-import datetime
+import datetime, time
 import discord
 import os
 import random
@@ -56,6 +56,9 @@ async def on_ready():
 
     print("Bot is online and ready to use!")
 
+    global startTime
+    startTime = time.time()
+
 @tasks.loop(minutes=30)
 async def update_stats():
 
@@ -98,10 +101,12 @@ async def on_guild_join(guild):
 
 # Botinfo
 
-@client.command()
+@client.command(aliases=['about', 'info'])
 @cooldown(1, 10, commands.BucketType.user)
 async def botinfo(ctx):
     activeservers = client.guilds
+
+    uptime = str(datetime.timedelta(seconds=int(round(time.time()-startTime))))
 
     sum = 0
 
@@ -114,13 +119,15 @@ async def botinfo(ctx):
     embed.set_thumbnail(url='https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg')
 
 
-    embed.add_field(name="About me", value="**Name:** Hugo.py#9153\n**ID:** 832922273597227019\n**Avatar:** [Click Me!](https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg)\n**Prefix:** `h!`\n**My Developer:** SSagun.py#6969 **ID:** 544810950952353823", inline=False)
+    embed.add_field(name="💠 About me", value="**Name:** Hugo.py#9153\n**ID:** 832922273597227019\n**Avatar:** [Click Me!](https://i.postimg.cc/sD6BcgbH/letter-h-logo-idea-monogram-weave-of-vector-13221348-2.jpg)\n**Prefix:** `h!`\n**My Developer:** SSagun.py#6969 **ID:** 544810950952353823", inline=False)
     
-    embed.add_field(name="Short description", value="Image commands / Roleplay commands and more! Simple and Easy to use Bot for especially your Anime Server!", inline=False)
+    embed.add_field(name="💠 Short description", value="Image commands / Roleplay commands and more! Simple and Easy to use Bot for especially your Anime Server!", inline=False)
 
-    embed.add_field(name="Info about my Servers and Users", value=f"**Amount of Servers I serve:** {len(client.guilds)} Servers\n**Users Active:** {sum} Users!\n**Raw Latency:** {client.latency * 100}ms", inline=False)
+    embed.add_field(name="💠 Info about my Servers and Users", value=f"**Amount of Servers I serve:** {len(client.guilds)} Servers\n**Users Active:** {sum} Users!\n**Raw Latency:** {client.latency * 100}ms", inline=False)
 
-    embed.add_field(name="Support me!", value="[Vote for me!](https://top.gg/bot/832922273597227019/vote) - [Support Server](https://discord.gg/6JkmzhDsps) - [Invite me](https://discord.com/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot)")
+    embed.add_field(name="💠 Uptime", value=uptime, inline=False)
+
+    embed.add_field(name="💠 Support me!", value="[Vote for me!](https://top.gg/bot/832922273597227019/vote) - [Support Server](https://discord.gg/6JkmzhDsps) - [Invite me](https://discord.com/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot)")
 
 
     embed.timestamp = datetime.datetime.utcnow()
