@@ -137,7 +137,7 @@ async def botinfo(ctx):
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong!\n```{client.latency * 100}```')
+    await ctx.send(f'Pong!\n```{client.latency * 100}ms```')
 
 
 # Bot owner only commands
