@@ -57,5 +57,54 @@ class redditCog(commands.Cog):
             await ctx.send(embed=embed)
 
 
+    @commands.command(aliases=['wyr'])
+    @cooldown(1, 8, commands.BucketType.user)
+    async def wouldyourather(self, ctx):
+
+        reddit = praw.Reddit(client_id = os.environ['RAI'],
+
+                        client_secret = os.environ['RAS'],
+
+                        username = os.environ['user'],
+
+                        password = os.environ['pass'],
+
+                        user_agent = 'SSagunPraw')
+
+
+        subreddit = reddit.subreddit("wouldyourather")
+        all_subs = []
+
+
+        top = subreddit.top(limit = 75)
+
+
+        for submission in top:
+            all_subs.append(submission)
+        
+
+        sub = random.choice(all_subs)
+
+
+        author = sub.author
+        name = sub.title
+        desc = sub.description
+
+        embed = discord.Embed(title=name, description=f"{desc}", color=0xFF4500)
+
+
+        embed.set_author(name=author, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+
+
+        embed.timestamp = datetime.datetime.utcnow()
+
+
+        embed.set_footer(text="Would you rather....?")
+
+
+        await ctx.send(embed=embed)
+
+        
+        
 def setup(bot):
     bot.add_cog(redditCog(bot))
