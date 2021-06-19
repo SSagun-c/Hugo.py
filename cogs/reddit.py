@@ -76,7 +76,7 @@ class redditCog(commands.Cog):
         all_subs = []
 
 
-        top = subreddit.top(limit = 75)
+        top = subreddit.top(limit = None)
 
 
         async for submission in top:
@@ -88,9 +88,8 @@ class redditCog(commands.Cog):
 
         author = sub.author
         name = sub.title
-        description = sub.description
 
-        embed = discord.Embed(title=name, description=f"{description}", color=0xFF4500)
+        embed = discord.Embed(title=name, color=0xFF4500)
 
 
         embed.set_author(name=author, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
