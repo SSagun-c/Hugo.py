@@ -164,7 +164,7 @@ async def report(ctx, *, report):
 
     asyncio.sleep(3)
 
-    await ctx.send(f"Hello {ctx.message.author.display_name}, thanks for reporting your issue we will try to fix it as soon as possible!\n For more information join the help server! `support`")
+    await ctx.send(f"Hello {ctx.message.author.display_name}, thanks for reporting your issue we will try to fix it as soon as possible!\nFor more information join the [help server](https://discord.gg/6JkmzhDsps)!")
 
 
 # Bot owner only commands
