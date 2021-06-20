@@ -1,7 +1,7 @@
 import datetime, time
 import discord
 import os
-import random
+import asyncio
 import discordmongo
 import topgg
 import motor.motor_asyncio
@@ -145,6 +145,26 @@ async def botinfo(ctx):
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong!\n```{client.latency * 100}ms```')
+
+
+@client.command()
+async def report(ctx, *, report):
+
+    channel = client.get_channel(856146296607997983)
+
+    embed = discord.Embed(title=f"Report from {ctx.message.author}", description=report, color=0xFF0000)
+
+    embed.timestamp = datetime.datetime.utcnow()
+
+    embed.set_footer(text=f"Reported by {ctx.message.author}")
+
+    await ctx.send("Sending your report...")
+
+    await channel.send(embed=embed)
+
+    asyncio.sleep(3)
+
+    await ctx.send(f"Hello {ctx.message.author.display_name}, thanks for reporting your issue we will try to fix it as soon as possible!\n For more information join the help server! `support`")
 
 
 # Bot owner only commands
