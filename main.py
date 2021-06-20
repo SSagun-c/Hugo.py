@@ -162,7 +162,7 @@ async def report(ctx, *, report):
 
     await channel.send(embed=embed)
 
-    asyncio.sleep(3)
+    await asyncio.sleep(3)
 
     await ctx.send(f"Hello {ctx.message.author.display_name}, thanks for reporting your issue we will try to fix it as soon as possible!\nFor more information join the [help server](https://discord.gg/6JkmzhDsps)!")
 
