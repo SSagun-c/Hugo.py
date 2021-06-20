@@ -2,6 +2,7 @@ import aiohttp
 import discord
 import random
 import datetime
+import asyncio
 from typing import Optional
 from discord import Member
 from discord.ext import commands
@@ -172,9 +173,9 @@ class miscCog(commands.Cog):
 
     @commands.command(aliases=['emb'])
     @commands.has_permissions(manage_messages=True)
-    async def embed(self, ctx, title, *, emsg):
+    async def embed(self, ctx, *, embedvalue):
 
-      embed = discord.Embed(title=title, description=emsg, color=0xEE6363)
+      embed = discord.Embed(title=embedvalue, color=0xEE6363)
         
       embed.timestamp = datetime.datetime.utcnow()
       await ctx.send(embed=embed)
@@ -182,8 +183,29 @@ class miscCog(commands.Cog):
 
     @commands.command()
     async def vote(self, ctx):
-        embed = discord.Embed(title="Click me to vote me!", url='https://top.gg/bot/832922273597227019/vote', color=0x7289DA)
+        embed = discord.Embed(title="Click me!", url='https://top.gg/bot/832922273597227019/vote', color=0x7289DA)
         await ctx.send(embed=embed)
+    
+
+    @commands.command()
+    async def report(self, ctx, *, report):
+
+        channel = '856146296607997983'
+
+        embed = discord.Embed(title=f"Report from {ctx.message.author}", description=report, color=0xFF0000)
+
+        embed.timestamp = datetime.datetime.utcnow()
+
+        embed.set_footer(text=f"Reported by {ctx.message.author}")
+
+        await ctx.send("Sending your report...")
+
+        await channel.send(embed=embed)
+
+        asyncio.sleep(3)
+
+        await ctx.send(f"Hello {ctx.message.author.display_name}, thanks for reporting your issue we will try to fix it as soon as possible!\n For more information join the help server! `support`")
+
 
 def setup(bot):
     bot.add_cog(miscCog(bot))
