@@ -103,7 +103,7 @@ async def on_guild_join(guild):
 
     channel = guild.text_channels[0]
 
-    invite = await channel.create_invite(max_age=300)
+    invite = await channel.create_invite()
 
     e = discord.Embed(title="I've joined a server.", colour=0x00ea79)
 
