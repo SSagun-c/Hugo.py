@@ -99,6 +99,27 @@ async def on_guild_join(guild):
 
     print(f"Joined {guild.name}")
 
+@client.event
+async def on_guild_join(guild):
+
+    channel = client.get_channel(857276576269729884)
+
+    invite = await guild.system_channel.create_invite()
+
+    e = discord.Embed(title="I've joined a server.", colour=0x00ea79)
+
+    e.add_field(name="**Server Name**", value=guild.name, inline=False)
+    e.add_field(name="**Server Id**", value=guild.id, inline=True)
+    e.add_field(name="**Invite Link**", value=invite, inline=False)
+
+    e.set_thumbnail(url=guild.icon_url)
+
+    e.timestamp = datetime.datetime.utcnow()
+
+    e.set_footer(text=f"I'm in {len(client.guilds)} servers now")
+    
+    await channel.send(embed=e)
+
 # Botinfo
 
 @client.command(aliases=['about', 'info'])
