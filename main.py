@@ -99,12 +99,9 @@ async def on_guild_join(guild):
 
     print(f"Joined {guild.name}")
 
-@client.event
-async def on_guild_join(guild):
-
     channel = client.get_channel(857276576269729884)
 
-    invite = await guild.system_channel.create_invite()
+    invite = await guild.create_invite()
 
     e = discord.Embed(title="I've joined a server.", colour=0x00ea79)
 
