@@ -99,9 +99,11 @@ async def on_guild_join(guild):
 
     print(f"Joined {guild.name}")
 
-    channel = client.get_channel(857276576269729884)
+    logchannel = client.get_channel(857276576269729884)
 
-    invite = await guild.create_invite()
+    channel = guild.text_channels[0]
+
+    invite = await channel.create_invite(max_age=300)
 
     e = discord.Embed(title="I've joined a server.", colour=0x00ea79)
 
@@ -115,7 +117,7 @@ async def on_guild_join(guild):
 
     e.set_footer(text=f"I'm in {len(client.guilds)} servers now")
     
-    await channel.send(embed=e)
+    await logchannel.send(embed=e)
 
 # Botinfo
 
