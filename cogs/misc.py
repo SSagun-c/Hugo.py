@@ -183,8 +183,15 @@ class miscCog(commands.Cog):
 
     @commands.command()
     async def vote(self, ctx):
-        embed = discord.Embed(title="Click me!", url='https://top.gg/bot/832922273597227019/vote', color=0x7289DA)
+        embed = discord.Embed(title="Thank You!", description=f"Hi there {ctx.message.author.display_name}!\nThank you for the thoughts of voting for me!\nSimply [Click Me!](https://top.gg/bot/832922273597227019/vote)\nHave a Nice Day!", color=0x7289DA)
         await ctx.send(embed=embed)
     
+
+    
+
+
+
+
+
 def setup(bot):
     bot.add_cog(miscCog(bot))
