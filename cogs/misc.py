@@ -204,7 +204,7 @@ class miscCog(commands.Cog):
 
         simp.save('psimp.jpg')
 
-        await ctx.send(file=discord.File("prip.jpg"))
+        await ctx.send(file=discord.File("psimp.jpg"))
 
 
 
