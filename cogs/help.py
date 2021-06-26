@@ -13,6 +13,7 @@ class helpCog(commands.Cog):
         embed = discord.Embed(title="Hugo.py Commands", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)", color=0x8962AA)
 
         embed.add_field(name='🥳 Misc Commands', value="`ping`  `8ball`  `pussy`\n`serverinfo`  `roll`  `support`\n`kill`  `invite`  `repeat`\n`avatar`  `userinfo`  `wallpaper`\n`botinfo`  `wouldyourather`", inline=True)
+        embed.add_field(name="📸 Image Manipulation", value="`simp`", inline=True)
         embed.add_field(name="🎭 Roleplay Commands", value="`kiss`  `cry`  `hug`  `poke`\n`lick`  `pat`  `nom`  `pout`\n`punch`  `slap`  `blush`\n`smug`  `sleep`  `tickle`", inline=True)
         embed.add_field(name="🖋 Anime Commands", value="`anigirl`  `neko`  `animeweb`  `anime <Anime Name>`  `manga <Manga Name>`", inline=True)
         embed.add_field(name="🔞 NSFW Commands", value="`hentai`  `trap`  `thighs`\n`boobs`  `yuri` `bondage`", inline=True)
