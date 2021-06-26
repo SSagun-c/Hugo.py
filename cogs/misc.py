@@ -187,10 +187,10 @@ class miscCog(commands.Cog):
     async def vote(self, ctx):
         embed = discord.Embed(title="Thank You!", description=f"Hi there {ctx.message.author.display_name}!\nThank you for the thoughts of voting for me!\nSimply [Click Me!](https://top.gg/bot/832922273597227019/vote)\nHave a Nice Day!", color=0x7289DA)
         await ctx.send(embed=embed)
-    
+
 
     @commands.command()
-    async def simp(ctx, target: Optional[Member]):
+    async def simp(self, ctx, target: Optional[Member]):
         target = target or ctx.message.author
         simp = Image.open('simpcard.jpg')
 
@@ -205,9 +205,6 @@ class miscCog(commands.Cog):
         simp.save('psimp.jpg')
 
         await ctx.send(file=discord.File("psimp.jpg"))
-
-
-
 
 
 def setup(bot):

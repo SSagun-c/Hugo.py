@@ -158,8 +158,6 @@ async def botinfo(ctx):
 
     await ctx.send(embed=embed)
 
-
-
 # Ping
 
 @client.command()
