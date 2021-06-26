@@ -6,7 +6,7 @@ import asyncio
 from typing import Optional
 from discord import Member
 from discord.ext import commands
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFont, ImageDraw
 from io import BytesIO
 from discord.ext.commands import cooldown
 
@@ -205,6 +205,21 @@ class miscCog(commands.Cog):
         simp.save('./cogs/Images/psimp.jpg')
 
         await ctx.send(file=discord.File("./cogs/Images/psimp.jpg"))
+
+
+    @commands.command()
+    async def license(ctx, target: Optional[Member]):
+        target = target or ctx.message.author
+        lic = Image.open('./cogs/Images/license.jpg')
+
+        draw = ImageDraw(lic)
+        font = ImageFont.truetype('arial.ttf', 12)
+
+        text = target.display_name
+        draw.text((183,21), text, (0,0,0), font=font)
+        lic.save("./cogs/Images/plicense.jpg")
+
+        await ctx.send(file=discord.File("./cogs/Images/plicense.jpg"))
 
 
 def setup(bot):
