@@ -192,7 +192,7 @@ class miscCog(commands.Cog):
     @commands.command()
     async def simp(self, ctx, target: Optional[Member]):
         target = target or ctx.message.author
-        simp = Image.open('cogs.Images.simpcard.jpg')
+        simp = Image.open('./cogs/Images/simpcard.jpg')
 
         asset = target.avatar_url_as(size=128)
         data = BytesIO(await asset.read())
@@ -202,9 +202,9 @@ class miscCog(commands.Cog):
 
         simp.paste(pfp, (169,252))
 
-        simp.save('cogs.Images.psimp.jpg')
+        simp.save('./cogs/Images/psimp.jpg')
 
-        await ctx.send(file=discord.File("psimp.jpg"))
+        await ctx.send(file=discord.File("./cogs/Images/psimp.jpg"))
 
 
 def setup(bot):
