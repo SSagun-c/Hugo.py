@@ -208,15 +208,17 @@ class miscCog(commands.Cog):
 
 
     @commands.command()
-    async def license(ctx, target: Optional[Member]):
+    async def license(self, ctx, target: Optional[Member]):
         target = target or ctx.message.author
         lic = Image.open('./cogs/Images/license.jpg')
 
-        draw = ImageDraw(lic)
-        font = ImageFont.truetype('arial.ttf', 12)
+        usr = target.display_name
 
-        text = target.display_name
-        draw.text((183,21), text, (0,0,0), font=font)
+        draw = ImageDraw.Draw(lic)
+        font = ImageFont.truetype('arial.ttf', 26)
+
+        text = usr
+        draw.text((456,105), text, (0,0,0), font=font)
         lic.save("./cogs/Images/plicense.jpg")
 
         await ctx.send(file=discord.File("./cogs/Images/plicense.jpg"))
