@@ -191,7 +191,7 @@ class miscCog(commands.Cog):
 
     @commands.command()
     async def simp(ctx, target: Optional[Member]):
-        target = ctx.message.author or target
+        target = target or ctx.message.author
         simp = Image.open('simpcard.jpg')
 
         asset = target.avatar_url_as(size=128)
