@@ -6,6 +6,8 @@ import asyncio
 from typing import Optional
 from discord import Member
 from discord.ext import commands
+from PIL import Image, ImageFilter
+from io import BytesIO
 from discord.ext.commands import cooldown
 
 
@@ -187,7 +189,22 @@ class miscCog(commands.Cog):
         await ctx.send(embed=embed)
     
 
-    
+    @commands.command()
+    async def simp(ctx, target: Optional[Member]):
+        target = ctx.message.author or target
+        simp = Image.open('simpcard.jpg')
+
+        asset = target.avatar_url_as(size=128)
+        data = BytesIO(await asset.read())
+        pfp = Image.open(data)
+
+        pfp = pfp.resize((285,269))
+
+        simp.paste(pfp, (169,252))
+
+        simp.save('prip.jpg')
+
+        await ctx.send(file=discord.file("prip.jpg"))
 
 
 
