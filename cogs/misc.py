@@ -202,9 +202,9 @@ class miscCog(commands.Cog):
 
         simp.paste(pfp, (169,252))
 
-        simp.save('prip.jpg')
+        simp.save('psimp.jpg')
 
-        await ctx.send(file=discord.file("prip.jpg"))
+        await ctx.send(file=discord.File("prip.jpg"))
 
 
 
