@@ -4,6 +4,7 @@ from discord.ext import commands
 
 hh = mediascraper.HentaiHaven()
 r34 = mediascraper.Rule34()
+gb = mediascraper.Gelbooru()
 
 class nsfwCog(commands.Cog):
     def __init__(self, bot):
@@ -21,6 +22,13 @@ class nsfwCog(commands.Cog):
     @commands.is_nsfw()
     async def rule34(self, ctx, *args):
         image = await r34.image_search(str(" ").join(args))
+        await ctx.send(image)
+
+
+    @commands.command(aliases=['gbooru', 'gb'])
+    @commands.is_nsfw()
+    async def gelbooru(self, ctx, *args):
+        image = await gb.image_search(str(" ").join(args))
         await ctx.send(image)
 
 
