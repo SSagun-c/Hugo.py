@@ -12,12 +12,9 @@ class nsfwCog(commands.Cog):
     
     @commands.command(aliases=['hentaihaven', 'hh'])
     @commands.is_nsfw()
-    async def hentai_haven(self, ctx, *, hentai):
-        video = await hh.category_search(str(" ").join(hentai))
-
-        embed = discord.Embed(title=f"{ctx.message.author.display_name} Searched for {hentai}", description=f"Link: {video}", color=0xDB3B5E)
-        
-        await ctx.send(embed=embed)
+    async def hentai_haven(self, ctx, *args):
+        video = await hh.category_search(str(" ").join(args))
+        await ctx.send(f"Here is you video: {video}")
 
     
     @commands.command(aliases=['r34'])
