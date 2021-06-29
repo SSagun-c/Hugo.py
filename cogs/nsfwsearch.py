@@ -14,7 +14,7 @@ class nsfwCog(commands.Cog):
     @commands.is_nsfw()
     async def hentai_haven(self, ctx, *args):
         video = await hh.category_search(str(" ").join(args))
-        await ctx.send(f"Here is you video: {video}")
+        await ctx.send(video)
 
     
     @commands.command(aliases=['r34'])
