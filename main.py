@@ -221,7 +221,9 @@ ext = [
 
     'cogs.roleplay',
 
-    'cogs.config'
+    'cogs.config',
+
+    'cogs.imagemanipulation'
     
 ]
 

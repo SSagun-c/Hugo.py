@@ -189,40 +189,5 @@ class miscCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command()
-    async def simp(self, ctx, target: Optional[Member]):
-        target = target or ctx.message.author
-        simp = Image.open('./cogs/Images/simpcard.jpg')
-
-        asset = target.avatar_url_as(size=128)
-        data = BytesIO(await asset.read())
-        pfp = Image.open(data)
-
-        pfp = pfp.resize((285,269))
-
-        simp.paste(pfp, (169,252))
-
-        simp.save('./cogs/Images/psimp.jpg')
-
-        await ctx.send(file=discord.File("./cogs/Images/psimp.jpg"))
-
-
-    @commands.command()
-    async def license(self, ctx, target: Optional[Member]):
-        target = target or ctx.message.author
-        lic = Image.open('./cogs/Images/license.jpg')
-
-        usr = target.display_name
-
-        draw = ImageDraw.Draw(lic)
-        font = ImageFont.truetype('arial.ttf', 26)
-
-        text = usr
-        draw.text((456,105), text, (0,0,0), font=font)
-        lic.save("./cogs/Images/plicense.jpg")
-
-        await ctx.send(file=discord.File("./cogs/Images/plicense.jpg"))
-
-
 def setup(bot):
     bot.add_cog(miscCog(bot))
