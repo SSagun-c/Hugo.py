@@ -223,7 +223,9 @@ ext = [
 
     'cogs.config',
 
-    'cogs.imagemanipulation'
+    'cogs.imagemanipulation',
+
+    'cogs.nsfwsearch'
     
 ]
 
