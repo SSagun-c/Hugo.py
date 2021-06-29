@@ -9,3 +9,4 @@ pymongo
 motor
 dnspython
 kitsu-wrapper
+mediascrapper
