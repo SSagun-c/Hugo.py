@@ -10,3 +10,4 @@ motor
 dnspython
 kitsu-wrapper
 mediascraper
+bs4
