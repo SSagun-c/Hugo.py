@@ -30,7 +30,7 @@ async def get_prefix(client, message):
 
         return commands.when_mentioned_or(client.DEFAULT_PREFIX)(client, message)
 
-topggtoken = os.getenv("TOPGGTOKEN")
+topggtoken = os.getenv("topgg")
 token = os.getenv("DISCORD_TOKEN")
 client = commands.Bot(command_prefix=get_prefix, intents=Intents.all(),  case_insensitive=True)
 client.DEFAULT_PREFIX = "h!"
