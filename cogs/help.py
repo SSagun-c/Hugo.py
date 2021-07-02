@@ -24,14 +24,14 @@ class HelpMenu(ListPageSource):
 	def __init__(self, ctx, data):
 		self.ctx = ctx
 
-		super().__init__(data, per_page=5)
+		super().__init__(data, per_page=12)
 
 	async def write_page(self, menu, fields=[]):
 		offset = (menu.current_page*self.per_page) + 1
 		len_data = len(self.entries)
 
 		embed = Embed(title="Help",
-					  description="Welcome to the Carberretta help dialog!",
+					  description="Welcome to my help dialog!",
 					  colour=self.ctx.author.colour)
 		embed.set_thumbnail(url=self.ctx.guild.me.avatar_url)
 		embed.set_footer(text=f"{offset:,} - {min(len_data, offset+self.per_page-1):,} of {len_data:,} commands.")
