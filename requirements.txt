@@ -11,3 +11,4 @@ dnspython
 kitsu-wrapper
 mediascraper
 bs4
+discord-ext-menus
