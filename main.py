@@ -225,7 +225,9 @@ ext = [
 
     'cogs.imagemanipulation',
 
-    'cogs.nsfwsearch'
+    'cogs.nsfwsearch',
+    
+    'cogs.weather'
     
 ]
 
