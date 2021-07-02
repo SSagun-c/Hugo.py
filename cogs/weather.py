@@ -31,7 +31,7 @@ class weatherCog(commands.Cog):
     @cooldown(1, 10, commands.BucketType.user)
     async def weather_i(self, ctx, *, city_name):
         async with aiohttp.ClientSession() as session:
-            request = await session.get(f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=08c3bc9d0b3e4eb229d9a271bebb05ef&units=metric")
+            request = await session.get(f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=08c3bc9d0b3e4eb229d9a271bebb05ef&units=imperial")
             weatherjson = await request.json()
 
         embed = discord.Embed(title=weatherjson['name'], description=f"{weatherjson['weather'][0]['description']}\nLocated in: {weatherjson['sys']['country']}", colour=0xFFFEEE)
