@@ -1,47 +1,82 @@
-import discord
-from discord.ext import commands
+from typing import Optional
+
+from discord import Embed
+from discord.utils import get
+from discord.ext.menus import MenuPages, ListPageSource
+from discord.ext.commands import Cog
+from discord.ext.commands import command
 
 
-class helpCog(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+def syntax(command):
+	cmd_and_aliases = "|".join([str(command), *command.aliases])
+	params = []
 
-    
-    @commands.command()
-    async def help(self, ctx):
-        reddit = '<:reddit:853000371601277018>'
-        embed = discord.Embed(title="Hugo.py Commands", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)", color=0x8962AA)
+	for key, value in command.params.items():
+		if key not in ("self", "ctx"):
+			params.append(f"[{key}]" if "NoneType" in str(value) else f"<{key}>")
 
-        embed.add_field(name='🥳 Misc Commands', value="`ping`  `8ball`  `pussy`\n`serverinfo`  `roll`  `support`\n`kill`  `invite`  `repeat`\n`avatar`  `userinfo`  `wallpaper`\n`botinfo`  `wouldyourather`\n`weather (shows in metric) <city>`\n`iweather (shows in imperial) <city>`", inline=True)
-        embed.add_field(name="📸 Image Manipulation", value="`simp`  `license`", inline=True)
-        embed.add_field(name="🎭 Roleplay Commands", value="`kiss`  `cry`  `hug`  `poke`\n`lick`  `pat`  `nom`  `pout`\n`punch`  `slap`  `blush`\n`smug`  `sleep`  `tickle`", inline=True)
-        embed.add_field(name="🖋 Anime Commands", value="`anigirl`  `neko`  `animeweb`  `anime <Anime Name>`  `manga <Manga Name>`", inline=True)
-        embed.add_field(name="🔞 NSFW Commands", value="`hentai`  `trap`  `thighs`\n`boobs`  `yuri` `bondage`", inline=True)
-        embed.add_field(name=f"{reddit} Reddit Command", value="`reddit <your subreddit here>`", inline=True)
-        embed.add_field(name="🔎 Moderator Commands", value="`ban`  `kick`  `clear`\n`mute`  `unmute`  `unban`  `prefix`  `clearprefix`", inline=True)
-        embed.add_field(name="About the Bot", value="**Report bugs**\n`report`\n\n[Invite the bot](https://discord.com/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot) - [Join the Help Server](https://discord.gg/6JkmzhDsps) - [Vote for me!](https://top.gg/bot/832922273597227019/vote)", inline=False)
-        
-        embed.set_footer(text="Dont know how to use the Moderator commands? Just send h!mod")
+	params = " ".join(params)
 
-        await ctx.send(embed=embed)
-    
-    
-    @commands.command()
-    async def mod(self, ctx):
-      embed = discord.Embed(title="Info About the Moderation Commands", color=0x738ADB)
-     
-      embed.add_field(name="Ban", value="`h!ban <Member> <Reason(Optional)>`", inline=False)
-      embed.add_field(name="Kick", value="`h!kick <Member> <Reason(Optional)>`", inline=False)
-      embed.add_field(name="Mute", value="`h!mute <time(Leave blank for permamute)> <Reason(Optional)>`", inline=False)
-      embed.add_field(name="Unban", value="`h!unban <User and Discriminator(e.g. h!unban SSagun.py#6969)>`", inline=False)
-      embed.add_field(name="Unmute", value="`h!unmute <member>`", inline=False)
-      embed.add_field(name="Clear", value="`h!clear <amount(Please dont exaggerate)>`", inline=False)
-        
-      embed.set_footer(text="If this still didnt help you, you should join the Help Server! h!support")
-      
-      await ctx.send(embed=embed)
-   
-    
-    
+	return f"`{cmd_and_aliases} {params}`"
+
+
+class HelpMenu(ListPageSource):
+	def __init__(self, ctx, data):
+		self.ctx = ctx
+
+		super().__init__(data, per_page=5)
+
+	async def write_page(self, menu, fields=[]):
+		offset = (menu.current_page*self.per_page) + 1
+		len_data = len(self.entries)
+
+		embed = Embed(title="Help",
+					  description="Welcome to the Carberretta help dialog!",
+					  colour=self.ctx.author.colour)
+		embed.set_thumbnail(url=self.ctx.guild.me.avatar_url)
+		embed.set_footer(text=f"{offset:,} - {min(len_data, offset+self.per_page-1):,} of {len_data:,} commands.")
+
+		for name, value in fields:
+			embed.add_field(name=name, value=value, inline=False)
+
+		return embed
+
+	async def format_page(self, menu, entries):
+		fields = []
+
+		for entry in entries:
+			fields.append((entry.brief or "No description", syntax(entry)))
+
+		return await self.write_page(menu, fields)
+
+
+class Help(Cog):
+	def __init__(self, bot):
+		self.bot = bot
+		self.bot.remove_command("help")
+
+	async def cmd_help(self, ctx, command):
+		embed = Embed(title=f"Help with `{command}`",
+					  description=syntax(command),
+					  colour=ctx.author.colour)
+		embed.add_field(name="Command description", value=command.help)
+		await ctx.send(embed=embed)
+
+	@command(name="help")
+	async def show_help(self, ctx, cmd: Optional[str]):
+		"""Shows this message."""
+		if cmd is None:
+			menu = MenuPages(source=HelpMenu(ctx, list(self.bot.commands)),
+							 delete_message_after=True,
+							 timeout=60.0)
+			await menu.start(ctx)
+
+		else:
+			if (command := get(self.bot.commands, name=cmd)):
+				await self.cmd_help(ctx, command)
+
+			else:
+				await ctx.send("That command does not exist.")
+
 def setup(bot):
-    bot.add_cog(helpCog(bot))
+	bot.add_cog(Help(bot))
