@@ -11,7 +11,7 @@ class weatherCog(commands.Cog):
         self.bot = bot
 
     
-    @commands.command(name="metricweather", aliases=['mweather'])
+    @commands.command(name="metricweather", aliases=['mweather', 'weather'])
     @cooldown(1, 10, commands.BucketType.user)
     async def weather_m(self, ctx, *, city_name):
         async with aiohttp.ClientSession() as session:
