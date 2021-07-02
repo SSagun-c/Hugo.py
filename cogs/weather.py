@@ -11,7 +11,7 @@ class weatherCog(commands.Cog):
         self.bot = bot
 
     
-    @commands.command(name="weather -metric", aliases=['weather', 'weather -met', 'weather -m'])
+    @commands.command(name="metricweather", aliases=['mweather'])
     @cooldown(1, 10, commands.BucketType.user)
     async def weather_m(self, ctx, *, city_name):
         async with aiohttp.ClientSession() as session:
@@ -27,7 +27,7 @@ class weatherCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(name="weather -imperial", aliases=['weather -imp', 'weather -i'])
+    @commands.command(name="imperialweather", aliases=['iweather'])
     @cooldown(1, 10, commands.BucketType.user)
     async def weather_i(self, ctx, *, city_name):
         async with aiohttp.ClientSession() as session:
