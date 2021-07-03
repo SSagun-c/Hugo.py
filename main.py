@@ -81,7 +81,7 @@ async def on_command_error(ctx, error):
                 embed = discord.Embed(title=f"❌ {error}", color=0xFF0000)
                 await ctx.send(embed=embed)
             elif isinstance(error, commands.CommandOnCooldown):
-                embed = discord.Embed(title=f"❌ Ratelimited. Try again in {error.retry_after:,.2f} secs.", color=0xFF0000)
+                embed = discord.Embed(title=f"❌ Calm down Sonic! Try again in {error.retry_after:,.2f} secs.", color=0xFF0000)
                 await ctx.send(embed=embed)
                 
             elif isinstance(error, commands.NSFWChannelRequired):
