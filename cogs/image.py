@@ -142,6 +142,20 @@ class imageCog(commands.Cog):
     @commands.command()
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
+    async def glasses(self, ctx):
+      y = hmtai.useHM("v2","glasses")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Girl with Glasses", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command()
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
     async def gif(self, ctx):
       y = hmtai.useHM("v2","gif")
       
