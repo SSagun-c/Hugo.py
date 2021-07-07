@@ -40,7 +40,6 @@ class helpCog(commands.Cog):
       embed.set_footer(text="If this still didnt help you, you should join the Help Server! h!support")
       
       await ctx.send(embed=embed)
-   
     
     
 def setup(bot):
