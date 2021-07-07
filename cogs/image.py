@@ -27,6 +27,21 @@ class imageCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=['y'])
+    @commands.is_nsfw()
+    @cooldown(1, 8, commands.BucketType.user)
+    async def yuri(self, ctx):
+        async with aiohttp.ClientSession() as session:
+            request = await session.get('https://waifu.pics/api/nsfw/trap')
+            yurijson = await request.json()
+
+        embed = discord.Embed(color=0XEE6363)
+        embed.set_author(name="🔞 Trap", url=yurijson['url'])
+        embed.set_image(url=yurijson['url'])
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+        await ctx.send(embed=embed
     
     @commands.command()
     @commands.is_nsfw()
