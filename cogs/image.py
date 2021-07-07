@@ -40,8 +40,162 @@ class imageCog(commands.Cog):
 
       await ctx.send(embed=embed)
       
+      
+    @commands.command()
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def ass(self, ctx):
+      y = hmtai.useHM("v2","ass")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Ass", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
 
+      await ctx.send(embed=embed)
+      
+    @commands.command()
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def bdsm(self, ctx):
+      y = hmtai.useHM("v2","bdsm")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 BDSM", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+   
+    @commands.command()
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def cum(self, ctx):
+      y = hmtai.useHM("v2","cum")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Cum", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['mb'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def masturbation(self, ctx):
+      y = hmtai.useHM("v2","masturbation")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Masturbation", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['e', 'erotic'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def ero(self, ctx):
+      y = hmtai.useHM("v2","ero")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Erotic", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['uw', 'underwear', 'panties'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def pantsu(self, ctx):
+      y = hmtai.useHM("v2","pantsu")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Underwear", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command()
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def glasses(self, ctx):
+      y = hmtai.useHM("v2","glasses")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Girl with Glasses", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['v'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def vagina(self, ctx):
+      y = hmtai.useHM("v2","vagina")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Vagina", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['ag'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def ahegao(self, ctx):
+      y = hmtai.useHM("v2","ahegao")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Ahegao", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['uni'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def uniform(self, ctx):
+      y = hmtai.useHM("v2","uniform")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Uniforms", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
     @commands.command(aliases=['t'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def tentacles(self, ctx):
+      y = hmtai.useHM("v2","tentacles")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Tentacles", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author} *I won't even question it*")
+
+      await ctx.send(embed=embed)
+
+    @commands.command()
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
     async def trap(self, ctx):
