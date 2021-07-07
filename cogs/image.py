@@ -165,11 +165,11 @@ class imageCog(commands.Cog):
     @cooldown(1, 8, commands.BucketType.user)
     async def anigirl(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.computerfreaker.cf/v1/anime')
+            request = await session.get('https://api.waifu.pics/sfw/waifu')
             animejson = await request.json()
 
-        embed = discord.Embed()
-        embed.set_author(name='Anime Girl', url=animejson['url'])
+        embed = discord.Embed(color=0xEE6363)
+        embed.set_author(name='Waifu', url=animejson['url'])
         embed.set_image(url=animejson['url'])
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text=f"Requested by {ctx.message.author}")
