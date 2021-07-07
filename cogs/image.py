@@ -36,7 +36,7 @@ class imageCog(commands.Cog):
       embed.set_author(name="🔞 Blowjob", url=y)
       embed.set_image(url=y)
       embed.timestamp = datetime.datetime.utcnow()
-      embed.set_footer(text=f"Requested by {ctx.message.author} *wish that was you huh?*")
+      embed.set_footer(text="wish that was you huh?")
 
       await ctx.send(embed=embed)
       
@@ -109,21 +109,7 @@ class imageCog(commands.Cog):
       embed.timestamp = datetime.datetime.utcnow()
       embed.set_footer(text=f"Requested by {ctx.message.author}")
 
-      await ctx.send(embed=embed)
-      
-    @commands.command(aliases=['uw', 'underwear', 'panties'])
-    @commands.is_nsfw()
-    @cooldown(1, 5, commands.BucketType.user)
-    async def pantsu(self, ctx):
-      y = hmtai.useHM("v2","pantsu")
-      
-      embed = discord.Embed(color=0XEE6363)
-      embed.set_author(name="🔞 Underwear", url=y)
-      embed.set_image(url=y)
-      embed.timestamp = datetime.datetime.utcnow()
-      embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-      await ctx.send(embed=embed)
+      await ctx.send(embed=embed) 
       
     @commands.command()
     @commands.is_nsfw()
@@ -137,21 +123,7 @@ class imageCog(commands.Cog):
       embed.timestamp = datetime.datetime.utcnow()
       embed.set_footer(text=f"Requested by {ctx.message.author}")
 
-      await ctx.send(embed=embed)
-      
-    @commands.command(aliases=['v'])
-    @commands.is_nsfw()
-    @cooldown(1, 5, commands.BucketType.user)
-    async def vagina(self, ctx):
-      y = hmtai.useHM("v2","vagina")
-      
-      embed = discord.Embed(color=0XEE6363)
-      embed.set_author(name="🔞 Vagina", url=y)
-      embed.set_image(url=y)
-      embed.timestamp = datetime.datetime.utcnow()
-      embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-      await ctx.send(embed=embed)
+      await ctx.send(embed=embed) 
       
     @commands.command(aliases=['ag'])
     @commands.is_nsfw()
@@ -181,6 +153,20 @@ class imageCog(commands.Cog):
 
       await ctx.send(embed=embed)
       
+    @commands.command()
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def gif(self, ctx):
+      y = hmtai.useHM("v2","gif")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Random nsfw Gif", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
     @commands.command(aliases=['t'])
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
@@ -191,7 +177,7 @@ class imageCog(commands.Cog):
       embed.set_author(name="🔞 Tentacles", url=y)
       embed.set_image(url=y)
       embed.timestamp = datetime.datetime.utcnow()
-      embed.set_footer(text=f"Requested by {ctx.message.author} *I won't even question it*")
+      embed.set_footer(text=f"I won't even question it")
 
       await ctx.send(embed=embed)
 
