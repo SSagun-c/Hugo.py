@@ -161,11 +161,11 @@ class imageCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=['a'])
+    @commands.command(aliases=['w'])
     @cooldown(1, 8, commands.BucketType.user)
-    async def anigirl(self, ctx):
+    async def waifu(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.waifu.pics/sfw/waifu')
+            request = await session.get('https://waifu.pics/api/sfw/waifu')
             animejson = await request.json()
 
         embed = discord.Embed(color=0xEE6363)
