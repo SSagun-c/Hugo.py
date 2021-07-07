@@ -19,10 +19,24 @@ class imageCog(commands.Cog):
       y = hmtai.useHM("v2","yuri")
       
       embed = discord.Embed(color=0XEE6363)
-      embed.set_author(name="🔞 Trap", url=y)
+      embed.set_author(name="🔞 Yuri", url=y)
       embed.set_image(url=y)
       embed.timestamp = datetime.datetime.utcnow()
       embed.set_footer(text=f"Requested by {ctx.message.author}")
+
+      await ctx.send(embed=embed)
+      
+    @commands.command(aliases=['bj'])
+    @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
+    async def blowjob(self, ctx):
+      y = hmtai.useHM("v2","blowjob")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Blowjob", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author} *wish that was you huh?*")
 
       await ctx.send(embed=embed)
       
