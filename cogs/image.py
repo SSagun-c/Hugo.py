@@ -16,7 +16,7 @@ class imageCog(commands.Cog):
     @cooldown(1, 8, commands.BucketType.user)
     async def yuri(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://api.computerfreaker.cf/v1/yuri')
+            request = await session.get('https://anime-api.hisoka17.repl.co/img/nsfw/lesbian')
             yurijson = await request.json()
 
         embed = discord.Embed()
@@ -27,7 +27,7 @@ class imageCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
-
+    
     @commands.command()
     @commands.is_nsfw()
     @cooldown(1, 8, commands.BucketType.user)
