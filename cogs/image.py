@@ -13,7 +13,7 @@ class imageCog(commands.Cog):
 
     @commands.command(aliases=['y'])
     @commands.is_nsfw()
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def yuri(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://anime-api.hisoka17.repl.co/img/nsfw/lesbian')
@@ -29,7 +29,7 @@ class imageCog(commands.Cog):
 
     @commands.command(aliases=['y'])
     @commands.is_nsfw()
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def yuri(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://waifu.pics/api/nsfw/trap')
@@ -42,26 +42,10 @@ class imageCog(commands.Cog):
         embed.set_footer(text=f"Requested by {ctx.message.author}")
 
         await ctx.send(embed=embed
-    
-    @commands.command()
-    @commands.is_nsfw()
-    @cooldown(1, 8, commands.BucketType.user)
-    async def thighs(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://shiro.gg/api/images/nsfw/thighs')
-            thighsjson = await request.json()
-
-        embed = discord.Embed()
-        embed.set_author(name="🔞 Thighs", url=thighsjson['url'])
-        embed.set_image(url=thighsjson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-        await ctx.send(embed=embed)
 
     
     @commands.command(aliases=['h'])
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
     async def hentai(self, ctx):
         async with aiohttp.ClientSession() as session:
@@ -77,7 +61,7 @@ class imageCog(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
     async def bondage(self, ctx):
         async with aiohttp.ClientSession() as session:
@@ -95,7 +79,7 @@ class imageCog(commands.Cog):
     # sfw image commands
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def neko(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://shiro.gg/api/images/neko')
@@ -111,7 +95,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def pussy(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://some-random-api.ml/img/cat')
@@ -177,7 +161,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command(aliases=['w'])
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def waifu(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://waifu.pics/api/sfw/waifu')
@@ -193,7 +177,7 @@ class imageCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 8, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
     async def boobs(self, ctx):
         async with aiohttp.ClientSession() as session:
