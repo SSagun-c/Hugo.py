@@ -2,6 +2,7 @@ import aiohttp
 import discord
 import datetime
 import random
+import hmtai
 from discord.ext import commands
 from discord.ext.commands import cooldown
 
@@ -15,22 +16,21 @@ class imageCog(commands.Cog):
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
     async def yuri(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://anime-api.hisoka17.repl.co/img/nsfw/lesbian')
-            yurijson = await request.json()
+      y = hmtai.useHM("v2","yuri")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Trap", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
 
-        embed = discord.Embed()
-        embed.set_author(name="🔞 Yuri", url=yurijson['url'])
-        embed.set_image(url=yurijson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
+      await ctx.send(embed=embed)
+      
 
-        await ctx.send(embed=embed)
-
-    @commands.command(aliases=['y'])
+    @commands.command(aliases=['t'])
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
-    async def yuri(self, ctx):
+    async def trap(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://waifu.pics/api/nsfw/trap')
             yurijson = await request.json()
