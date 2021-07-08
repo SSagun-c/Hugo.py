@@ -1,28 +1,30 @@
 # Hugo.py your favorite Image Bot
 
-**Version 2021.06.18**
+**Version 2021.07.07**
 
 # About
 
-This is Hugo.py exclusively for Anime related Servers.
+Want to spice up your Anime Server experience?
 
-NOW NEW! Search for your Manga or Anime using h!anime [Anime Name] and h!manga [Manga Name]
+Invite Hugo!
 
-What he does
-» Sending Images from different Categories e.g. Anime or Neko.
+Hugo is very friendly and got many Image commands for your use and of course other commands!
 
-» Is linked to reddit so you can get Images from different subreddits e.g. h!reddit Anime
+-> Search for your favorite Anime/Manga and get all the information in a Cool looking embed!
+-> You can also play WouldYouRather with your friends if you ever get bored and we will ofcourse add more fun commands for him!
+-> Get a random Image from a subreddit you like! (This command has about 2 seconds delay)
+-> Get tons of Images from different Anime Categories (100,000+ Images!)
+-> Also use for simple Roleplay!
+-> If needed you can moderate with style
+-> Search categories from hentaihaven
 
-» Gives highly detailed info about a User or about your Server
+Invite him now to see more...!
 
-» Has 14 Commands made for Roleplay and more being added in the future
+Every Support is greatly appreciated! 
 
-If you want to see more just invite the bot and see for yourself! ;) » Can give you different websites were you can watch Anime on (17 currently supported)
+Verification soon?
 
-» Has also use for Moderation
-
-Prefix is h! but you can change it with h!prefix <new prefix>
-
+https://top.gg/bot/832922273597227019
 # Vote for him! 
 
 https://top.gg/bot/832922273597227019/vote
