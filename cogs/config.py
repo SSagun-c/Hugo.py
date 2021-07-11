@@ -1,4 +1,5 @@
 import discord
+from discord import Member
 from discord.ext import commands
 
 
@@ -13,10 +14,15 @@ class configCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def prefix(self, ctx, prefix=None):
+       member = ctx.guild.member
         
         if prefix is None:
 
             return await ctx.send("Please enter a Valid Prefix")
+            
+        elif prefix == member:
+            
+            return await ctx.send("A user cannot be set as a prefix")
 
         data = await self.bot.prefixes.find(ctx.guild.id)
 
