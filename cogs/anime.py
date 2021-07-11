@@ -37,7 +37,7 @@ class animeCog(commands.Cog):
         
 
     @commands.command(aliases=['aav', 'avatars'])
-    @cooldown(1, 10, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def animeavatar(self, ctx):
 
         async with aiohttp.ClientSession() as Session:
@@ -58,7 +58,7 @@ class animeCog(commands.Cog):
         await ctx.send("You can do that alone....")
 
     @commands.command()
-    @cooldown(1, 10, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def anime(self, ctx, *, Anime_Name):
 
         async with aiohttp.ClientSession() as session:
@@ -102,7 +102,7 @@ class animeCog(commands.Cog):
 
 
     @commands.command()
-    @cooldown(1, 10, commands.BucketType.user)
+    @cooldown(1, 5, commands.BucketType.user)
     async def manga(self, ctx, *, Manga_Name):
 
         async with aiohttp.ClientSession() as session:
