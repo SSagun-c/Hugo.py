@@ -1,5 +1,4 @@
 import discord
-from discord import Member
 from discord.ext import commands
 
 
@@ -14,7 +13,6 @@ class configCog(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def prefix(self, ctx, prefix=None):
-        member = ctx.guild.member
         
         if prefix is None:
 
