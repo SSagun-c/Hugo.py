@@ -51,7 +51,6 @@ class infoCog(commands.Cog):
                     ("Members", len(ctx.guild.members), True),
                     ("Humans", len(list(filter(lambda m: not m.bot, ctx.guild.members))), True),
                     ("Bots", len(list(filter(lambda m: m.bot, ctx.guild.members))), True),
-                    ("Banned members", len(await ctx.guild.bans()), True),
                     ("Statuses", f"🟢 {statuses[0]}  🟠 {statuses[1]}  🔴 {statuses[2]}  ⚪ {statuses[3]}", True),
                     ("Text channels", len(ctx.guild.text_channels), True),
                     ("Voice channels", len(ctx.guild.voice_channels), True),
