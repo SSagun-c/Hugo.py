@@ -19,10 +19,6 @@ class configCog(commands.Cog):
         if prefix is None:
 
             return await ctx.send("Please enter a Valid Prefix")
-            
-        elif prefix == member:
-            
-            return await ctx.send("A user cannot be set as a prefix")
 
         data = await self.bot.prefixes.find(ctx.guild.id)
 
