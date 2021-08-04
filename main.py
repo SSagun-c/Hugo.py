@@ -94,9 +94,6 @@ async def on_guild_remove(guild):
     await client.prefixes.unset({"_id": guild.id, "prefix": 1})
     print(f"Left {guild.name}")
 
-    logchannel = client.get_channel(857276576269729884)
-    await logchannel.send(f"Left {guild.name}")
-
 @client.event
 async def on_guild_join(guild):
 
