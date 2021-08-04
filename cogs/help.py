@@ -9,7 +9,7 @@ class helpCog(commands.Cog):
     
     @commands.command()
     async def help(self, ctx):
-        reddit = '<:reddit:853000371601277018>'
+        reddit = '<:reddit:872393789761781780>'
         embed = discord.Embed(title="Hugo.py Commands", description="For help join the help Server [here](https://discord.gg/6JkmzhDsps)", color=0x8962AA)
 
         embed.add_field(name='🥳 Misc Commands', value="`ping`  `8ball`  `pussy`  `serverinfo`  `roll`  `support`  `kill`  `invite`  `repeat`  `avatar`  `userinfo`  `wallpaper`  `botinfo`  `wouldyourather`  `weather (shows in metric) <city>`  `iweather (shows in imperial) <city>`", inline=False)
