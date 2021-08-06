@@ -21,7 +21,7 @@ class helpCog(commands.Cog):
         embed.add_field(name="🔎 Moderator Commands", value="`ban`  `kick`  `clear`  `mute`  `unmute`  `unban`  `prefix`  `clearprefix`", inline=False)
         embed.add_field(name="About the Bot", value="**Report bugs**\n`report`\n\n[Invite the bot](https://discord.com/oauth2/authorize?client_id=832922273597227019&permissions=269348086&scope=bot) - [Join the Help Server](https://discord.gg/6JkmzhDsps) - [Vote for me!](https://top.gg/bot/832922273597227019/vote)", inline=False)
         
-        embed.set_footer(text="Dont know how to use the Moderator commands? Just send h!mod / DISCLAIMER! The command 'serverinfo' does not work with Permissions = 0 (I am fixing this currently)")
+        embed.set_footer(text="Dont know how to use the Moderator commands? Just send h!mod")
 
         await ctx.send(embed=embed)
     
