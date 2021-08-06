@@ -10,9 +10,10 @@ class configCog(commands.Cog):
         self.bot = bot
 
 
+
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def prefix(self, ctx, prefix=None):
+    async def setprefix(self, ctx, prefix=None):
         
         if prefix is None:
 
@@ -33,7 +34,7 @@ class configCog(commands.Cog):
     
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def clearprefix(self, ctx):
+    async def resetprefix(self, ctx):
         
         await self.bot.prefixes.unset({"_id": ctx.guild.id, "prefix": 1})
 
