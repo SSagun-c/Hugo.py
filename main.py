@@ -110,7 +110,7 @@ async def on_message(message):
         else:
             data = {"_id": message.guild.id, "prefix": 0}
 
-            await message.channel.send(f"This Server currently uses `{data}`")
+            await message.channel.send(f"This Server currently uses `{data['prefix']}`")
 
     await client.process_commands(message)
 # Botinfo
