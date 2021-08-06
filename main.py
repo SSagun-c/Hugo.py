@@ -4,6 +4,7 @@ import os
 import asyncio
 import discordmongo
 import topgg
+import pymongo
 import motor.motor_asyncio
 from discord.ext import commands, tasks
 from discord import Intents
@@ -100,17 +101,6 @@ async def on_guild_join(guild):
     logchannel = client.get_channel(857276576269729884)
 
     await logchannel.send(f"Joined {guild.name}")
-
-@client.event
-async def on_message(message):
-    if client.user.mentioned_in(message):
-        data = await client.prefixes.find(message.guild.id)
-        if data is None or "prefix" not in data:
-            await message.channel.send("This server currently uses `h!`")
-        else:
-            data = {"_id": message.guild.id, "prefix": 0}
-
-            await message.channel.send(f"This Server currently uses `{data['prefix']}`")
 
     await client.process_commands(message)
 # Botinfo
