@@ -5,6 +5,7 @@ import sys
 import re
 from discord import permissions
 from discord.ext import commands
+from discord.ext.commands import has_permissions
 
 
 time_regex = re.compile("(?:(\d{1,5})(h|s|m|d))+?")
@@ -76,6 +77,7 @@ class moderatorCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
+    @commands.bot.has_permissions(kick_members=True)
     async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
         await ctx.message.delete()
@@ -88,7 +90,7 @@ class moderatorCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    @commands.bot.has_permission(ban_members=True)
+    @commands.bot.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason=None):
         await ctx.message.delete()
         await member.ban(reason=reason)

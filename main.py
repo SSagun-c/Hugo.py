@@ -9,7 +9,7 @@ import motor.motor_asyncio
 from discord.ext import commands, tasks
 from discord import Intents
 from itertools import cycle
-from discord.ext.commands import cooldown, when_mentioned_or
+from discord.ext.commands import cooldown
 
 async def get_prefix(client, message):
 
