@@ -88,6 +88,7 @@ class moderatorCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
+    @commands.bot.has_permission(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason=None):
         await ctx.message.delete()
         await member.ban(reason=reason)
