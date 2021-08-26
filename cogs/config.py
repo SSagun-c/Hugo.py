@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from discord import Member
+from typing import Optional
 
 
 
@@ -13,23 +15,26 @@ class configCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def setprefix(self, ctx, prefix=None):
-        
-        if prefix is None:
+    async def setprefix(self, ctx, target: Optional[Member], prefix=None):
+        if prefix == target:
+            await ctx.send("`You cannot make a Member as the prefix!")
+            pass
 
-            return await ctx.send("Please enter a Valid Prefix")
+            if prefix is None:
 
-        data = await self.bot.prefixes.find(ctx.guild.id)
+                return await ctx.send("Please enter a Valid Prefix")
 
-        if data is None or "prefix" not in data:
+            data = await self.bot.prefixes.find(ctx.guild.id)
 
-            data = {"_id": ctx.guild.id, "prefix": prefix}
+            if data is None or "prefix" not in data:
 
-        data["prefix"] = prefix
+                data = {"_id": ctx.guild.id, "prefix": prefix}
 
-        await self.bot.prefixes.upsert(data)
+            data["prefix"] = prefix
 
-        await ctx.send(f"Succesfully changed the prefix to `{prefix}`")
+            await self.bot.prefixes.upsert(data)
+
+            await ctx.send(f"Succesfully changed the prefix to `{prefix}`")
 
     
     @commands.command()
