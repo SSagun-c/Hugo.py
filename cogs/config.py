@@ -15,8 +15,8 @@ class configCog(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)
-    async def setprefix(self, ctx, target: Optional[Member], prefix=None):
-        if prefix == target:
+    async def setprefix(self, ctx, prefix=None):
+        if prefix == discord.Member:
             return await ctx.send("`You cannot make a Member as the prefix!`")
 
         else:
