@@ -17,9 +17,9 @@ class configCog(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def setprefix(self, ctx, target: Optional[Member], prefix=None):
         if prefix == target:
-            await ctx.send("`You cannot make a Member as the prefix!")
-            pass
+            return await ctx.send("`You cannot make a Member as the prefix!`")
 
+        else:
             if prefix is None:
 
                 return await ctx.send("Please enter a Valid Prefix")
