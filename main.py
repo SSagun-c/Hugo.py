@@ -186,31 +186,17 @@ async def servers(ctx):
 # Loads all of the Cogs
 
 ext = [
-
     'cogs.anime',
-
     'cogs.help',
-
     'cogs.image',
-
     'cogs.info',
-
     'cogs.misc',
-
-    'cogs.moderator',
-
     'cogs.reddit',
-
     'cogs.roleplay',
-
     'cogs.config',
-
     'cogs.imagemanipulation',
-
     'cogs.nsfwsearch',
-    
-    'cogs.weather'
-    
+    'cogs.weather'   
 ]
 
 if __name__ == '__main__':
