@@ -12,15 +12,11 @@ from itertools import cycle
 from discord.ext.commands import cooldown
 
 async def get_prefix(client, message):
-
     if not message.guild:
-
         return commands.when_mentioned_or(client.DEFAULT_PREFIX)(client, message)
-    
+
     try:
-
         data = await client.prefixes.find(message.guild.id)
-
         if not data or "prefix" not in data:
             
             return commands.when_mentioned_or(client.DEFAULT_PREFIX)(client, message)
@@ -45,7 +41,7 @@ client.topgg = topgg.DBLClient(client, dbl_token)
 @tasks.loop(seconds=120)
 async def change_status():
 
-    status = cycle([f'with {len(client.guilds)} Servers! h!help'])
+    status = cycle([f'myself being rewritten'])
 
     await client.change_presence(activity=discord.Game(next(status)))
 
