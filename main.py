@@ -41,7 +41,7 @@ client.topgg = topgg.DBLClient(client, dbl_token)
 @tasks.loop(seconds=120)
 async def change_status():
 
-    status = cycle([f'myself being rewritten'])
+    status = cycle([f'{len(client.guilds)}'])
 
     await client.change_presence(activity=discord.Game(next(status)))
 
