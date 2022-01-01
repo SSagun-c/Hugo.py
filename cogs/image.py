@@ -249,22 +249,6 @@ class imageCog(commands.Cog):
 
     @commands.command()
     @cooldown(1, 5, commands.BucketType.user)
-    async def neko(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://shiro.gg/api/images/neko')
-            nekojson = await request.json()
-
-        embed = discord.Embed()
-        embed.set_author(name="Neko", url=nekojson['url'])
-        embed.set_image(url=nekojson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-        await ctx.send(embed=embed)
-
-
-    @commands.command()
-    @cooldown(1, 5, commands.BucketType.user)
     async def pussy(self, ctx):
         async with aiohttp.ClientSession() as session:
             request = await session.get('https://some-random-api.ml/img/cat')
