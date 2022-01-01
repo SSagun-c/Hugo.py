@@ -51,27 +51,6 @@ class miscCog(commands.Cog):
             await ctx.send(f"{ctx.message.author.display_name} rolled {number}")
 
 
-    @commands.command()
-    async def kill(self, ctx, target: Optional[Member]):
-        kills = random.choice([f'{target.display_name} got killed by {ctx.message.author.display_name} with a banana',
-                            f'{target.display_name} choked on air',
-                            f'{target.display_name} got stabbed by a monkey',
-                            f'{target.display_name} got killed by a creeper explosion. Haha noob',
-                            f'{target.display_name} I slapped you and you died of shock', 
-                            f"{ctx.message.author.display_name} ordered me to kill you but I refuse!", 
-                            f'{target.display_name} got smashed by an ant',
-                            f'{target.display_name} died of death',
-                            f'{target.display_name} got killed by magic',
-                            f'{target.display_name} wanted to go to his Grandma but then slipped over a stone a died',
-                            f'{target.display_name} got humiliated to death with a broomstick',
-                            f'{target.display_name} had a stroke reading the enchantment table and died',
-                            f'{target.display_name} is italian. He died because the italian mafia tortured him to death by forcing him to watch how they put pineapple on pizza'])
-        if ctx.message.author == target:
-            await ctx.send(f"You cant kill yourself {ctx.message.author.display_name}. Tag someone else to kill")
-        else:
-            await ctx.send(kills)
-
-
     @commands.command(aliases=['aw'])
     async def animeweb(self, ctx):
         websites = ['https://animeheaven.site',
