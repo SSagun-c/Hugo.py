@@ -19,7 +19,6 @@ class infoCog(commands.Cog):
         embed.set_thumbnail(url=target.avatar_url)
         fields = [("ID", target.id, False),
                 ("Name", str(target), True),
-                ("Bot?", target.bot, True),
                 ("Highest Role", target.top_role.mention, True),
                 ("Activity", f"{str(target.activity.type).split('.')[-1].title() if target.activity else 'N/A'} {target.activity.name if target.activity else ''}", True),
                 ("Created at:", target.created_at.strftime("%d/%m/%Y %H:%M:%S"), True),

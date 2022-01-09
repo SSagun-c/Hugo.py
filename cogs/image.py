@@ -312,14 +312,6 @@ class imageCog(commands.Cog):
         
         await ctx.send(embed=embed)
 
-        embed = discord.Embed(color=0xEE6363)
-        embed.set_author(name='Waifu', url=animejson['url'])
-        embed.set_image(url=animejson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-        await ctx.send(embed=embed)
-
 
     @commands.command()
     @cooldown(1, 5, commands.BucketType.user)

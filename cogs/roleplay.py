@@ -236,17 +236,17 @@ class images(commands.Cog):
         
     @commands.command()
     @commands.cooldown(1, 5, BucketType.user)
-    async def cuddle(self, ctx):
+    async def smug(self, ctx):
         """
         i can do this simpler but im stupid
         """
         async with aiohttp.ClientSession() as Session:
             request = await Session.get("https://api.waifu.pics/sfw/smug")
-            cuddlejson = await request.json()
+            smugjson = await request.json()
             
         embed = discord.Embed(color=0xED61D3)
-        embed.set_author(name=f"{ctx.message.author.display_name} smugs, I know what you are on hehe ¬‿¬", url=cuddlejson['url'])
-        embed.set_image(url=cuddlejson['url'])
+        embed.set_author(name=f"{ctx.message.author.display_name} smugs, I know what you are on hehe ¬‿¬", url=smugjson['url'])
+        embed.set_image(url=smugjson['url'])
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text=f"Requested by {ctx.message.author.display_name}")
         await ctx.send(embed=embed)
