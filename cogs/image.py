@@ -201,17 +201,15 @@ class imageCog(commands.Cog):
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
     async def thighs(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://shiro.gg/api/images/nsfw/thighs')
-            thighsjson = await request.json()
+      y = hmtai.useHM("v2","thighs")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Thighdeology", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
 
-        embed = discord.Embed()
-        embed.set_author(name="🔞 Thighs", url=thighsjson['url'])
-        embed.set_image(url=thighsjson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-        await ctx.send(embed=embed)
+      await ctx.send(embed=embed)
     
     @commands.command(aliases=['h'])
     @cooldown(1, 5, commands.BucketType.user)
