@@ -215,7 +215,7 @@ class imageCog(commands.Cog):
     @commands.is_nsfw()
     @cooldown(1, 5, commands.BucketType.user)
     async def hentai(self, ctx):
-      y = hmtai.useHM("v2_9","hentai")
+      y = hmtai.useHM("v2_4","hentai")
       
       embed = discord.Embed(color=0XEE6363)
       embed.set_author(name="🔞 Hentai", url=y)
