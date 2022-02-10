@@ -211,33 +211,34 @@ class imageCog(commands.Cog):
 
       await ctx.send(embed=embed)
     
-    @commands.command(aliases=['h'])
-    @cooldown(1, 5, commands.BucketType.user)
+    @commands.command()
     @commands.is_nsfw()
+    @cooldown(1, 5, commands.BucketType.user)
     async def hentai(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://shiro.gg/api/images/nsfw/hentai')
-            hentaijson = await request.json()
+      y = hmtai.useHM("v2_9","hentai")
+      
+      embed = discord.Embed(color=0XEE6363)
+      embed.set_author(name="🔞 Hentai", url=y)
+      embed.set_image(url=y)
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_footer(text=f"Requested by {ctx.message.author}")
 
-        embed = discord.Embed()
-        embed.set_author(name="🔞 Hentai", url=hentaijson['url'])
-        embed.set_image(url=hentaijson['url'])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
+      await ctx.send(embed=embed)
 
-        await ctx.send(embed=embed)
+
+
 
     @commands.command()
     @cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
-    async def bondage(self, ctx):
+    async def boobs(self, ctx):
         async with aiohttp.ClientSession() as session:
-            request = await session.get('https://shiro.gg/api/images/nsfw/bondage')
-            bondjson = await request.json()
+            request = await session.get('https://anime-api.hisoka17.repl.co/img/nsfw/boobs')
+            boobsjson = await request.json()
 
-        embed = discord.Embed()
-        embed.set_author(name="🔞 Bondage", url=bondjson['url'])
-        embed.set_image(url=bondjson['url'])
+        embed = discord.Embed(color=0xB6245B)
+        embed.set_author(name="🔞 Boobs", url=boobsjson["url"])
+        embed.set_image(url=boobsjson["url"])
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text=f"Requested by {ctx.message.author}")
 
@@ -308,23 +309,6 @@ class imageCog(commands.Cog):
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text=f"Requested by {ctx.message.author}")
         
-        await ctx.send(embed=embed)
-
-
-    @commands.command()
-    @cooldown(1, 5, commands.BucketType.user)
-    @commands.is_nsfw()
-    async def boobs(self, ctx):
-        async with aiohttp.ClientSession() as session:
-            request = await session.get('https://anime-api.hisoka17.repl.co/img/nsfw/boobs')
-            boobsjson = await request.json()
-
-        embed = discord.Embed(color=0xB6245B)
-        embed.set_author(name="🔞 Boobs", url=boobsjson["url"])
-        embed.set_image(url=boobsjson["url"])
-        embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text=f"Requested by {ctx.message.author}")
-
         await ctx.send(embed=embed)
 
 
