@@ -210,23 +210,6 @@ class imageCog(commands.Cog):
       embed.set_footer(text=f"Requested by {ctx.message.author}")
 
       await ctx.send(embed=embed)
-    
-    @commands.command()
-    @commands.is_nsfw()
-    @cooldown(1, 5, commands.BucketType.user)
-    async def hentai(self, ctx):
-      y = hmtai.useHM("v2_4","hentai")
-      
-      embed = discord.Embed(color=0XEE6363)
-      embed.set_author(name="🔞 Hentai", url=y)
-      embed.set_image(url=y)
-      embed.timestamp = datetime.datetime.utcnow()
-      embed.set_footer(text=f"Requested by {ctx.message.author}")
-
-      await ctx.send(embed=embed)
-
-
-
 
     @commands.command()
     @cooldown(1, 5, commands.BucketType.user)

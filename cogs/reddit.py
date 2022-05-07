@@ -42,7 +42,20 @@ class redditCog(commands.Cog):
         random_sub = random.choice(all_subs)
 
         if submission.over_18 == True:
-            await ctx.send("Sorry but this subreddit is marked as NSFW!")
+            if ctx.channel.is_nsfw:
+                sr_name = random_sub.subreddit
+                author = random_sub.author
+                name = random_sub.title
+                url = random_sub.url
+
+                embed = discord.Embed(title=author, description=name, color=0xFF4500)
+                embed.set_author(name=f'r/{sr_name}',url=url, icon_url='https://i.postimg.cc/pTzSdRqC/reddit-logo.png')
+                embed.set_image(url=url)
+                embed.timestamp = datetime.datetime.utcnow()
+                embed.set_footer(text=f"If the Image is not loading just click on r/{sr_name}!")
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("Sorry but this subreddit is marked as NSFW!")
         else: 
             sr_name = random_sub.subreddit
             author = random_sub.author
