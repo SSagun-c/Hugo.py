@@ -192,7 +192,8 @@ ext = [
     'cogs.config',
     'cogs.imagemanipulation',
     'cogs.nsfwsearch',
-    'cogs.weather'   
+    'cogs.weather',
+    'cogs.nsfw'   
 ]
 
 if __name__ == '__main__':
