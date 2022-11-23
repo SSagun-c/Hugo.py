@@ -1,6 +1,6 @@
 # Hugo.py your favorite Image Bot
 
-**Version 2021.07.07**
+**Version 2022.11.22**
 
 # About
 
